@@ -1,0 +1,54 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Module menu
+- - - - - - - - - - - - - - - - - - - - - */
+
+#typo3-module-menu {
+	background: rgb(34, 34, 34);
+}
+
+#typo3-menu,
+#typo3-menu ul {
+	list-style: none;
+}
+
+#typo3-menu a {
+	color: #bbb;
+	outline: 0;
+}
+
+#typo3-menu > li {
+	border-bottom: 1px solid rgb(63, 63, 36);
+}
+
+#typo3-menu > li:last-child {
+	border-bottom: none;
+}
+
+/* active menu item */
+#typo3-menu li.highlighted {
+	font-weight: bold;
+}
+
+#typo3-menu li.highlighted a,
+#typo3-menu li.menuSection li a:hover,
+#typo3-menu li.menuSection li.highlighted a:hover {
+	color: rgb(0, 181, 255);
+}
+
+#typo3-menu li div.modgroup {
+	color: #bbb;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#typo3-menu li ul li {
+	cursor: pointer;
+	font-weight: normal;
+	line-height: 15px;
+}
+
+#typo3-menu li ul li a {
+	text-decoration: none;
+}

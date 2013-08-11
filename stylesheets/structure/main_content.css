@@ -1,0 +1,109 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+TYPO3 styles for basic elements
+- - - - - - - - - - - - - - - - - - - - - */
+
+html {
+	height: 100%;
+}
+
+body {
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1.5em;
+}
+
+select,
+textarea,
+input,
+td,
+body,
+.defstyle,
+p,
+div {
+	margin: 0px;
+}
+
+/* Occasionally used, eg. in About Modules: */
+
+h1 {
+	margin: 6px 0 24px 0;
+	line-height: 1.1em;
+}
+
+h2 {
+	margin: 2px 0 20px 0;
+}
+
+/* Normal section headers */
+h3 {
+	padding: 2px 0;
+	margin: 8px 0 10px;
+}
+
+/* Discrete section headers (no background) */
+h4 {
+	margin: 6px 0;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote {
+	margin-bottom: 1.25em;
+}
+
+/* Preformatted text - not used so much in TYPO3 */
+pre {
+	margin: 0px;
+}
+
+/* horizontal ruler */
+hr,
+div.hr {
+	height: 1px;
+}
+
+/** .uppercase is kept for backwards-compatibility, use .divider */
+.divider,
+.uppercase {
+	padding-bottom: 6px;
+}
+
+a span {
+	cursor: pointer;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - -
+Various classes
+- - - - - - - - - - - - - - - - - - - - - */
+
+div.diff-r {
+	padding: 3px 3px 3px 3px;
+}
+
+div.diff-g {
+	padding: 3px 3px 3px 3px;
+}
+
+img.absmiddle {
+	vertical-align: middle;
+}
+
+.smallCheckboxes {
+	height: 12px;
+	margin: 0px;
+	width: 12px;
+}
+
+.alignToInputText, .alignToInputText:hover {
+	margin-top: 5px;
+	margin-right: 2px;
+	vertical-align: top;
+}
+
+.nowrap {
+	white-space: nowrap;
+}

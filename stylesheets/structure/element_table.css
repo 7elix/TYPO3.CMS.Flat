@@ -1,0 +1,40 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Table
+- - - - - - - - - - - - - - - - - - - - - */
+
+table {
+}
+
+table.t3-table td,
+table.t3-table th,
+table.t3-table-info td { padding: 6px; }
+
+th,
+td {
+	vertical-align: top;
+}
+
+.t3-col-header {
+}
+
+.t3-row-header {
+}
+
+.t3-row-header span.t3-icon {
+	margin-right: 3px;
+}
+
+/** used in the admin tools => DB check **/
+.t3-overview-list dt {
+	padding: 0px 0px 2px 20px;
+}
+
+.t3-overview-list dt img {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.t3-overview-list dd {
+	margin: 2px 0 15px 20px;
+	padding-left: 22px;
+}

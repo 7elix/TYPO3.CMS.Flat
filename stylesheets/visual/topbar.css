@@ -1,0 +1,8 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Topbar (whole upper area), containts Logo and toolbar
+- - - - - - - - - - - - - - - - - - - - - */
+
+#typo3-top-container {
+	background-color: #000;
+	border-bottom: 1px solid rgb(63, 63, 63);
+}

@@ -1,0 +1,36 @@
+/**
+ * Docheader
+ **/
+
+.typo3-docheader-pagePath {
+}
+
+.typo3-docheader-functions {
+	background-color: #e5e5e5;
+	color: #999;
+}
+
+.typo3-docheader-buttons {
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+	color: #000;
+}
+
+#typo3-docheader img,
+#typo3-docheader input {
+	cursor: pointer;
+}
+
+/**
+ * Fail-safe for non-core legacy extensions
+ * @deprecated with TYPO3 version 6.0, will be removed with 6.2
+ */
+
+#typo3-docheader-row2 {
+	background-color: #e5e5e5;
+}
+
+#typo3-docheader-row1 {
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+}
