@@ -503,7 +503,7 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 }
 
 .x-mask-loading div {
-	background-image: url("../images/spinner/big-f0f0f0.gif");
+	background-image: url("../images/spinner/flat-spinner.gif");
 	background-position: top center;
 	border: none;
 	color: #828282;
@@ -527,12 +527,12 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 
 .x-mask-loading-message div {
 	background-color: transparent;
-	background-image: url("../images/spinner/big-f0f0f0.gif");
+	background-image: url("../images/spinner/flat-spinner.gif");
 	border: none;
 	cursor: pointer;
-	height: 32px;
+	height: 50px;
 	padding: 0;
-	width: 32px;
+	width: 50px;
 }
 
 .x-item-disabled {
