@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'category' => 'be',
 	'shy' => 0,
 	'dependencies' => '',
-	'conflicts' => '',
+	'conflicts' => 't3skin',
 	'priority' => '',
 	'loadOrder' => '',
 	'module' => '',
@@ -37,7 +37,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'typo3' => '6.2.0-6.2.99',
 		),
 		'conflicts' => array(
-			't3skin'
+			't3skin' => '0.0.0-100.0.0'
 		),
 		'suggests' => array()
 	),
