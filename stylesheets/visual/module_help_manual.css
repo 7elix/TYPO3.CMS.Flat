@@ -3,11 +3,12 @@ Context Sensitive Help window (EXT:cshmanual)
 - - - - - - - - - - - - - - - - - - - - - */
 
 div.typo3-view-help img.c-inlineimg {
-	border: 1px solid #cccccc;
+	border: 1px solid #e5e5e5;
 }
 
 div.typo3-view-help div.c-toc {
-	border: 1px solid #cccccc;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
 }
 
 div.typo3-view-help div.c-toc ul li {
