@@ -4,7 +4,7 @@ Web > List
 
 table.typo3-dblist {
 	background: #fff;
-	border: 1px solid #a2aab8;
+	border: 1px solid #e5e5e5;
 }
 
 table.typo3-dblist tr td.db_list_alt {
@@ -21,7 +21,7 @@ table#typo3-dblist-top table.bgColor4 {
 
 table.typo3-dblist tr td.c-headLine,
 table.typo3-dblist tr.c-headLine td {
-	border-bottom: 1px solid #cdcdcd;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 table.typo3-dblist tr.c-headLine td.col-title a {

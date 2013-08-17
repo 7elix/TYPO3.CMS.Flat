@@ -12,7 +12,16 @@ table.typo3-dblist img {
 	vertical-align: middle;
 }
 
-table.typo3-dblist tr td { padding: 6px; }
+table.typo3-dblist tr td {
+	padding: 3px 6px;
+}
+
+table.typo3-dblist tr td:first-child {
+	padding-left: 24px;
+}
+table.typo3-dblist tr td:last-child {
+	padding-right: 24px;
+}
 
 table.typo3-dblist tr.db_list_normal td {
 }

@@ -2,12 +2,15 @@
 Table
 - - - - - - - - - - - - - - - - - - - - - */
 
-table {
+table.t3-table {
+	margin-bottom: 12px;
 }
 
 table.t3-table td,
 table.t3-table th,
-table.t3-table-info td { padding: 6px; }
+table.t3-table-info td {
+	padding: 6px;
+}
 
 th,
 td {

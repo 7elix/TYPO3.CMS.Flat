@@ -6,11 +6,8 @@ th {
 	font-weight: bold;
 }
 
-.t3-row-header { background-color: #666; color: #fff; }
-	.t3-row-header td { color: #fff; }
-
-		.t3-row-header a { color: #fff; }
-		.t3-row-header:hover a { color: #fff; }
+.t3-row-header { }
+	.t3-row-header td { font-weight: bold; border-bottom: 1px solid #e5e5e5;}
 
 .t3-col-header {
 	background-color: #585858;
@@ -23,7 +20,7 @@ th {
 
 table.t3-table {
 	background: #fff;
-	border: 1px solid #a2aab8;
+	border: 1px solid #e5e5e5;
 }
 
 table.t3-table .t3-row-odd td,
