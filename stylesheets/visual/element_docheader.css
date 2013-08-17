@@ -6,14 +6,24 @@
 }
 
 .typo3-docheader-functions {
-	background-color: #e5e5e5;
-	color: #999;
+	/** 5% black */
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .typo3-docheader-buttons {
+	/** 5% black */
 	background-color: #f1f1f1;
 	border-bottom: 1px solid #e5e5e5;
-	color: #000;
+}
+
+.typo3-docheader-buttons a {
+	padding: 6px;
+	margin-right: 6px;
+	background-color: #dedede;
+}
+.typo3-docheader-buttons a:hover {
+	background-color: rgb(0, 181, 255);
 }
 
 #typo3-docheader img,
