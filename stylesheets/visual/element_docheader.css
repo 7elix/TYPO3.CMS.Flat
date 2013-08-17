@@ -17,11 +17,13 @@
 	border-bottom: 1px solid #e5e5e5;
 }
 
+#typo3-docheader-row1 a,
 .typo3-docheader-buttons a {
 	padding: 6px;
 	margin-right: 6px;
 	background-color: #dedede;
 }
+#typo3-docheader-row1 a:hover,
 .typo3-docheader-buttons a:hover {
 	background-color: rgb(0, 181, 255);
 }
@@ -37,7 +39,8 @@
  */
 
 #typo3-docheader-row2 {
-	background-color: #e5e5e5;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 #typo3-docheader-row1 {
