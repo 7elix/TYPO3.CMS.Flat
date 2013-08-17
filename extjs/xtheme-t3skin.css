@@ -2229,23 +2229,27 @@ body.x-body-masked .x-window-plain .x-window-mc {
 body.ext-chrome #typo3-module-menu-xsplit,
 body.ext-chrome #typo3-navigationContainer-xsplit {
 	width: 5px;
-	background-color: #fff;
+	background-color: #f7f7f7;
 	-moz-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	-ms-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	-webkit-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	overflow: visible;
 }
 
@@ -2286,23 +2290,28 @@ body.ext-chrome #typo3-navigationContainer-xsplit {
    If no tree frame is in use, an empty container is shown instead */
 #typo3-navigationContainer-xcollapsed,
 #typo3-navigationDummy {
-	background-color: #fff;
+	width: 5px;
+	background-color: #f7f7f7;
 	-moz-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	-ms-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	-webkit-box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	box-shadow:
-		inset 0 24px #e5e5e5,
-		inset 0 56px #f1f1f1,
-		inset 0 57px #e5e5e5;
+		inset 0 32px #f1f1f1,
+		inset 0 33px #e5e5e5,
+		inset 0 65px #f1f1f1,
+		inset 0 66px #e5e5e5;
 	overflow: visible;
 }
 
@@ -2424,11 +2433,5 @@ div.x-grid3-row:hover img.t3-icon-extensions-workspaces {
 }
 
 .t3skin-typo3-module-panel-toolbar .x-toolbar{
-	background-color: #585858;
-	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAGElEQVR42gENAPL/AEBAQExAQECzQEBA/xb3BD8CHBN0AAAAAElFTkSuQmCC");
-	background-position: right;
-	background-repeat: repeat-y;
-	border: none;
-	padding: 0;
-	margin: 0;
+	background-color: #f1f1f1;
 }
