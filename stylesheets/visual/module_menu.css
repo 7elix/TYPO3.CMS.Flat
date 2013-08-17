@@ -47,6 +47,28 @@ Module menu
 	text-transform: uppercase;
 }
 
+#typo3-menu li a span.submodule-icon {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+#typo3-menu li.highlighted a span.submodule-icon,
+#typo3-menu li a:hover span.submodule-icon {
+	-webkit-filter: none;
+	-moz-filter: none;
+	-ms-filter: none;
+	-o-filter: none;
+	filter: none;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+
 #typo3-menu li ul li {
 	cursor: pointer;
 	font-weight: normal;
