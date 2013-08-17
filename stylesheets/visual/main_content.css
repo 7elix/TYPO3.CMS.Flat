@@ -29,8 +29,9 @@ a {
 }
 
 a:hover {
-	color: #000000;
-	background-color: transparent;
+	color: rgb(0, 181, 255);
+	-webkit-transition: color .100s;
+	transition: color .100s;
 }
 
 a.t3-link {
