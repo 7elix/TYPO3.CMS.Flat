@@ -2,7 +2,7 @@
 body tags
 - - - - - - - - - - - - - - - - - - - - - */
 
-/* Set default values for bodytags: */
 body {
-	background-color: #fff;
+	/** 3% black */
+	background-color: #f7f7f7;
 }
