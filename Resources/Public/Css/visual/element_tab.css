@@ -89,25 +89,25 @@ div.typo3-dyntabmenu-divs-foldout div.disabled_over {
 
 div.typo3-dyntabmenu-divs-foldout div.tab {
 	background: #c4d4cd;
-	background-image: url('../../icons/gfx/ol/plusbullet.gif');
+	background-image: url('../../../../icons/gfx/ol/plusbullet.gif');
 	background-repeat: no-repeat;
 }
 
 div.typo3-dyntabmenu-divs-foldout div.tab_over {
 	background: #f6eab7;
-	background-image: url('../../icons/gfx/ol/arrowbullet.gif');
+	background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
 	background-repeat: no-repeat;
 }
 
 div.typo3-dyntabmenu-divs-foldout div.tabact {
 	background: #e7dba8;
-	background-image: url('../../icons/gfx/ol/minusbullet.gif');
+	background-image: url('../../../../icons/gfx/ol/minusbullet.gif');
 	background-repeat: no-repeat;
 }
 
 div.typo3-dyntabmenu-divs-foldout div.tabact_over {
 	background: #f6eab7;
-	background-image: url('../../icons/gfx/ol/arrowbullet.gif');
+	background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
 	background-repeat: no-repeat;
 }
 
