@@ -10,10 +10,10 @@
  ***************************************************************/
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Flat skin',
-	'description' => '',
+	'description' => 'First backend theme with strong focus on your content. Buggy but usable. Stable but alpha. Dark but light.',
 	'category' => 'be',
 	'shy' => 0,
-	'dependencies' => '',
+	'dependencies' => 't3skin',
 	'conflicts' => '',
 	'priority' => '',
 	'loadOrder' => '',
@@ -30,12 +30,12 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_company' => '',
 	'CGLcompliance' => '',
 	'CGLcompliance_note' => '',
-	'version' => '6.2.0',
+	'version' => '0.9.0',
 	'_md5_values_when_last_written' => '',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.2.0-6.2.99',
-			't3skin' => '0.0.0-100.0.0'
+			't3skin' => '6.2.0-6.2.99'
 		),
 		'conflicts' => array(
 		),
@@ -43,4 +43,3 @@ $EM_CONF[$_EXTKEY] = array(
 	),
 	'suggests' => array()
 );
-?>
