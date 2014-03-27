@@ -5,23 +5,25 @@
 .typo3-docheader-pagePath {
 }
 
+#typo3-docheader-row2,
 .typo3-docheader-functions {
-	/** 5% black */
-	background-color: #f1f1f1;
-	border-bottom: 1px solid #e5e5e5;
+	background-color: rgb(30, 30, 30);
+	border-bottom: 1px solid rgb(60, 60, 60);
+	color: rgb(110, 110, 110);
 }
 
+#typo3-docheader-row1,
 .typo3-docheader-buttons {
-	/** 5% black */
-	background-color: #f1f1f1;
-	border-bottom: 1px solid #e5e5e5;
+	background-color: rgb(30, 30, 30);
+	color: rgb(110, 110, 110);
+	border-bottom: 1px solid rgb(60, 60, 60);
 }
 
 #typo3-docheader-row1 a,
 .typo3-docheader-buttons a {
 	padding: 6px;
 	margin-right: 6px;
-	background-color: #dedede;
+	background-color: rgb(110, 110, 110);
 }
 #typo3-docheader-row1 a:hover,
 .typo3-docheader-buttons a:hover {
@@ -31,19 +33,4 @@
 #typo3-docheader img,
 #typo3-docheader input {
 	cursor: pointer;
-}
-
-/**
- * Fail-safe for non-core legacy extensions
- * @deprecated with TYPO3 version 6.0, will be removed with 6.2
- */
-
-#typo3-docheader-row2 {
-	background-color: #f1f1f1;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-#typo3-docheader-row1 {
-	background-color: #f1f1f1;
-	border-bottom: 1px solid #e5e5e5;
 }

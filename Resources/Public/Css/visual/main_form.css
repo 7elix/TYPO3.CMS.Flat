@@ -1,76 +1,52 @@
-/* - - - - - - - - - - - - - - - - - - - - -
-Form
-- - - - - - - - - - - - - - - - - - - - - */
 
-textarea.fixed-font {
-	font-family: "Lucida Console", "Lucida Sans Typewriter", "Bitstream Vera Sans Mono", monospace;
-	font-size: 11px;
+select {
+	margin-right: 0.5em;
 }
 
 input,
 textarea,
-select,
 button {
+	border-color: rgb(150, 150, 150);
+	-webkit-transition: border-color .200s;
+	transition: border-color .200s;
 }
 
-textarea {
-	background-color: #fefefe;
-	border: 1px solid #7c7c7c;
+input:hover,
+textarea:hover,
+button:hover {
+	border-color: #000;
+	-webkit-transition: border-color .200s;
+	transition: border-color .200s;
 }
 
-textarea:hover {
-	border: 1px solid #737f91;
-}
-
+.t3-button,
+button,
 input[type="submit"],
 input[type="reset"],
-input[type="button"],
-input[type="submit"][disabled="disabled"]:hover,
-input[type="reset"][disabled="disabled"]:hover,
-input[type="button"][disabled="disabled"]:hover {
-	background-color: #f6f6f6;
-	background-image: url('../../../../images/backgrounds/button.png');
-	background-image: linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-	background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #d5d5d5 90%);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #d5d5d5));
-	background-position: bottom;
-	background-repeat: repeat-x;
-	border: 1px solid #7c7c7c;
-	border-radius: 1px;
-	-moz-border-radius: 1px;
-	color: #434343;
-	cursor: pointer;
+input[type="button"] {
+	background-color: #000;
+	border: 1px solid none;
+	border-radius: 2px;
+	color: #fff;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
+.t3-button:hover,
+button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
-	background-color: #c8c8c8;
-	background-image: url('../../../../images/backgrounds/button-hover.png');
-	background-image: linear-gradient(center top, #f6f6f6 10%, #c8c8c8 90%);
-	background-image: -moz-linear-gradient(center top, #f6f6f6 10%, #bdbcbc 90%);
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0.1, #f6f6f6), color-stop(0.9, #c8c8c8));
-	background-position: bottom;
-	background-repeat: repeat-x;
-	border: 1px solid #737f91;
-	color: #1e1e1e;
-	cursor: pointer;
+	background-color: rgb(110, 110, 110);
+	color: #fff;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
-input[type="submit"][disabled="disabled"],
-input[type="reset"][disabled="disabled"],
-input[type="button"][disabled="disabled"],
-input[type="submit"][disabled="disabled"]:hover,
-input[type="reset"][disabled="disabled"]:hover,
-input[type="button"][disabled="disabled"]:hover {
-	cursor: default;
-	opacity: 0.5;
-}
-
-.checkbox,
-.checkbox:hover,
-input[type="checkbox"] {
-	background: none;
+.t3-button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
 	border: none;
-	cursor: pointer;
 }

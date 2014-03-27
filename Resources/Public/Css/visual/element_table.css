@@ -1,61 +1,31 @@
 /* - - - - - - - - - - - - - - - - - - - - -
-Table
+TYPO3 styles for basic elements
 - - - - - - - - - - - - - - - - - - - - - */
 
-th {
-	font-weight: bold;
+table.t3-table,
+table.typo3-dblist {
+	background-color: #fff;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgb(205, 205, 205);
 }
 
-.t3-row-header { }
-	.t3-row-header td { font-weight: bold; border-bottom: 1px solid #e5e5e5;}
+	table.t3-table tbody tr:nth-child(odd) td,
+	table.t3-table tbody tr:nth-child(even) td,
+	table.typo3-dblist tr.db_list_normal:nth-child(odd) td,
+	table.typo3-dblist tr.db_list_normal:nth-child(even) td,
+	table.typo3-dblist tr:nth-child(odd) td,
+	table.typo3-dblist tr:nth-child(even) td {
+		background-color: #fff;
+		border-bottom: 1px solid rgb(220, 220, 220);
+	}
 
-.t3-col-header {
-	background-color: #585858;
-	color: #fff;
-	font-size: 10px;
-	line-height: 19px;
-	height: 20px;
-	font-weight: bold;
-}
+	table.t3-table tbody tr:hover td,
+	table.typo3-dblist tr:hover td {
+		background-color: rgb(245, 245, 245);
+	}
 
-table.t3-table {
-	background: #fff;
-	border: 1px solid #e5e5e5;
-}
-
-table.t3-table .t3-row-odd td,
-table.t3-table .t3-row-odd th {
-	background-color: #f7f7f7;
-}
-
-table.t3-table .t3-row-even td,
-table.t3-table .t3-row-even th {
-	background-color: #ffffff;
-}
-
-table.t3-table .t3-row-odd:hover td,
-table.t3-table .t3-row-odd:hover th,
-table.t3-table .t3-row-even:hover td,
-table.t3-table .t3-row-even:hover th {
-	background-color: #dedede;
-}
-
-table.t3-table tr.t3-row-header td {
-	color: #fff;
-	font-size: 10px;
-	font-weight: bold;
-	line-height: 16px;
-}
-
-
-
-/** used for any table where a table is used for displaying information (and thus, there is air to breathe) **/
-table.t3-table-info {
-	background: #ffffff;
-	border: 1px solid #cccccc;
-	border-collapse: collapse;
-}
-
-.tableheader td {
-	font-weight: bold;
+table.typo3-dblist tr td.c-headLine,
+table.typo3-dblist tr.c-headLine td {
+	background-color: rgb(240, 240, 240);
 }

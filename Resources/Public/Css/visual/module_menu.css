@@ -3,78 +3,101 @@ Module menu
 - - - - - - - - - - - - - - - - - - - - - */
 
 #typo3-module-menu {
-	background: rgb(34, 34, 34);
-}
-
-#typo3-menu,
-#typo3-menu ul {
-	list-style: none;
+	background: rgb(22, 22, 22);
+	border-right: 1px solid rgb(60, 60, 60);
 }
 
 #typo3-menu a {
 	color: #bbb;
 	outline: 0;
+/*
 	-webkit-transition: color .200s;
 	transition: color .200s;
+*/
+}
+
+#typo3-menu ul {
+	padding: 0;
+	margin: 0;
 }
 
 #typo3-menu > li {
-	border-bottom: 1px solid rgb(63, 63, 36);
+	padding-bottom: 6px;
+	margin-bottom: 12px;
+	border-bottom: 1px solid rgb(60, 60, 60);
 }
+	/* active menu item */
+	#typo3-menu li.highlighted {
+		font-weight: bold;
+	}
 
-#typo3-menu > li:last-child {
-	border-bottom: none;
-}
+		#typo3-menu li.highlighted a,
+		#typo3-menu li.menuSection li a:hover,
+		#typo3-menu li.menuSection li.highlighted a:hover {
+			background: none transparent;
+/*
+			color: rgb(220, 130, 50);
+			color: #fff;
+*/
+			color: rgb(0, 181, 255);
+		}
 
-/* active menu item */
-#typo3-menu li.highlighted {
-	font-weight: bold;
-}
+	#typo3-menu li.menuSection li a:hover,
+	#typo3-menu li.highlighted a {
+		border: none;
+	}
 
-#typo3-menu li.highlighted a,
-#typo3-menu li.menuSection li a:hover,
-#typo3-menu li.menuSection li.highlighted a:hover {
-	color: rgb(0, 181, 255);
-	-webkit-transition: color .200s;
-	transition: color .200s;
-}
+	#typo3-menu li div.modgroup {
+		color: #fff;
+		cursor: pointer;
+		font-size: 10px;
+		font-weight: bold;
+		text-transform: uppercase;
 
-#typo3-menu li div.modgroup {
-	color: #bbb;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
-	text-transform: uppercase;
-}
+		padding: 0 0 0 24px;
+		margin: 0 0 3px 0;
+	}
+	#typo3-menu li div.expanded,
+	#typo3-menu li div.collapsed {
+		/* Remove flap icons */
+		background: none;
+	}
 
-#typo3-menu li a span.submodule-icon {
-	-webkit-filter: grayscale(100%);
-	-moz-filter: grayscale(100%);
-	-ms-filter: grayscale(100%);
-	-o-filter: grayscale(100%);
-	filter: grayscale(100%);
-	filter: gray;
-	opacity: 0.6;
-	filter: alpha(opacity=60);
-}
-#typo3-menu li.highlighted a span.submodule-icon,
-#typo3-menu li a:hover span.submodule-icon {
-	-webkit-filter: none;
-	-moz-filter: none;
-	-ms-filter: none;
-	-o-filter: none;
-	filter: none;
-	opacity: 1;
-	filter: alpha(opacity=100);
-}
+		#typo3-menu li a {
+			display: block;
+			margin-bottom: 0;
+		}
 
+		#typo3-menu li div {
+			overflow: hidden;
+			padding: 2px 0px 4px 16px;
+			vertical-align: middle;
+		}
 
-#typo3-menu li ul li {
-	cursor: pointer;
-	font-weight: normal;
-	line-height: 15px;
-}
+		#typo3-menu li ul {
+			margin-bottom: 6px;
+		}
 
-#typo3-menu li ul li a {
-	text-decoration: none;
-}
+			#typo3-menu li ul li {
+				cursor: pointer;
+				font-weight: normal;
+				line-height: 15px;
+				min-height: 21px;
+			}
+
+				#typo3-menu li ul li a {
+					display: block;
+					margin: 0;
+					padding: 0 0 0 24px;
+					text-decoration: none;
+					white-space: nowrap;
+				}
+
+				#typo3-menu li ul li a:hover,
+				#typo3-menu li ul li.hover a,
+				#typo3-menu li ul li.highlighted a {
+					background: transparent none;
+					border: 0;
+					margin: 0;
+					padding: 0 0 0 24px;
+				}
