@@ -2,11 +2,6 @@
  * Docheader
  **/
 
-#typo3-docheader .left .buttongroup {
-	margin-right: 12px;
-}
-#typo3-docheader .right .buttongroup {
-	margin-left: 12px;
 }
 
 #typo3-docheader-row2,
@@ -14,6 +9,10 @@
 	background-color: rgb(30, 30, 30);
 	border-bottom: 1px solid rgb(60, 60, 60);
 	color: rgb(110, 110, 110);
+}
+
+#typo3-docheader-row1 {
+	padding: 5px 25px 1px 25px;
 }
 
 #typo3-docheader-row1,
@@ -25,13 +24,12 @@
 
 #typo3-docheader-row1 a,
 .typo3-docheader-buttons a {
-	padding: 6px;
-	margin-right: 6px;
 	background-color: rgb(110, 110, 110);
 }
 #typo3-docheader-row1 a:hover,
 .typo3-docheader-buttons a:hover {
 	background-color: rgb(0, 181, 255);
+	padding: 1px 1px 1px 5px;
 }
 
 #typo3-docheader img,
@@ -39,7 +37,6 @@
 	cursor: pointer;
 }
 
-#typo3-docheader .left .t3-icon,
-#typo3-docheader .right .t3-icon {
-	margin: 0;
+.typo3-docheader-functions {
+	padding-left: 29px;
 }
