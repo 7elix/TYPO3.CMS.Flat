@@ -3,12 +3,12 @@ Module menu
 - - - - - - - - - - - - - - - - - - - - - */
 
 #typo3-module-menu {
-	background: rgb(22, 22, 22);
+	background: #222;
 	border-right: 1px solid rgb(60, 60, 60);
 }
 
 #typo3-menu a {
-	color: #bbb;
+	color: #ccc;
 	outline: 0;
 /*
 	-webkit-transition: color .200s;

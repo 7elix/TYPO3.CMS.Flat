@@ -1,22 +1,13 @@
 body.ext-chrome #typo3-module-menu-xsplit,
-#typo3-module-menu-xsplit {
-	background-color: rgb(230, 230, 230);
-}
-
+body.ext-chrome #typo3-navigationContainer-xsplit,
 #typo3-module-menu-xsplit,
 #typo3-navigationContainer-xsplit {
-	background: transparent;
-}
-
-
-body.ext-chrome #typo3-module-menu-xsplit,
-body.ext-chrome #typo3-navigationContainer-xsplit {
-	background: rgb(230, 230, 230) url('../../Images/xsplit.png') top left repeat-x;
+	background: #333 url('../../Images/xsplit.png') top left repeat-x;
 }
 
 #typo3-navigationContainer-xcollapsed,
 #typo3-navigationDummy {
-	background: rgb(230, 230, 230) url('../../Images/xsplit.png') top left repeat-x;
+	background: #333 url('../../Images/xsplit.png') top left repeat-x;
 	-moz-box-shadow: none;
 	-ms-box-shadow: none;
 	-webkit-box-shadow: none;
