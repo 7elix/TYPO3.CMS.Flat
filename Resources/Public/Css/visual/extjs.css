@@ -1,7 +1,16 @@
 body.ext-chrome #typo3-module-menu-xsplit,
-body.ext-chrome #typo3-navigationContainer-xsplit,
+#typo3-module-menu-xsplit {
+	background-color: rgb(230, 230, 230);
+}
+
 #typo3-module-menu-xsplit,
 #typo3-navigationContainer-xsplit {
+	background: transparent;
+}
+
+
+body.ext-chrome #typo3-module-menu-xsplit,
+body.ext-chrome #typo3-navigationContainer-xsplit {
 	background: #333 url('../../Images/xsplit.png') top left repeat-x;
 }
 

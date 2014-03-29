@@ -3,7 +3,7 @@ Toolbar inside the Topbar
 - - - - - - - - - - - - - - - - - - - - - */
 
 #typo3-topbar {
-	background: #000;
+	background: #222;
 	background-image: none;
 	color: rgb(110, 110, 110);
 }
@@ -17,7 +17,7 @@ Topbar (whole upper area), containts Logo and toolbar
 
 #typo3-top-container {
 	background: none;
-	border-bottom: 1px solid rgb(60, 60, 60);
+	border-bottom: 1px solid #333;
 }
 
 #typo3-toolbar .separator {
