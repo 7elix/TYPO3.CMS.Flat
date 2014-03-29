@@ -1,8 +1,12 @@
-/**
+/* - - - - - - - - - - - - - - - - - - - - -
  * Docheader
  **/
 
-.typo3-docheader-pagePath {
+#typo3-docheader .left .buttongroup {
+	margin-right: 12px;
+}
+#typo3-docheader .right .buttongroup {
+	margin-left: 12px;
 }
 
 #typo3-docheader-row2,
@@ -33,4 +37,9 @@
 #typo3-docheader img,
 #typo3-docheader input {
 	cursor: pointer;
+}
+
+#typo3-docheader .left .t3-icon,
+#typo3-docheader .right .t3-icon {
+	margin: 0;
 }
