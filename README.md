@@ -1,13 +1,23 @@
 ![TYPO3](http://typo3.org/typo3conf/ext/t3org_template/i/typo3-logo.png)
 
-'Flat' - skin for TYPO3 CMS backend
-============================
+Flat: Theme for TYPO3 CMS
+=========================
 
-Flat is a backend skin for TYPO3 content management system — buggy + alpha
+`Flat` is an alternative dark, flat-style theme for the TYPO3 CMS backend.
 
 ![Screenshot](/Documentation/typo3.cms.flat.png "Screenshot")
 
-# What for?
+### Installation
+
+1. Download extension
+2. Install
+3. Clear (all/system) caches.
+
+### Troubleshooting
+
+If theme does not load, manually delete all files from `typo3temp` OR use the install tool to "delete temporary files" using the **Cleanup** feature.
+
+### Why was this theme created?
 
 Addresses thoughts and visions that are incompatible with t3skin core currently:
  
@@ -17,8 +27,10 @@ Addresses thoughts and visions that are incompatible with t3skin core currently:
 + Move search to center (http://forge.typo3.org/issues/32888)
 + Remove Uppercase / section header (http://forge.typo3.org/issues/37925)
 
-# Legal
+### Legal
 
 Disclaimer: This skin does not look perfect - heavily under construction still.
 
 Maintained by <a href="https://twitter.com/7elix" target="_blank">Felix Kopp</a>, Active Contributor for TYPO3 CMS.
+
+Released under GPLv2 - later versions allowed as you please.

@@ -5,7 +5,7 @@ Tree
 body#typo3-pagetree,
 body#typo3-alt-file-navframe-php {
 	background: none;
-	border-right:1px solid rgb(60, 60, 60);
+	border-right:1px solid #666;
 }
 
 #typo3-alt-file-navframe-php #typo3-docbody,
@@ -27,15 +27,7 @@ body#typo3-alt-file-navframe-php {
 }
 
 table#typo3-tree a {
-	color: rgb(110, 110, 110);
 	text-decoration: none;
-}
-
-ul.tree a {
-	color: #ddd;
-}
-ul.tree li.active div.treeLinkItem {
-
 }
 
 body#typo3-alt-db-navframe-php div.c-notice {
