@@ -4,13 +4,27 @@ Pagetree
 
 #typo3-pagetree-treeContainer {
 	background-color: rgb(220, 220, 220);
-	border-right: 1px solid rgb(60, 60, 60)
+	border-right: 1px solid rgb(60, 60, 60);
+	position: absolute;
+	top: 51px !important;
 }
 
 #typo3-pagetree-topPanelItems {
 	background-color: #1e1e1e;
 }
 
+#typo3-pagetree-topPanelItems x-button-icon-pressed,
+#typo3-pagetree-topPanelItems x-button-icon-hover {
+	background: #333;
+}
+
+#typo3-pagetree-topPanel .x-btn-pressed {
+	background: none;
+}
+
+#typo3-pagetree-topPanelItems .x-panel-body.x-panel-body-noheader {
+	height: 51px !important;
+}
 
 #typo3-pagetree .x-panel-tbar {
 	background-color: rgb(30, 30, 30);
@@ -24,3 +38,7 @@ Pagetree
 	color: rgb(110, 110, 110);
 }
 
+#typo3-pagetree .x-panel-tbar .x-toolbar {
+	padding-top: 3px;
+	height: 24px;
+}

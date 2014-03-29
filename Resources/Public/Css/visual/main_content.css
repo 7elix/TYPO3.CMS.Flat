@@ -4,7 +4,7 @@ TYPO3 styles for basic elements
 
 body {
 	background-color: rgb(230, 230, 230);
-	color: #666;
+	color: #222;
 	font-family: 'Noto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	font-style: normal;
@@ -18,7 +18,6 @@ h1,
 h2,
 h3,
 h4 {
-	color: #333;
 	font-weight: normal;
 }
 
