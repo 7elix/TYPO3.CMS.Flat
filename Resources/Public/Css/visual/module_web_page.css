@@ -3,11 +3,47 @@ Module menu
 - - - - - - - - - - - - - - - - - - - - - */
 
 .t3-page-colHeader {
-	background-color: rgb(230, 230, 230);
-	color: rgb(110, 110, 110);
+	background-color: transparent;
+	color: #333;
 }
 
 td.t3-gridCell {
-	background-color: #fff;
-	border-bottom: 1px solid rgb(205, 205, 205);
+	background-color: transparent;
+	border: none;
+}
+
+.t3-page-colHeader {
+	border-bottom: none !important;
+}
+
+.t3-page-ce-dropzone {
+	padding: 0px !important;
+	-webkit-transition: color .500s;
+	transition: color .500s;
+	height: auto !important;
+}
+
+.t3-page-ce-dropzone.t3-page-ce-dropzone:hover,
+.t3-page-ce-dropzone.t3-page-ce-dropzone-available {
+	background-color: #00B5FF;
+}
+
+.t3-page-ce-wrapper-new-ce a {
+	background-repeat: none;
+	background-size: 16px 16px;
+	display: block;
+	padding: 6px;
+	min-height: 12px !important;
+}
+
+td.t3-gridCell div.t3-page-ce, div.t3-page-lang-copyce {
+	padding: 1px 3px 0 3px;
+}
+
+table.t3-gridTable, table.t3-page-langMode {
+	border-spacing: 3px;
+}
+
+.t3-page-ce-body-inner a {
+	text-decoration: none;
 }
