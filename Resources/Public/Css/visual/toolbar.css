@@ -28,7 +28,22 @@ Topbar (whole upper area), containts Logo and toolbar
 	-ms-filter: none;
 }
 
+/* - - - - - - - - - - - - - - - - - - - - -
+Live search
+- - - - - - - - - - - - - - - - - - - - - */
 
-#logout-submit-button {
 
+#live-search-box {
+	background-color: #555;
+	color: #ccc;
+	padding: 2px 2px 2px 22px;
+
+}
+	#live-search-box:focus {
+		background-color: #fff;
+		color: #000;
+	}
+
+.live-search-results .t3-icon-toolbar-menu-search {
+	top: 5px;
 }
