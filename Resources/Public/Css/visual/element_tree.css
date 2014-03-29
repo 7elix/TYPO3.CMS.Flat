@@ -23,11 +23,19 @@ body#typo3-alt-file-navframe-php {
 
 #typo3-alt-file-navframe-php #typo3-docbody,
 #typo3-pagetree-treeContainer {
-	background: rgb(220, 220, 220);
+	background: #333;
 }
 
 table#typo3-tree a {
+	color: rgb(110, 110, 110);
 	text-decoration: none;
+}
+
+ul.tree a {
+	color: #ddd;
+}
+ul.tree li.active div.treeLinkItem {
+
 }
 
 body#typo3-alt-db-navframe-php div.c-notice {
@@ -43,7 +51,7 @@ body#typo3-alt-db-navframe-php div.c-notice {
 }
 
 table#typo3-tree tr:hover {
-	background-color: #d7dbe2;
+	background-color: #444;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - -
@@ -53,4 +61,18 @@ Configuration trees, used in Admin Tools => Configuration
 table.t3-tree-config {
 	background: none;
 	border: 1px solid #adadad;
+}
+
+.x-tree-node a span {
+	color: #DDD;
+}
+
+#typo3-pagetree .x-tree-node .x-tree-selected {
+	background: #444;
+	border-color: #444;
+}
+
+#typo3-pagetree .x-tree-node .x-tree-node-over {
+	background: #555;
+	border-color: #555;
 }
