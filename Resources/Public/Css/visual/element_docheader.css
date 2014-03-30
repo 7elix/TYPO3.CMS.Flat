@@ -12,10 +12,6 @@
 	color: rgb(110, 110, 110);
 }
 
-#typo3-docheader-row1 {
-	padding: 5px 25px 1px 25px;
-}
-
 #typo3-docheader-row1,
 .typo3-docheader-buttons {
 	background-color: rgb(30, 30, 30);
@@ -32,8 +28,4 @@
 #typo3-docheader img,
 #typo3-docheader input {
 	cursor: pointer;
-}
-
-.typo3-docheader-functions {
-	padding-left: 29px;
 }
