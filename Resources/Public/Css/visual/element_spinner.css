@@ -1,0 +1,22 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Animated spinner icon
+- - - - - - - - - - - - - - - - - - - - - */
+
+span.spinner {
+	height: 50px;
+	width: 50px;
+}
+
+span.spinner {
+	background-image: url('../../Images/flat-spinner.gif');
+}
+
+.x-mask-loading div {
+	background-image: url('../../Images/flat-spinner.gif');
+}
+
+.x-mask-loading-message div {
+	background-image: url('../../Images/flat-spinner.gif');
+	height: 50px;
+	width: 50px;
+}
