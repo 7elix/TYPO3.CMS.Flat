@@ -68,3 +68,10 @@ table.t3-tree-config {
 	background: #555;
 	border-color: #555;
 }
+
+
+
+
+#typo3-alt-file-navframe-php ul.tree a {
+	color: #ddd;
+}
