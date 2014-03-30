@@ -8,7 +8,6 @@ body.ext-chrome #typo3-module-menu-xsplit,
 	background: transparent;
 }
 
-
 body.ext-chrome #typo3-module-menu-xsplit,
 body.ext-chrome #typo3-navigationContainer-xsplit {
 	background: #333 url('../../Images/xsplit.png') top left repeat-x;
@@ -26,4 +25,10 @@ body.ext-chrome #typo3-navigationContainer-xsplit {
 .x-panel-body-noheader,
 .x-panel-mc .x-panel-body {
 	border: none;
+}
+
+/* Module menu collapsed, generalized */
+.x-layout-collapsed {
+	background: #222;
+	border-right: 1px solid rgb(110, 110, 110);
 }
