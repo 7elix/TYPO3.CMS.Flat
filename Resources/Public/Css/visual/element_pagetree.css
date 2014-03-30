@@ -41,6 +41,53 @@ Pagetree
 	height: 24px;
 }
 
+
+#typo3-pagetree .x-tree-node .x-tree-selected {
+	background: #444;
+	border-color: #444;
+}
+
+#typo3-pagetree .x-tree-node .x-tree-node-over {
+	background: #555;
+	border-color: #555;
+}
+
+#typo3-pagetree .x-btn-pressed {
+	background-color: rgba(0, 181, 255, 0.5) !important;
+}
+
+div.buttongroup > a:hover,
+#typo3-pagetree .x-btn-click,
+#typo3-pagetree .x-btn-over {
+	background-color: rgb(0, 181, 255) !important;
+}
+
+#typo3-pagetree-topPanel .x-btn-click, #typo3-pagetree-topPanel .x-btn-over {
+	background-image: none;
+}
+
+#typo3-pagetree button.t3-icon:hover {
+	background-color: transparent;
+}
+
+#typo3-pagetree .typo3-pagetree-topPanel-button {
+	height: auto !important;
+}
+
+.x-tree-node .x-tree-node-el.x-tree-drag-insert-below {
+	border-bottom: 1px solid rgb(0, 181, 255) !important;
+}
+
+.x-tree-node .x-tree-node-el.x-tree-drag-insert-above {
+	border-top: 1px solid rgb(0, 181, 255) !important;
+}
+
+.x-tree-node .x-tree-node-el.x-tree-drag-insert-below,
+.x-tree-node .x-tree-node-el.x-tree-drag-insert-above {
+	background-color: rgba(0, 181, 255, 0.5) !important;
+	color: #222 !important;
+}
+
 .treeLinkItem a {
 	color: #DDD;
 }

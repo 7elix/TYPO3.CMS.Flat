@@ -3,6 +3,7 @@ TYPO3 styles for basic elements
 - - - - - - - - - - - - - - - - - - - - - */
 
 table.t3-table,
+.typo3-filelist,
 table.typo3-dblist {
 	background-color: #fff;
 	border-left: none;
@@ -25,7 +26,9 @@ table.typo3-dblist {
 		background-color: rgb(245, 245, 245);
 	}
 
+table.typo3-filelist tr td.c-headLine,
 table.typo3-dblist tr td.c-headLine,
+table.typo3-filelist tr.c-headLine td,
 table.typo3-dblist tr.c-headLine td {
 	background-color: rgb(240, 240, 240);
 }
