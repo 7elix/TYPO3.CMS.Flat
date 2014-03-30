@@ -8,7 +8,9 @@ TCEforms
 
 table.wrapperTable tr.class-main2 td.palette-header,
 table.wrapperTable1 .class-main12 td.palette-header {
+	font-size: 1.1em;
 	padding-left: 0;
+	padding-bottom: 1em;
 }
 
 fieldset.t3-form-palette-fieldset {
