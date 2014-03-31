@@ -16,13 +16,20 @@
 .typo3-docheader-buttons {
 	background-color: rgb(30, 30, 30);
 	color: rgb(110, 110, 110);
-	border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+#typo3-docheader .right .t3-icon {
+	margin-left: 0px;
 }
 
 #typo3-docheader-row1 a,
 .typo3-docheader-buttons a {
 	background-color: transparent;
-	padding: 1px 1px 1px 5px;
+	padding: 1px 0px 1px 5px;
+}
+
+.typo3-docheader-buttons .right .buttongroup a {
+	padding: 1px 5px 1px 5px;
 }
 
 #typo3-docheader img,

@@ -5,7 +5,6 @@ Tree
 body#typo3-pagetree,
 body#typo3-alt-file-navframe-php {
 	background: none;
-	border-right:1px solid #666;
 }
 
 #typo3-alt-file-navframe-php #typo3-docbody,
@@ -59,14 +58,14 @@ table.t3-tree-config {
 	color: #DDD;
 }
 
-#typo3-pagetree .x-tree-node .x-tree-selected {
-	background: #444;
-	border-color: #444;
+#typo3-pagetree ul.x-tree-root-ct {
+	padding-top: 0px;
 }
 
-#typo3-pagetree .x-tree-node .x-tree-node-over {
-	background: #555;
-	border-color: #555;
+
+.x-tree-drag-append {
+	background-color: rgb(0, 181, 255) !important;
+	color: #222;
 }
 
 
