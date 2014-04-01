@@ -17,13 +17,16 @@ Flat: Theme for TYPO3 CMS
 
 If theme does not load, manually delete all files from `typo3temp` OR use the install tool to "delete temporary files" using the **Cleanup** feature.
 
-### Why was this theme created?
+### What is the focus of this skin?
 
-Addresses thoughts and visions that are incompatible with t3skin core currently:
+Addresses thoughts and visions that are incompatible with t3skin core currently. Feel free to read up on the intentions:
  
 + Invert module menu (http://forge.typo3.org/issues/41166)
++ Restyle module menu (http://forge.typo3.org/issues/32449)
++ Black / white action buttons (http://forge.typo3.org/issues/49955 )
++ Change and extend iconset (http://forge.typo3.org/issues/36203)
++ Reorder topbar elements (http://forge.typo3.org/issues/32888 )
 + Recolor docheader / focus tunnel (http://forge.typo3.org/issues/48391)
-+ Black / white action buttons (http://forge.typo3.org/issues/49955)
 + Move search to center (http://forge.typo3.org/issues/32888)
 + Remove Uppercase / section header (http://forge.typo3.org/issues/37925)
 
