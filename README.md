@@ -30,6 +30,7 @@ Addresses thoughts and visions that are incompatible with t3skin core currently.
 + Move search to center (http://forge.typo3.org/issues/32888)
 + Remove Uppercase / section header (http://forge.typo3.org/issues/37925)
 + Change typography (http://forge.typo3.org/issues/48781 and http://forge.typo3.org/issues/36017)
++ Collapsible module menu (http://forge.typo3.org/issues/27432)
 
 ### Legal
 
