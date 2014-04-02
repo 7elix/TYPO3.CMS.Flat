@@ -74,3 +74,8 @@ table.t3-tree-config {
 #typo3-alt-file-navframe-php ul.tree a {
 	color: #ddd;
 }
+
+ul.tree li.active div.treeLinkItem {
+	background-color: #555;
+	border: none;
+}
