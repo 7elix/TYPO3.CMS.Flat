@@ -60,7 +60,7 @@ Module menu
 	#typo3-menu li div.expanded,
 	#typo3-menu li div.collapsed {
 		/* Remove flap icons */
-		background: none;
+		background: none no-repeat right 22px center;
 	}
 
 		#typo3-menu li a {
