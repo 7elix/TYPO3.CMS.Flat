@@ -1,0 +1,79 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Module menu
+- - - - - - - - - - - - - - - - - - - - - */
+
+#typo3-topbar {
+
+	ul.navbar-nav {
+		> li {
+			> a {
+				height: @navbar-height;
+			}
+		}
+
+		li {
+			a {
+			}
+
+			ul {
+				background-color: @gray-light;
+				border: 0;
+				padding: 5px 0 24px 0;
+				min-width: 165px;
+
+				li {
+					font-size: @font-size-base;
+
+					a {
+						color: #fff;
+						padding-right: 18px;
+					}
+				}
+			}
+		}
+
+		li:hover {
+			background-color: @gray-dark;
+
+			a {
+				color: #fff;
+				transition: color .1s ease-in-out;
+			}
+
+			/* For main navigation */
+			ul {
+				/* Show on hover */
+				display: block;
+				background-color: @gray-dark;
+
+				li {
+					background-color: @gray-dark;
+
+					a {
+					}
+				}
+
+				li:hover {
+					a {
+						background-color: @gray;
+						color: #fff;
+					}
+				}
+			}
+
+			/* For toolbar-items */
+			.toolbar-item-menu,
+			.dropdown-menu {
+				display: block;
+			}
+
+		}
+
+		> li.active {
+			> a {
+				background-color: transparent;
+			}
+		}
+	}
+
+}

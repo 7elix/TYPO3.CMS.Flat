@@ -1,0 +1,107 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+Login
+- - - - - - - - - - - - - - - - - - - - - */
+
+body#typo3-index-php {
+	background-color: rgb(50, 50, 50);
+	color: @gray-light;
+	font-size: @font-size-small;
+	margin: 10px;
+
+	/** Add custom login background image here */
+}
+
+#t3-login-form {
+	.t3-login-logo {
+		/* DIV container wrap necessary to center for all widths */
+		display: block;
+		width: 400px;
+		margin: 0 auto 2em auto;
+		padding-right: 277px;
+		/* Image width is 123px */
+	}
+
+	#t3-login-error {
+		color: @brand-danger;
+	}
+
+	/* Login box */
+	.shadow {
+		background-color: #fff;
+		padding: 1em;
+
+		width: 400px;
+		margin: 0 auto 1em auto;
+
+		/** Remove from html source code: irrelevant */
+		.t3-headline {
+			display: none;
+		}
+	}
+
+	#t3-login-openIdLogo {
+		margin-bottom: 1em;
+	}
+
+	/* Inherit bootstrap: @todo Add html inline classes: .form-group */
+	.t3-login-field,
+	.t3-login-interface {
+		.form-group;
+
+		/* Necessary for clearInputField */
+		position: relative;
+
+		.t3-login-clearInputField {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+
+		input,
+		select {
+			.form-control;
+			.input-lg;
+		}
+	}
+
+	/* Inherit bootstrap: @todo Add html inline classes: .btn .btn-default */
+	#t3-login-submit {
+		.btn;
+		.btn-lg;
+		.btn-primary;
+	}
+
+	#t3-copyright-notice {
+		margin-top: 30px;
+	}
+
+	#t3-copyright-notice,
+	#t3-meta-links {
+		a,
+		a:link,
+		a:visited {
+			color: @gray-light;
+			text-decoration: underline;
+		}
+
+		/** Remove from html source code: irrelevant */
+		img {
+			display: none;
+		}
+	}
+
+}
+
+@media (max-width: @screen-xs-max) {
+
+	#t3-login-form {
+		.t3-login-logo {
+			width: auto;
+			margin: 0 0 2em 0;
+		}
+
+		.shadow {
+			width: auto;
+		}
+	}
+}

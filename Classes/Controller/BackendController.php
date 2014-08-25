@@ -36,26 +36,133 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController {
 
 	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		$this->debug = (int)$GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] === 1;
+
+		$this->moduleLoader = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Module\\ModuleLoader');
+		$this->moduleLoader->load($GLOBALS['TBE_MODULES']);
+
+		$this->moduleMenu = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\View\\ModuleMenuView');
+
+		$this->pageRenderer = $GLOBALS['TBE_TEMPLATE']->getPageRenderer();
+		$this->pageRenderer->loadJquery();
+
+		// Add default BE javascript
+		$this->js = '';
+		$this->jsFiles = array(
+#			'common' => 'sysext/backend/Resources/Public/JavaScript/common.js',
+			'locallang' => $this->getLocalLangFileName(),
+#			'modernizr' => 'contrib/modernizr/modernizr.min.js',
+			'md5' => 'sysext/backend/Resources/Public/JavaScript/md5.js',
+#			'toolbarmanager' => 'sysext/backend/Resources/Public/JavaScript/toolbarmanager.js',
+#			'modulemenu' => 'sysext/backend/Resources/Public/JavaScript/modulemenu.js',
+#			'iecompatibility' => 'sysext/backend/Resources/Public/JavaScript/iecompatibility.js',
+			'evalfield' => 'sysext/backend/Resources/Public/JavaScript/jsfunc.evalfield.js',
+			'flashmessages' => 'sysext/backend/Resources/Public/JavaScript/flashmessages.js',
+#			'tabclosemenu' => 'js/extjs/ux/ext.ux.tabclosemenu.js',
+			'notifications' => 'sysext/backend/Resources/Public/JavaScript/notifications.js',
+
+#			'backend' => 'sysext/backend/Resources/Public/JavaScript/backend.js',
+			'loginrefresh' => 'sysext/backend/Resources/Public/JavaScript/loginrefresh.js',
+#			'debugPanel' => 'js/extjs/debugPanel.js',
+#			'viewport' => 'js/extjs/viewport.js',
+#			'iframepanel' => 'sysext/backend/Resources/Public/JavaScript/iframepanel.js',
+#			'backendcontentiframe' => 'js/extjs/backendcontentiframe.js',
+#			'modulepanel' => 'js/extjs/modulepanel.js',
+#			'viewportConfiguration' => 'js/extjs/viewportConfiguration.js',
+			'util' => 'sysext/backend/Resources/Public/JavaScript/util.js',
+
+			'bootstrap-dropdown' => '../typo3conf/ext/flat/Resources/Public/JavaScript/Bootstrap/dropdown.js',
+			'bootstrap-modal' => '../typo3conf/ext/flat/Resources/Public/JavaScript/Bootstrap/modal.js',
+
+			'typo3-Routing' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/Routing.js',
+			'typo3-Backend' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/Backend.js',
+			'typo3-ModuleMenu' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/ModuleMenu.js',
+			'typo3-Viewport' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/Viewport.js',
+
+			'typo3-Deprecated' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/Deprecated.js'
+		);
+
+		if ($this->debug) {
+			unset($this->jsFiles['loginrefresh']);
+		}
+
+		// Add default BE css
+#		$this->pageRenderer->addCssLibrary('contrib/normalize/normalize.css', 'stylesheet', 'all', '', TRUE, TRUE);
+
+		$this->css = '';
+		$this->cssFiles = array();
+		$this->toolbarItems = array();
+
+		$this->initializeCoreToolbarItems();
+		$this->menuWidth = 200;
+
+		if (isset($GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW']) && (int)$GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW'] != (int)$this->menuWidth) {
+			$this->menuWidth = (int)$GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW'];
+		}
+		$this->executeHook('constructPostProcess');
+	}
+
+	/**
 	 * Main function generating the BE scaffolding
 	 *
 	 * @return void
 	 */
 	public function render() {
-		$this->executeHook('renderPreProcess');
+#		$this->executeHook('renderPreProcess');
 
-		// Prepare the scaffolding, at this point extension may still add javascript and css
-		$logo = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\View\\LogoView');
+#		// Prepare the scaffolding, at this point extension may still add javascript and css
+#		$logo = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\View\\LogoView');
 
 		// Create backend scaffolding
 		$backendScaffolding = '
-		<div id="typo3-top-container" class="x-hide-display">
-			<div id="typo3-module-menu-toogle"><a href="#"><i class="fa fa-bars fa-lg"></i></a></div>
-			<div id="typo3-logo">' . $logo->render() . '</div>
-			<div id="typo3-top" class="typo3-top-toolbar">' . $this->renderToolbar() . '</div>
-		</div>';
+			<nav class="navbar navbar-inverse" role="navigation" id="typo3-topbar">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">' . $this->renderLogo() . '</a>
+					</div>
+
+					<ul class="nav navbar-nav navbar-right collapse navbar-collapse" data-typo3-role="typo3-module-menu">' .
+						$this->renderToolbar() .
+						$this->renderUserMenu() .
+						$this->renderHelpMenu() .
+					'</ul>
+
+					<div class="navbar-left collapse navbar-collapse">
+						<div class="" id="typo3-module-menu">
+							<ul class="nav navbar-nav" data-typo3-role="typo3-module-menu">' .
+								$this->renderModuleMenu() .
+							'</ul>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+
+			<!-- Content -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-3">
+						<!-- Page navigation -->
+						<iframe src="" id="typo3-navigation" name="typo3-navigation" border="0" frameborder="0"></iframe>
+					</div>
+
+					<div class="col-xs-9">
+						<!-- Content -->
+						<iframe src="" id="typo3-content" name="typo3-content" border="0" frameborder="0"></iframe>
+					</div>
+				</div>
+			</div>' .
+
+			$this->renderLiveSearchModal()
+		;
+
 		/******************************************************
 		 * Now put the complete backend document together
 		 ******************************************************/
+
 		foreach ($this->cssFiles as $cssFileName => $cssFile) {
 			$this->pageRenderer->addCssFile($cssFile);
 			// Load additional css files to overwrite existing core styles
@@ -75,6 +182,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		// Add state provider
 		$GLOBALS['TBE_TEMPLATE']->setExtDirectStateProvider();
 		$states = $GLOBALS['BE_USER']->uc['BackendComponents']['States'];
+
 		// Save states in BE_USER->uc
 		$extOnReadyCode = '
 			Ext.state.Manager.setProvider(new TYPO3.state.ExtDirectProvider({
@@ -85,21 +193,344 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		if ($states) {
 			$extOnReadyCode .= 'Ext.state.Manager.getProvider().initState(' . json_encode($states) . ');';
 		}
-		$extOnReadyCode .= '
-			TYPO3.Backend = new TYPO3.Viewport(TYPO3.Viewport.configuration);
-			if (typeof console === "undefined") {
-				console = TYPO3.Backend.DebugConsole;
-			}
-			TYPO3.ContextHelpWindow.init(' . GeneralUtility::quoteJSvalue(BackendUtility::getModuleUrl('help_cshmanual')) . ');';
+#		$extOnReadyCode .= '
+#			TYPO3.Backend = new TYPO3.Viewport(TYPO3.Viewport.configuration);
+#			if (typeof console === "undefined") {
+#				console = TYPO3.Backend.DebugConsole;
+#			}
+#			TYPO3.ContextHelpWindow.init(' . GeneralUtility::quoteJSvalue(BackendUtility::getModuleUrl('help_cshmanual')) . ');';
 		$this->pageRenderer->addExtOnReadyCode($extOnReadyCode);
+
 		// Set document title:
 		$title = $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] ? $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] . ' [TYPO3 CMS ' . TYPO3_version . ']' : 'TYPO3 CMS ' . TYPO3_version;
-		$this->content = $backendScaffolding;
+
 		// Renders the module page
-		$this->content = $GLOBALS['TBE_TEMPLATE']->render($title, $this->content);
-		$hookConfiguration = array('content' => &$this->content);
-		$this->executeHook('renderPostProcess', $hookConfiguration);
+		$this->content = $GLOBALS['TBE_TEMPLATE']->render($title, $backendScaffolding);
+
+#		$hookConfiguration = array('content' => &$this->content);
+#		$this->executeHook('renderPostProcess', $hookConfiguration);
+
 		echo $this->content;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function renderModuleMenu() {
+		$moduleMenu = $this->moduleMenu->getRawModuleData();
+
+		$content = '';
+
+		foreach ($moduleMenu as $moduleMenuSection) {
+			if ($moduleMenuSection['name'] === 'user' || $moduleMenuSection['name'] === 'help') {
+				continue;
+			}
+
+			$content .= '<li class="dropdown">';
+			$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
+			$content .= $moduleMenuSection['title'] . '<span class="caret"></span>';
+			$content .= '</a>';
+
+			$content .= '<ul class="dropdown-menu" role="menu">';
+			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
+				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+				$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+				$content .= $moduleItem['title'];
+				$content .= '</a>';
+				$content .= '</li>';
+			}
+
+			$content .= '</ul>';
+			$content .= '</li>';
+		}
+
+		return $content;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function renderLogo() {
+		$this->logo = 'gfx/typo3-topbar@2x.png';
+
+		$imgInfo = getimagesize(PATH_site . TYPO3_mainDir . $this->logo);
+		$imgUrl = $this->logo;
+
+		// Overwrite with custom logo
+		if ($GLOBALS['TBE_STYLES']['logo']) {
+			$imgInfo = @getimagesize(\TYPO3\CMS\Core\Utility\GeneralUtility::resolveBackPath((PATH_typo3 . $GLOBALS['TBE_STYLES']['logo']), 3));
+			$imgUrl = $GLOBALS['TBE_STYLES']['logo'];
+		}
+
+		// High-res?
+		$width = $imgInfo[0];
+		$height = $imgInfo[1];
+
+		if (strpos($imgUrl, '@2x.')) {
+			$width = $width/2;
+			$height = $height/2;
+		}
+
+		return '<img src="' . $imgUrl . '" width="' . $width . '" height="' . $height . '" title="TYPO3 Content Management System" alt="" />';
+	}
+
+	/**
+	 * Render modal dialog open/close button
+	 *
+	 * @return string
+	 */
+	protected function renderLiveSearchButton() {
+		return '<li><a href="#" class="btn btn-default" data-toggle="modal" data-target="#typo3-live-search-modal"><i class="glyphicon glyphicon-search"></i></button></li>';
+	}
+
+	/**
+	 * Render modal dialog
+	 *
+	 * @return string
+	 * @TODO: Load as AJAX modal
+	 */
+	protected function renderLiveSearchModal() {
+		$content = '';
+
+		if (!array_key_exists('liveSearch', $this->toolbarItems)) {
+			return '';
+		}
+
+		$content = '';
+
+		$content .= '
+			<!-- Live Search -->
+			<div class="modal fade" id="typo3-live-search-modal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title" id="myModalLabel"><i class=""></i> Search</h4>
+						</div>
+						<div class="modal-body">' .
+
+		$this->toolbarItems['liveSearch']->render() .
+
+						'</div>
+						<div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Save changes</button>
+						      </div>
+					</div>
+				</div>
+			</div>';
+
+
+		return $content;
+	}
+
+	/**
+	 * Renders the items in the top toolbar
+	 *
+	 * @return string top toolbar elements as HTML
+	 */
+	protected function renderToolbar() {
+		// Move search to last position
+		if (array_key_exists('liveSearch', $this->toolbarItems)) {
+#			$search = $this->toolbarItems['liveSearch'];
+#			unset($this->toolbarItems['liveSearch']);
+#			$this->toolbarItems['liveSearch'] = $search;
+		}
+
+		$toolbar = '';
+		$i = 0;
+
+		$numberOfToolbarItems = count($this->toolbarItems);
+		foreach ($this->toolbarItems as $key => $toolbarItem) {
+			$i++;
+			$menu = $toolbarItem->render();
+
+			// @TOD: Find a better solution for CSS requirements
+			$menu = preg_replace('/display:.+none(;)*/', '', $menu);
+			$menu = str_replace('toolbar-item-menu', 'dropdown-menu', $menu);
+
+			if ($menu) {
+				$additionalAttributes = $toolbarItem->getAdditionalAttributes();
+
+				if (strpos($additionalAttributes, 'class="') !== FALSE) {
+					$additionalAttributes = str_replace('class="', 'class="dropdown ', trim($toolbarItem->getAdditionalAttributes()));
+				} else {
+					$additionalAttributes .= ' class="dropdown"';
+				}
+
+				$toolbar .= '<li ' . $additionalAttributes . ' >' . $menu . '</li>';
+			}
+		}
+
+		return $toolbar;
+	}
+
+	/**
+	 * Gets the label of the BE user currently logged in
+	 *
+	 * @return string Html
+	 */
+	protected function getLoggedInUserLabel() {
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function renderUserMenu() {
+#		$icon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('status-user-' . ($GLOBALS['BE_USER']->isAdmin() ? 'admin' : 'backend'));
+		$icon = '<i class="fa fa-lg fa-user"></i>';
+
+		$realName = $GLOBALS['BE_USER']->user['realName'];
+		$username = $GLOBALS['BE_USER']->user['username'];
+		$label = $realName ?: $username;
+		$title = $username;
+
+		// Superuser mode
+#		if ($GLOBALS['BE_USER']->user['ses_backuserid']) {
+#			$title = $GLOBALS['LANG']->getLL('switchtouser') . ': ' . $username;
+#			$label = $GLOBALS['LANG']->getLL('switchtousershort') . ' ' . ($realName ? $realName . ' (' . $username . ')' : $username);
+#		}
+
+		$content = '';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-xs hidden-sm">' . htmlspecialchars($label) . '</span> <span class="caret"></span></a>';
+		$content .= '<ul class="dropdown-menu" role="menu">';
+
+		$moduleMenu = $this->moduleMenu->getRawModuleData();
+		foreach ($moduleMenu as $moduleMenuSection) {
+			if ($moduleMenuSection['name'] !== 'user') {
+				continue;
+			}
+
+			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
+				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+				$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+				$content .= $moduleItem['title'];
+				$content .= '</a>';
+				$content .= '</li>';
+			}
+		}
+
+		$content .= '<li role="presentation" class="divider"></li>';
+
+		$buttonLabel = $GLOBALS['BE_USER']->user['ses_backuserid'] ? 'LLL:EXT:lang/locallang_core.xlf:buttons.exit' : 'LLL:EXT:lang/locallang_core.xlf:buttons.logout';
+		$content .= '<li><a href="logout.php" target="_top"><i class="fa fa-lg fa-lock"></i> ' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</a></li>';
+
+		$content .= '</ul>';
+		return '<li class="dropdown">' . $content . '</li>';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function renderHelpMenu() {
+		$content = '';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-question-circle"></i> <span class="caret"></span></a></a>';
+		$content .= '<ul class="dropdown-menu">';
+
+		$moduleMenu = $this->moduleMenu->getRawModuleData();
+		foreach ($moduleMenu as $moduleMenuSection) {
+			if ($moduleMenuSection['name'] !== 'help') {
+				continue;
+			}
+
+			if (is_array($moduleMenuSection['subitems'])) {
+				foreach ($moduleMenuSection['subitems'] as $moduleItem) {
+					$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
+					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+					$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+					$content .= $moduleItem['title'];
+					$content .= '</a>';
+					$content .= '</li>';
+				}
+			}
+		}
+		$content .= '</ul>';
+
+		return '<li class="dropdown">' . $content . '</li>';
+	}
+
+
+	/**
+	 * Generates the JavaScript code for the backend.
+	 *
+	 * @return void
+	 */
+	protected function generateJavascript() {
+		$pathTYPO3 = GeneralUtility::dirname(GeneralUtility::getIndpEnv('SCRIPT_NAME')) . '/';
+
+		// If another page module was specified, replace the default Page module with the new one
+		$newPageModule = trim($GLOBALS['BE_USER']->getTSConfigVal('options.overridePageModule'));
+		$pageModule = BackendUtility::isModuleSetInTBE_MODULES($newPageModule) ? $newPageModule : 'web_layout';
+		if (!$GLOBALS['BE_USER']->check('modules', $pageModule)) {
+			$pageModule = '';
+		}
+
+#		$menuFrameName = 'menu';
+#		if ($GLOBALS['BE_USER']->uc['noMenuMode'] === 'icons') {
+#			$menuFrameName = 'topmenuFrame';
+#		}
+
+		// Determine security level from conf vars and default to super challenged
+		if ($GLOBALS['TYPO3_CONF_VARS']['BE']['loginSecurityLevel']) {
+			$this->loginSecurityLevel = $GLOBALS['TYPO3_CONF_VARS']['BE']['loginSecurityLevel'];
+		} else {
+			$this->loginSecurityLevel = 'superchallenged';
+		}
+
+		$t3Configuration = array(
+			'siteUrl' => GeneralUtility::getIndpEnv('TYPO3_SITE_URL'),
+			'PATH_typo3' => $pathTYPO3,
+			'PATH_typo3_enc' => rawurlencode($pathTYPO3),
+			'username' => htmlspecialchars($GLOBALS['BE_USER']->user['username']),
+			'uniqueID' => GeneralUtility::shortMD5(uniqid('')),
+			'securityLevel' => $this->loginSecurityLevel,
+			'TYPO3_mainDir' => TYPO3_mainDir,
+			'pageModule' => $pageModule,
+			'inWorkspace' => $GLOBALS['BE_USER']->workspace !== 0 ? 1 : 0,
+			'workspaceFrontendPreviewEnabled' => $GLOBALS['BE_USER']->user['workspace_preview'] ? 1 : 0,
+			'veriCode' => $GLOBALS['BE_USER']->veriCode(),
+			'denyFileTypes' => PHP_EXTENSIONS_DEFAULT,
+#			'moduleMenuWidth' => $this->menuWidth - 1,
+			'topBarHeight' => isset($GLOBALS['TBE_STYLES']['dims']['topFrameH']) ? (int)$GLOBALS['TBE_STYLES']['dims']['topFrameH'] : 30,
+			'showRefreshLoginPopup' => isset($GLOBALS['TYPO3_CONF_VARS']['BE']['showRefreshLoginPopup']) ? (int)$GLOBALS['TYPO3_CONF_VARS']['BE']['showRefreshLoginPopup'] : FALSE,
+			'listModulePath' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('recordlist') . 'mod1/',
+			'debugInWindow' => $GLOBALS['BE_USER']->uc['debugInWindow'] ? 1 : 0,
+			'ContextHelpWindows' => array(
+				'width' => 600,
+				'height' => 400
+			),
+		);
+
+			$this->js .= '
+			if (typeof TYPO3 === undefined) {
+				window[\'TYPO3\'] = {};
+			}
+
+			TYPO3.Configuration = ' . json_encode($t3Configuration) . ';
+			TYPO3.configuration = TYPO3.Configuration;
+
+			TYPO3.RoutingConfiguration = ' . json_encode($this->moduleMenu->getRawModuleData()) . ';
+
+			/**
+			 * TypoSetup object.
+			 */
+			function typoSetup() {	//
+				this.PATH_typo3 = TYPO3.configuration.PATH_typo3;
+				this.PATH_typo3_enc = TYPO3.configuration.PATH_typo3_enc;
+				this.username = TYPO3.configuration.username;
+				this.uniqueID = TYPO3.configuration.uniqueID;
+				this.navFrameWidth = 0;
+				this.securityLevel = TYPO3.configuration.securityLevel;
+				this.veriCode = TYPO3.configuration.veriCode;
+				this.denyFileTypes = TYPO3.configuration.denyFileTypes;
+			}
+
+			var TS = new typoSetup();' .
+
+			$this->setStartupModule();
+			$this->handlePageEditing();
 	}
 
 }

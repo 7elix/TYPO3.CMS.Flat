@@ -39,13 +39,13 @@ class DocumentTemplate {
 	public function preHeaderRenderHook($hookParameters, $documentTemplateInstance) {
 
 		# Force jQuery in Backend
-		$hookParameters['pageRenderer']->loadJquery();
+#		$hookParameters['pageRenderer']->loadJquery();
 
 		# Central initialization hub for flat
-		$hookParameters['pageRenderer']->addJsLibrary(
-			'flat',
-			'../typo3conf/ext/flat/Resources/Public/JavaScript/flat.js'
-		);
+#		$hookParameters['pageRenderer']->addJsLibrary(
+#			'flat',
+#			'../typo3conf/ext/flat/Resources/Public/JavaScript/flat.js'
+#		);
 
 	}
 

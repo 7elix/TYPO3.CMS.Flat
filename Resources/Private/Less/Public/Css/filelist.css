@@ -1,0 +1,149 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+File > List
+- - - - - - - - - - - - - - - - - - - - - */
+body#typo3-file-upload-php div#c-submit,
+body#typo3-file-upload-php div#c-upload,
+body#typo3-file-upload-php div#c-override,
+body#typo3-file-upload-php div#c-select {
+  margin-top: 10px;
+}
+body#typo3-file-rename-php div#c-submit,
+body#typo3-file-rename-php div#c-rename {
+  margin-top: 10px;
+}
+body#typo3-file-newfolder-php div#c-select,
+body#typo3-file-newfolder-php div#c-createFolders,
+body#typo3-file-newfolder-php div#c-submitFolders,
+body#typo3-file-newfolder-php div#c-newFile,
+body#typo3-file-newfolder-php div#c-submitFiles {
+  margin-top: 10px;
+}
+body#typo3-file-edit-php div#c-submit,
+body#typo3-file-edit-php div#c-edit {
+  margin-top: 10px;
+}
+/* - - - - - - - - - - - - - - - - - - - - -
+File > List
+
+- - - - - - - - - - - - - - - - - - - - - */
+table#typo3-filelist tr td div.typo3-clipCtrl,
+table#typo3-filelist tr td div.typo3-editCtrl {
+  text-align: center;
+}
+#typo3-inner-docbody {
+  -webkit-transition: border 0.2s ease;
+  -moz-transition: border 0.2s ease;
+  -ms-transition: border 0.2s ease;
+  -o-transition: border 0.2s ease;
+  transition: border 0.2s ease;
+}
+.t3-dropzone {
+  border: 1px dashed #666666;
+  background: #DEDEDE;
+  text-align: center;
+  color: #616161;
+  margin-bottom: 1px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.t3-dropzone .t3-dropzone-close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.t3-drop-in-progress .t3-dropzone {
+  box-shadow: 0px 0px 10px 0px #888;
+  color: #000;
+}
+.t3-drop-in-progress .t3-dropzone .t3-dropzone-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.t3-dropzone.t3-dropzone-drop-ok {
+  background: #EBEBEB;
+}
+.t3-upload-file-picker {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+table.t3-upload-queue {
+  margin: 10px 0;
+}
+table#typo3-filelist tr.t3-upload-queue-item.last td {
+  border-bottom: 1px solid #666666;
+}
+table#typo3-filelist.t3-upload-queue tr.t3-upload-queue-item.last td {
+  border-bottom: 1px solid #D7D7D7;
+}
+table#typo3-filelist tr.t3-upload-queue-item.uploading td {
+  color: #9D9D9D;
+}
+table#typo3-filelist tr.t3-upload-queue-item.error td {
+  color: #BF383F;
+}
+table#typo3-filelist tr.t3-upload-queue-item td.t3-upload-queue-progress {
+  color: #FFF;
+  padding: 0;
+}
+table#typo3-filelist tr.t3-upload-queue-item.uploading td.t3-upload-queue-progress {
+  background-color: #F2CEB0;
+  color: #000;
+}
+table#typo3-filelist tr.t3-upload-queue-item.error td.t3-upload-queue-progress {
+  background-color: #E5B6B9;
+  color: #F7F7F7;
+}
+div.t3-upload-queue-progress {
+  position: relative;
+  text-align: right;
+  padding: 5px 3px;
+  border: 1px solid #C6C6C6;
+}
+.t3-upload-queue-progress-percentage,
+.t3-upload-queue-progress-message {
+  display: inline;
+  position: relative;
+  z-index: 2;
+  margin-right: 4px;
+}
+.t3-upload-queue-progress-message {
+  font-weight: bold;
+}
+.t3-upload-queue-progress-bar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -2px;
+  bottom: 0;
+  background-color: #6EA757;
+  border: 1px solid #FFF;
+}
+.uploading .t3-upload-queue-progress-bar {
+  background-color: #F38B36;
+}
+.error .t3-upload-queue-progress-bar {
+  background-color: #BF383F;
+}
+/* - - - - - - - - - - - - - - - - - - - - -
+File Upload Window
+- - - - - - - - - - - - - - - - - - - - - */
+.t3icon-ext-upload {
+  background: url('../../../../icons/gfx/upload.gif') 1px 1px no-repeat !important;
+}
+.t3icon-ext-cancel {
+  background: url('../../../../icons/gfx/icon_fatalerror.gif') 1px 1px no-repeat !important;
+}
+.t3-upload-window-progressbar .x-progress-text div {
+  text-align: left;
+  text-indent: 6px;
+}
