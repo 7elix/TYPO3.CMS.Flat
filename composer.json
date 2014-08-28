@@ -1,0 +1,30 @@
+{
+	"name": "7elix/flat",
+	"description": "First backend theme with strong focus on your content. Buggy but usable. Stable but alpha. Dark but light.",
+	"require": {
+	},
+	"type": "typo3-cms-extension",
+	"keywords": [
+		"typo3",
+		"cms",
+		"content management system",
+		"backend",
+		"flat",
+		"theme"
+	],    "homepage": "https://fedext.net",
+	"license": "GPL-2.0+",
+	"version": "8.0.0-dev",
+	"support": {
+		"general": "https://github.com/7elix/TYPO3.CMS.Flat",
+		"issues": "https://github.com/7elix/TYPO3.CMS.Flat/issues"
+	},
+	"suggest": {
+	},
+	"replace": {
+		"typo3/cms-t3skin": "*"
+	},
+	"require-dev": {
+		"twbs/bootstrap": "3.2.*",
+		"fortawesome/font-awesome": "4.0.*"
+	}
+}

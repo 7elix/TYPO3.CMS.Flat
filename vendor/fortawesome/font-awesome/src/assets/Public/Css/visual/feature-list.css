@@ -1,0 +1,11 @@
+.feature-list .col-md-4 {
+  margin-bottom: 22px;
+}
+.feature-list h4 .fa:before {
+  vertical-align: -10%;
+  font-size: 28px;
+  display: inline-block;
+  width: 1.07142857em;
+  text-align: center;
+  margin-right: 5px;
+}
