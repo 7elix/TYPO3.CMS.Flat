@@ -29,9 +29,10 @@ class OpenDocumentToolbarItem extends \TYPO3\CMS\Opendocs\Controller\OpendocsCon
 		$title = $GLOBALS['LANG']->getLL('toolbaritem', TRUE);
 
 		// Toolbar item icon
-		$opendocsMenu[] = '<a href="#" class="toolbar-item">';
-		$opendocsMenu[] = '<input type="text" id="tx-opendocs-counter" disabled="disabled" value="' . $numDocs . '" />';
-		$opendocsMenu[] = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('apps-toolbar-menu-opendocs', array('title' => $title)) . '</a>';
+		$opendocsMenu[] = '<a href="#" class="toolbar-item" title="' . $title . '">';
+		$opendocsMenu[] = '<i class="fa fa-lg fa-th-large"></i>';
+		$opendocsMenu[] = '<span class="badge" id="tx-opendocs-counter">' . $numDocs . '</span>';
+		$opendocsMenu[] = '</a>';
 
 		// Toolbar item menu and initial content
 		$opendocsMenu[] = '<ul class="toolbar-item-menu" style="display: none;">';
