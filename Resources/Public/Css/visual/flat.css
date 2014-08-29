@@ -5048,7 +5048,7 @@ button.close {
   }
 }
 /*!
- *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
@@ -7329,6 +7329,13 @@ table#typo3-clipboard .t3-help-teaser {
 h1 {
   padding-top: 0;
   font-family: Share;
+}
+.t3-icon-fa {
+  margin-right: 6px;
+  vertical-align: middle;
+}
+a .t3-icon-fa {
+  color: #555555;
 }
 span.t3-icon {
   margin-right: 2px;
