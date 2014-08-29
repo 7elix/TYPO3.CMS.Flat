@@ -2,8 +2,22 @@
 Module menu
 - - - - - - - - - - - - - - - - - - - - - */
 
-#typo3-topbar {
+.t3-app-icon {
+	display: inline-block;
+	background-color: #fff;
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	text-align: center;
 
+	img {
+		width: 32px;
+		height: 32px;
+		border-radius: 6px;
+	}
+}
+
+#typo3-topbar {
 	ul.navbar-nav {
 		> li {
 			> a {
@@ -22,9 +36,14 @@ Module menu
 				min-width: 165px;
 
 				li {
+					color: @navbar-inverse-color;
 					font-size: @font-size-base;
 
 					a {
+						.t3-app-icon {
+							margin-right: 6px;
+						}
+
 						color: #fff;
 						padding-right: 18px;
 					}

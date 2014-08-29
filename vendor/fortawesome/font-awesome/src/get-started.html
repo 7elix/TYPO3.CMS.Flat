@@ -21,13 +21,13 @@ relative_path: ../
   {% include stripe-ad.html %}
 
   <div id="bootstrapcdn">
-    <h2 class="page-header">EASIEST: <a href="http://www.bootstrapcdn.com/#tab_fontawesome">BootstrapCDN</a></h2>
-    <p>Add Font Awesome into your website with a single line of code. You don't even have to download or install anything!</p>
+    <h2 class="page-header">EASIEST: <a href="http://www.bootstrapcdn.com/#fontawesome_tab">BootstrapCDN</a> by <a href="http://maxcdn.com">MaxCDN</a></h2>
+    <p>Thanks to the generous folks at <a href="http://maxcdn.com">MaxCDN</a>, you can use Bootstrap CDN to add Font Awesome into your website with a single line of code. You don't even have to download or install anything!</p>
     <ol>
       <li>
         Paste the following code into the <code>&lt;head&gt;</code> section of your site's HTML.
 {% highlight html %}
-<link href="//netdna.bootstrapcdn.com/font-awesome/{{ site.fontawesome.version }}/css/font-awesome.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/{{ site.fontawesome.version }}/css/font-awesome.min.css" rel="stylesheet">
 {% endhighlight %}
         <p class="alert alert-success"><i class="fa fa-info-circle"></i> Immediately after release, it takes a bit of time for BootstrapCDN to catch up and get the newest version live on their CDN.</p>
       </li>
@@ -81,13 +81,19 @@ $ gem install font-awesome-less
 {% endhighlight %}
       </li>
     </ol>
+    <p>
+    If you use Rails, add this to your e.g. <code>application.css</code>, just before <code>*= require_self</code>:
+    </p>
+{% highlight css %}
+ *= require font-awesome
+{% endhighlight %}
   </section>
 
   <section id="ruby-gem-sass">
     <h2 class="page-header">EASY: <a href="https://github.com/FortAwesome/font-awesome-sass">SASS Ruby Gem</a></h2>
     <p>
       Use the <a href="https://github.com/FortAwesome/font-awesome-sass">Official Font Awesome SASS Ruby Gem</a> to easily get Font
-      Awesome SASS into a Rails project. Generously maintained by <a href="https://twitter.com/supercodepoet/">@supercodepoet</a>.
+      Awesome SASS into a Rails or Compass project. Generously maintained by <a href="https://twitter.com/supercodepoet/">@supercodepoet</a>.
     </p>
     <ol>
       <li>
@@ -108,6 +114,12 @@ $ gem install font-awesome-sass
 {% endhighlight %}
       </li>
     </ol>
+    <p>
+    If you use Rails, add this to your e.g. <code>application.css</code>, just before <code>*= require_self</code>:
+    </p>
+{% highlight css %}
+ *= require font-awesome
+{% endhighlight %}
   </section>
 
   <section id="custom-less">

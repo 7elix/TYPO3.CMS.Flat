@@ -235,7 +235,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
 				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
-				$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 				$content .= $moduleItem['title'];
 				$content .= '</a>';
 				$content .= '</li>';
@@ -405,7 +405,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
 				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
-				$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 				$content .= $moduleItem['title'];
 				$content .= '</a>';
 				$content .= '</li>';
@@ -415,7 +415,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$content .= '<li role="presentation" class="divider"></li>';
 
 		$buttonLabel = $GLOBALS['BE_USER']->user['ses_backuserid'] ? 'LLL:EXT:lang/locallang_core.xlf:buttons.exit' : 'LLL:EXT:lang/locallang_core.xlf:buttons.logout';
-		$content .= '<li><a href="logout.php" target="_top"><i class="fa fa-lg fa-lock"></i> ' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</a></li>';
+		$content .= '<li><a href="logout.php" target="_top">' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</a></li>';
 
 		$content .= '</ul>';
 		return '<li class="dropdown">' . $content . '</li>';
@@ -439,7 +439,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 				foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 					$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
 					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
-					$content .= '<img src="' . $moduleItem['icon']['filename'] . '"> ';
+					$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 					$content .= $moduleItem['title'];
 					$content .= '</a>';
 					$content .= '</li>';

@@ -14,14 +14,18 @@ class ShortcutToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ShortcutToolbarItem
 	 * @return string Workspace selector as HTML select
 	 */
 	public function render() {
+		// Dissolve, monsieur!!
+		if (empty($this->shortcuts)) {
+			return '';
+		}
+
 		$title = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarks', TRUE);
 		$this->addJavascriptToBackend();
-		$shortcutMenu = array();
-		$shortcutMenu[] = '<a href="#" class="toolbar-item" tite="' . $title . '"><i class="fa fa-lg fa-star"></i></a>';
-		$shortcutMenu[] = '<div class="toolbar-item-menu" style="display: none;">';
-		$shortcutMenu[] = $this->renderMenu();
-		$shortcutMenu[] = '</div>';
-		return implode(LF, $shortcutMenu);
+
+		return '<a href="#" class="toolbar-item" tite="' . $title . '"><i class="fa fa-lg fa-star"></i></a>' .
+			'<ul class="toolbar-item-menu" style="display: none;">' .
+			$this->renderMenu() .
+			'</ul>';
 	}
 
 	/**
@@ -30,40 +34,34 @@ class ShortcutToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ShortcutToolbarItem
 	 * @return string The menu's content
 	 */
 	public function renderMenu() {
-		$shortcutGroup = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarksGroup', TRUE);
 		$shortcutEdit = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarksEdit', TRUE);
 		$shortcutDelete = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarksDelete', TRUE);
-		$groupIcon = '<img' . IconUtility::skinImg($this->backPath, 'gfx/i/sysf.gif', 'width="18" height="16"') . ' title="' . $shortcutGroup . '" alt="' . $shortcutGroup . '" />';
+
 		$editIcon = '<img' . IconUtility::skinImg($this->backPath, 'gfx/edit2.gif', 'width="11" height="12"') . ' title="' . $shortcutEdit . '" alt="' . $shortcutEdit . '"';
 		$deleteIcon = '<img' . IconUtility::skinImg($this->backPath, 'gfx/garbage.gif', 'width="11" height="12"') . ' title="' . $shortcutDelete . '" alt="' . $shortcutDelete . '" />';
-		$shortcutMenu[] = '<table class="table table-hover shortcut-list">';
+
+		$shortcutMenu[] = '<ul class="table table-hover shortcut-list">';
 
 		// Render shortcuts with no group (group id = 0) first
 		$noGroupShortcuts = $this->getShortcutsByGroup(0);
 		foreach ($noGroupShortcuts as $shortcut) {
-			$shortcutMenu[] = '
-			<tr id="shortcut-' . $shortcut['raw']['uid'] . '" class="shortcut">
-				<td class="shortcut-icon">' . $shortcut['icon'] . '</td>
-				<td class="shortcut-label">
-					<a id="shortcut-label-' . $shortcut['raw']['uid'] . '" href="#" onclick="' . $shortcut['action'] . '; return false;">' . htmlspecialchars($shortcut['label']) . '</a>
-				</td>
-				<td class="shortcut-edit">' . $editIcon . ' id="shortcut-edit-' . $shortcut['raw']['uid'] . '" /></td>
-				<td class="shortcut-delete">' . $deleteIcon . '</td>
-			</tr>';
+			$shortcutMenu[] = '<li id="shortcut-' . $shortcut['raw']['uid'] . '" class="shortcut">' .
+				$shortcut['icon'] .
+				'<a id="shortcut-label-' . $shortcut['raw']['uid'] . '" href="#" onclick="' . $shortcut['action'] . '; return false;">' . htmlspecialchars($shortcut['label']) . '</a>
+				<span class="shortcut-edit">' . $editIcon . ' id="shortcut-edit-' . $shortcut['raw']['uid'] . '" /></span>
+				<span class="shortcut-delete">' . $deleteIcon . '</span>
+				</li>';
 		}
 
 		// Now render groups and the contained shortcuts
 		$groups = $this->getGroupsFromShortcuts();
 		krsort($groups, SORT_NUMERIC);
+
 		foreach ($groups as $groupId => $groupLabel) {
 			if ($groupId != 0) {
-				$shortcutGroup = '
-				<tr class="shortcut-group" id="shortcut-group-' . $groupId . '">
-					<td class="shortcut-group-icon">' . $groupIcon . '</td>
-					<td class="shortcut-group-label">' . $groupLabel . '</td>
-					<td colspan="2">&nbsp;</td>
-				</tr>';
+				$shortcutGroup = '<li class="shortcut-group" id="shortcut-group-' . $groupId . '"><h3>' . $groupLabel . '</h3></li>';
 				$shortcuts = $this->getShortcutsByGroup($groupId);
+
 				$i = 0;
 				foreach ($shortcuts as $shortcut) {
 					$i++;
@@ -71,31 +69,19 @@ class ShortcutToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ShortcutToolbarItem
 					if ($i == 1) {
 						$firstRow = ' first-row';
 					}
-					$shortcutGroup .= '
-					<tr id="shortcut-' . $shortcut['raw']['uid'] . '" class="shortcut' . $firstRow . '">
-						<td class="shortcut-icon">' . $shortcut['icon'] . '</td>
-						<td class="shortcut-label">
-							<a id="shortcut-label-' . $shortcut['raw']['uid'] . '" href="#" onclick="' . $shortcut['action'] . '; return false;">' . htmlspecialchars($shortcut['label']) . '</a>
-						</td>
-						<td class="shortcut-edit">' . $editIcon . ' id="shortcut-edit-' . $shortcut['raw']['uid'] . '" /></td>
-						<td class="shortcut-delete">' . $deleteIcon . '</td>
-					</tr>';
+
+					$shortcutGroup .= '<li id="shortcut-' . $shortcut['raw']['uid'] . '" class="shortcut' . $firstRow . '">' .
+						$shortcut['icon'] .
+						'<a id="shortcut-label-' . $shortcut['raw']['uid'] . '" href="#" onclick="' . $shortcut['action'] . '; return false;">' . htmlspecialchars($shortcut['label']) . '</a>' .
+						'<span class="shortcut-edit">' . $editIcon . ' id="shortcut-edit-' . $shortcut['raw']['uid'] . '" /></span>
+						<span class="shortcut-delete">' . $deleteIcon . '</span>
+						</li>';
 				}
 				$shortcutMenu[] = $shortcutGroup;
 			}
 		}
+		$shortcutMenu[] = '</ul>';
 
-		if (count($shortcutMenu) == 1) {
-			// No shortcuts added yet, show a small help message how to add shortcuts
-			$title = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarks', TRUE);
-			$icon = IconUtility::getSpriteIcon('actions-system-shortcut-new', array(
-				'title' => $title
-			));
-			$label = str_replace('%icon%', $icon, $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_misc.xlf:bookmarkDescription'));
-			$shortcutMenu[] = '<tr><td><p>' . $label . '</p></td></tr>';
-		}
-
-		$shortcutMenu[] = '</table>';
 		$compiledShortcutMenu = implode(LF, $shortcutMenu);
 		return $compiledShortcutMenu;
 	}

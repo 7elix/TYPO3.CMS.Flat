@@ -186,3 +186,23 @@ TYPO3.Backend.ContentContainer = {};
 TYPO3.Backend.ContentContainer.setUrl = function(url) {
 	TYPO3.Backend.openContentUrl(url);
 };
+
+
+/**
+ * shortcut manager to delegate the action of creating shortcuts to the new
+ * backend.php shortcut menu or the old shortcut frame depending on what is available
+ */
+var ShortcutManager = {
+
+	/**
+	 * central entry point to create a shortcut, delegates the call to correct endpoint
+	 */
+	createShortcut: function(confirmQuestion, backPath, moduleName, url) {
+		if(confirm(confirmQuestion)) {
+			if (typeof TYPO3BackendShortcutMenu !== undefined) {
+					// backend.php
+				TYPO3BackendShortcutMenu.createShortcut('', moduleName, url);
+			}
+		}
+	}
+}

@@ -4,6 +4,21 @@ Looking to contribute something to Font Awesome? **Here's how you can help.**
 
 
 
+## Requesting new icons
+
+New icons mostly start as requests by the [Font Awesome community on GitHub](../../issues). Want to request a new icon? Here are some things to keep in mind:
+
+1. Please be nice. Font Awesome is a happy place.
+2. Please [search](../../search?type=Issues) to see if your icon request already exists. If a request is found, please +1 that one.
+3. Please make requests for single icons, unless you are requesting a couple of strictly related icons (e.g., thumbs-up/thumbs-down).
+4. Please and thank you if you include the following:
+  - Title your [new issue](../../issues/new?title=Icon%20Request:%20icon-) `Icon request: icon-name` (e.g., `Icon request: icon-car`).
+  - Include a few use cases for your requested icon. How do you plan on using it?
+  - Attach a single color image or two that represent the idea you're going for.
+  - Request concrete objects: it's harder to make an icon to represent happiness, it's easier to make a smiley face. ☺
+
+
+
 ## Reporting issues
 
 We only accept issues that are icon requests, bug reports, or feature requests. Bugs must be isolated and reproducible problems that we can fix within the Font Awesome core. Please read the following guidelines to ensure you are the paragon of bug reporting.
@@ -34,9 +49,10 @@ As of v3.2.0, Font Awesome's CSS, LESS, SCSS, and documentation are all powered 
 
 ## Pull requests
 
+- At the moment we are not accepting pull requests containing icons
 - Submit all pull requests against the appropriate `*-wip` branch for easier merging
 - Any changes to the docs must be made to the Liquid templates in the `src` directory
-- CSS changes must be done in .less and .scss files first, never the compiled files
+- Any changes to the styles must be made to the .less and .scss files in the `src` directory
 - If modifying the .less and .scss files, always recompile and commit the compiled files
 - Try not to pollute your pull request with unintended changes--keep them simple and small
 - Try to share which browsers your code has been tested in before submitting a pull request

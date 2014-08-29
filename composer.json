@@ -25,6 +25,6 @@
 	},
 	"require-dev": {
 		"twbs/bootstrap": "3.2.*",
-		"fortawesome/font-awesome": "4.0.*"
+		"fortawesome/font-awesome": "4.2.*"
 	}
 }

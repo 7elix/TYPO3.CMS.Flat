@@ -30,6 +30,16 @@ if (TYPO3_MODE == 'BE' || TYPO3_MODE == 'FE' && isset($GLOBALS['BE_USER'])) {
 	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\Toolbar\\ClearCacheToolbarItem'] = array(
 		'className' => 'PHORAX\\Flat\\Toolbar\\ClearCacheToolbarItem'
 	);
+	if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('workspaces')) {
+		$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Workspaces\\ExtDirect\\WorkspaceSelectorToolbarItem'] = array(
+			'className' => 'PHORAX\\Flat\\Toolbar\\WorkspaceToolbarItem'
+		);
+	}
+	if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('opendocs')) {
+		$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Opendocs\\Controller\\OpendocsController'] = array(
+			'className' => 'PHORAX\\Flat\\Toolbar\\OpenDocumentToolbarItem'
+		);
+	}
 
 	# Hooks
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook']['PHORAX\\Flat\\Hooks\\DocumentTemplate'] =

@@ -19,9 +19,9 @@ class ClearCacheToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ClearCacheToolbar
 		$cacheMenu[] = '<a href="#" class="toolbar-item"><i class="fa fa-lg fa-bolt"></i></a>';
 		$cacheMenu[] = '<ul class="toolbar-item-menu" style="display: none;">';
 		foreach ($this->cacheActions as $actionKey => $cacheAction) {
-			$cacheMenu[] = '<li><a href="' . htmlspecialchars($cacheAction['href'])
-				. '" title="' . htmlspecialchars($cacheAction['description'] ?: $cacheAction['title']) . '">'
-				. $cacheAction['icon'] . ' ' . htmlspecialchars($cacheAction['title']) . '</a></li>';
+			$cacheMenu[] = '<li><a href="' . htmlspecialchars($cacheAction['href']) . '" title="' .
+				htmlspecialchars($cacheAction['description'] ?: $cacheAction['title']) . '">' .
+				htmlspecialchars($cacheAction['title']) . '</a></li>';
 		}
 		$cacheMenu[] = '</ul>';
 		return implode(LF, $cacheMenu);
