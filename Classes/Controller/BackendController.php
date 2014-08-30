@@ -36,6 +36,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController {
 
 	/**
+	 * @var array
+	 */
+	protected $modules = array();
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -64,7 +69,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 #			'tabclosemenu' => 'js/extjs/ux/ext.ux.tabclosemenu.js',
 			'notifications' => 'sysext/backend/Resources/Public/JavaScript/notifications.js',
 
-#			'backend' => 'sysext/backend/Resources/Public/JavaScript/backend.js',
+			'backend' => 'sysext/backend/Resources/Public/JavaScript/backend.js',
 			'loginrefresh' => 'sysext/backend/Resources/Public/JavaScript/loginrefresh.js',
 #			'debugPanel' => 'js/extjs/debugPanel.js',
 #			'viewport' => 'js/extjs/viewport.js',
@@ -103,6 +108,8 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			$this->menuWidth = (int)$GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW'];
 		}
 		$this->executeHook('constructPostProcess');
+
+		$this->modules = $this->restructureModules($this->moduleMenu->getRawModuleData());
 	}
 
 	/**
@@ -125,15 +132,15 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 					</div>
 
 					<ul class="nav navbar-nav navbar-right collapse navbar-collapse" data-typo3-role="typo3-module-menu">' .
-						$this->renderToolbar() .
-						$this->renderUserMenu() .
-						$this->renderHelpMenu() .
+						$this->renderToolbar($this->modules) .
+						$this->renderUserMenu($this->modules) .
+						$this->renderHelpMenu($this->modules) .
 					'</ul>
 
 					<div class="navbar-left collapse navbar-collapse">
 						<div class="" id="typo3-module-menu">
 							<ul class="nav navbar-nav" data-typo3-role="typo3-module-menu">' .
-								$this->renderModuleMenu() .
+								$this->renderModuleMenu($this->modules) .
 							'</ul>
 						</div>
 					</div>
@@ -214,11 +221,10 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
+	 * @param array
 	 * @return string
 	 */
-	protected function renderModuleMenu() {
-		$moduleMenu = $this->moduleMenu->getRawModuleData();
-
+	protected function renderModuleMenu(array $moduleMenu) {
 		$content = '';
 
 		foreach ($moduleMenu as $moduleMenuSection) {
@@ -234,7 +240,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			$content .= '<ul class="dropdown-menu" role="menu">';
 			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
 				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 				$content .= $moduleItem['title'];
 				$content .= '</a>';
@@ -375,9 +381,10 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
+	 * @param array
 	 * @return string
 	 */
-	protected function renderUserMenu() {
+	protected function renderUserMenu(array $moduleMenu) {
 #		$icon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('status-user-' . ($GLOBALS['BE_USER']->isAdmin() ? 'admin' : 'backend'));
 		$icon = '<i class="fa fa-lg fa-user"></i>';
 
@@ -396,7 +403,6 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-xs hidden-sm">' . htmlspecialchars($label) . '</span> <span class="caret"></span></a>';
 		$content .= '<ul class="dropdown-menu" role="menu">';
 
-		$moduleMenu = $this->moduleMenu->getRawModuleData();
 		foreach ($moduleMenu as $moduleMenuSection) {
 			if ($moduleMenuSection['name'] !== 'user') {
 				continue;
@@ -404,7 +410,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
 				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 				$content .= $moduleItem['title'];
 				$content .= '</a>';
@@ -422,14 +428,14 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
+	 * @param array
 	 * @return string
 	 */
-	public function renderHelpMenu() {
+	public function renderHelpMenu(array $moduleMenu) {
 		$content = '';
 		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-question-circle"></i> <span class="caret"></span></a></a>';
 		$content .= '<ul class="dropdown-menu">';
 
-		$moduleMenu = $this->moduleMenu->getRawModuleData();
 		foreach ($moduleMenu as $moduleMenuSection) {
 			if ($moduleMenuSection['name'] !== 'help') {
 				continue;
@@ -438,7 +444,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			if (is_array($moduleMenuSection['subitems'])) {
 				foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 					$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');">';
+					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
 					$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 					$content .= $moduleItem['title'];
 					$content .= '</a>';
@@ -531,6 +537,173 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 			$this->setStartupModule();
 			$this->handlePageEditing();
+	}
+
+	/**
+	 * Manipulate and restructure module menu configuration
+	 *
+	 * @param array $moduleConfiguration
+	 * @return array
+	 */
+	protected function restructureModules(array $moduleConfiguration) {
+		$finalModuleConfiguration = array();
+
+		/**
+		 * Present
+		 */
+		$finalModuleConfiguration['modmenu_present'] = array(
+			'name' => 'present',
+			'title' => 'Present',
+			'subitems' => array(
+				'web_layout_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_layout_tab'],
+				'web_ViewpageView_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_ViewpageView_tab'],
+				'file_list_tab' => $moduleConfiguration['modmenu_file']['subitems']['file_list_tab'],
+				'web_ts_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_ts_tab'],
+				'tools_isearch_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_isearch_tab'],
+				'web_txformhandlermoduleM1_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_txformhandlermoduleM1_tab']
+			)
+		);
+
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_layout_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_ViewpageView_tab']);
+		unset($moduleConfiguration['modmenu_file']['subitems']['file_list_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_ts_tab']);
+		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_isearch_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_txformhandlermoduleM1_tab']);
+
+		/**
+		 * Manage
+		 */
+		$finalModuleConfiguration['modmenu_manage'] = array(
+			'name' => 'manage',
+			'title' => 'Manage',
+			'subitems' => array(
+				'web_list_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_list_tab'],
+				'web_func_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_func_tab'],
+				'web_info_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_info_tab'],
+				'web_txrecyclerM1_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_txrecyclerM1_tab'],
+			)
+		);
+
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_list_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_func_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_info_tab']);
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_txrecyclerM1_tab']);
+
+		/**
+		 * Edit
+		 */
+		$finalModuleConfiguration['modmenu_edit'] = array(
+			'name' => 'edit',
+			'title' => 'Edit',
+			'subitems' => array(
+				'web_WorkspacesWorkspaces_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_WorkspacesWorkspaces_tab'],
+				'system_BeuserTxBeuser_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_BeuserTxBeuser_tab'],
+				'system_BelogLog_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_BelogLog_tab'],
+			)
+		);
+
+		unset($moduleConfiguration['modmenu_web']['subitems']['web_WorkspacesWorkspaces_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_BeuserTxBeuser_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_BelogLog_tab']);
+
+		/**
+		 * Develop
+		 */
+		$finalModuleConfiguration['modmenu_develop'] = array(
+			'name' => 'develop',
+			'title' => 'Develop',
+			'subitems' => array(
+			)
+		);
+
+		/**
+		 * System
+		 */
+		$finalModuleConfiguration['modmenu_system'] = array(
+			'name' => 'system',
+			'title' => 'System',
+			'subitems' => array(
+				'tools_ExtensionmanagerExtensionmanager_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_ExtensionmanagerExtensionmanager_tab'],
+				'tools_LangLanguage_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_LangLanguage_tab'],
+				'system_InstallInstall_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_InstallInstall_tab'],
+				'system_config_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_config_tab'],
+				'system_dbint_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_dbint_tab'],
+				'system_ReportsTxreportsm1_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_ReportsTxreportsm1_tab'],
+				'system_txschedulerM1_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_txschedulerM1_tab'],
+			)
+		);
+
+		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_ExtensionmanagerExtensionmanager_tab']);
+		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_LangLanguage_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_InstallInstall_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_config_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_dbint_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_ReportsTxreportsm1_tab']);
+		unset($moduleConfiguration['modmenu_system']['subitems']['system_txschedulerM1_tab']);
+
+		/**
+		 * User
+		 */
+		$finalModuleConfiguration['modmenu_user'] = $moduleConfiguration['modmenu_user'];
+		unset($moduleConfiguration['modmenu_user']);
+
+		/**
+		 * Help
+		 */
+		$finalModuleConfiguration['modmenu_help'] = $moduleConfiguration['modmenu_help'];
+		unset($moduleConfiguration['modmenu_help']);
+
+
+		/**
+		 * Individual modules
+		 */
+
+		// Add "Web"
+		if (!empty($moduleConfiguration['modmenu_web']['subitems'])) {
+			$finalModuleConfiguration['modmenu_manage']['subitems'] = array_merge(
+				$finalModuleConfiguration['modmenu_manage']['subitems'],
+				$moduleConfiguration['modmenu_web']['subitems']
+			);
+		}
+		unset($moduleConfiguration['modmenu_web']);
+
+		// Add "File"
+		if (!empty($moduleConfiguration['modmenu_file']['subitems'])) {
+			$finalModuleConfiguration['modmenu_present']['subitems'] = array_merge(
+				$finalModuleConfiguration['modmenu_present']['subitems'],
+				$moduleConfiguration['modmenu_file']['subitems']
+			);
+		}
+		unset($moduleConfiguration['modmenu_file']);
+
+		// Add "Tools"
+		if (!empty($moduleConfiguration['modmenu_tools']['subitems'])) {
+			$finalModuleConfiguration['modmenu_develop']['subitems'] = array_merge(
+				$finalModuleConfiguration['modmenu_develop']['subitems'],
+				$moduleConfiguration['modmenu_tools']['subitems']
+			);
+		}
+		unset($moduleConfiguration['modmenu_tools']);
+
+		// Add "System"
+		if (!empty($moduleConfiguration['modmenu_system']['subitems'])) {
+			$finalModuleConfiguration['modmenu_system']['subitems'] = array_merge(
+				$finalModuleConfiguration['modmenu_system']['subitems'],
+				$moduleConfiguration['modmenu_system']['subitems']
+			);
+		}
+		unset($moduleConfiguration['modmenu_system']);
+
+		/**
+		 * Custom groups
+		 */
+		foreach ($moduleConfiguration as $module) {
+			array_push($finalModuleConfiguration, $module);
+			unset($module);
+		}
+
+		return $finalModuleConfiguration;
 	}
 
 }
