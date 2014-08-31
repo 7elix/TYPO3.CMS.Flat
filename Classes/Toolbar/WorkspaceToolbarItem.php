@@ -16,7 +16,7 @@ namespace PHORAX\Flat\Toolbar;
 
 
 if (TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_AJAX) {
-	require_once \TYPO3\CMS\Core\Extension\ExtensionManager::extPath('backend') . 'Classes/Toolbar/ToolbarItemHookInterface.php';
+	require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('backend') . 'Classes/Toolbar/ToolbarItemHookInterface.php';
 }
 
 /**
