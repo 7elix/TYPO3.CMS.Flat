@@ -1,0 +1,17 @@
+<f:for each="{moduleMenu}" as="moduleMenuSection">
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{moduleMenuSection.title}<span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<f:for each="{moduleMenuSection.subitems}" as="moduleItem">
+				<f:if condition="{moduleItem}">
+					<li title="{moduleItem.description}" data-path="{moduleItem.name}">
+						<a href="#" onClick="TYPO3.Backend.openModule('{moduleItem.name}');" title="{moduleItem.description}">
+							<span class="t3-app-icon"><f:image src="{moduleItem.icon.filename}" /></span>
+							{moduleItem.title}
+						</a>
+					</li>
+				</f:if>
+			</f:for>
+		</ul>
+	</li>
+</f:for>

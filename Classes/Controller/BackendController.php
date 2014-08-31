@@ -28,7 +28,9 @@ namespace PHORAX\Flat\Controller;
  ***************************************************************/
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * TYPO3 backend
@@ -41,10 +43,22 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	protected $modules = array();
 
 	/**
+	 * @var string
+	 */
+	protected $backendTemplatePath;
+
+	/**
+	 * @var \TYPO3\CMS\Fluid\View\StandaloneView $template
+	 */
+	protected $template;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		$this->debug = (int)$GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] === 1;
+
+		$this->backendTemplatePath = ExtensionManagementUtility::extPath('flat') . 'Resources/Private/Templates/Backend/';
 
 		$this->moduleLoader = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Module\\ModuleLoader');
 		$this->moduleLoader->load($GLOBALS['TBE_MODULES']);
@@ -53,6 +67,8 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 		$this->pageRenderer = $GLOBALS['TBE_TEMPLATE']->getPageRenderer();
 		$this->pageRenderer->loadJquery();
+
+		$this->template = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
 
 		// Add default BE javascript
 		$this->js = '';
@@ -225,33 +241,16 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 * @return string
 	 */
 	protected function renderModuleMenu(array $moduleMenu) {
-		$content = '';
 
-		foreach ($moduleMenu as $moduleMenuSection) {
-			if ($moduleMenuSection['name'] === 'user' || $moduleMenuSection['name'] === 'help') {
-				continue;
-			}
+		// remove unneeded items from module menu
+		unset($moduleMenu['modmenu_user']);
+		unset($moduleMenu['modmenu_help']);
 
-			$content .= '<li class="dropdown">';
-			$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
-			$content .= $moduleMenuSection['title'] . '<span class="caret"></span>';
-			$content .= '</a>';
+		$templatePathAndFilename = $this->backendTemplatePath . 'RenderModuleMenu.html';
+		$this->template->setTemplatePathAndFilename($templatePathAndFilename);
+		$this->template->assign('moduleMenu', $moduleMenu);
 
-			$content .= '<ul class="dropdown-menu" role="menu">';
-			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
-				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
-				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
-				$content .= $moduleItem['title'];
-				$content .= '</a>';
-				$content .= '</li>';
-			}
-
-			$content .= '</ul>';
-			$content .= '</li>';
-		}
-
-		return $content;
+		return $this->template->render();
 	}
 
 	/**
@@ -265,7 +264,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 		// Overwrite with custom logo
 		if ($GLOBALS['TBE_STYLES']['logo']) {
-			$imgInfo = @getimagesize(\TYPO3\CMS\Core\Utility\GeneralUtility::resolveBackPath((PATH_typo3 . $GLOBALS['TBE_STYLES']['logo']), 3));
+			$imgInfo = @getimagesize(GeneralUtility::resolveBackPath((PATH_typo3 . $GLOBALS['TBE_STYLES']['logo']), 3));
 			$imgUrl = $GLOBALS['TBE_STYLES']['logo'];
 		}
 
