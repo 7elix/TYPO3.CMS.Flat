@@ -5,6 +5,8 @@ Flat: Theme for TYPO3 CMS
 
 `Flat` is an alternative dark, flat-style theme for the TYPO3 CMS backend.
 
+![Metro Awesome](/Documentation/t3-metro-awesome.png "Overview / list module")
+
 ![Login](/Documentation/t3-login.png "Login")
 
 ![Page](/Documentation/t3-page.png "Page")
