@@ -45,4 +45,28 @@ if (TYPO3_MODE == 'BE' || TYPO3_MODE == 'FE' && isset($GLOBALS['BE_USER'])) {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook']['PHORAX\\Flat\\Hooks\\DocumentTemplate'] =
 		'PHORAX\\Flat\\Hooks\\DocumentTemplate->preHeaderRenderHook';
 
+	# Metro skin - thank you "dakirby309"
+	$temp_eP = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY);
+	$presetSkinImgs = is_array($TBE_STYLES['skinImg']) ? $TBE_STYLES['skinImg'] : array();
+	$TBE_STYLES['skinImg'] = array_merge($presetSkinImgs, array(
+		'MOD:web_layout/layout.gif' => array($temp_eP . 'Resources/Public/Icons/module-layout.png', 'width="32" height="32"'),
+		'EXT:viewpage/ext_icon.gif' => array($temp_eP . 'Resources/Public/Icons/module-viewpage.png', 'width="32" height="32"'),
+		'MOD:web_info/info.gif' => array($temp_eP . 'Resources/Public/Icons/module-info.png', 'width="32" height="32"'),
+		'MOD:web_func/func.gif' => array($temp_eP . 'Resources/Public/Icons/module-functions.png', 'width="32" height="32"'),
+		'MOD:web_ts/ts1.gif' => array($temp_eP . 'Resources/Public/Icons/module-tstemplate.png', 'width="32" height="32"'),
+
+		'MOD:file_list/list.gif' => array($temp_eP . 'Resources/Public/Icons/module-filelist.png', 'width="22" height="32"'),
+
+		'MOD:user_task/task.gif' => array($temp_eP . 'Resources/Public/Icons/module-taskcenter.png', 'width="22" height="22"'),
+		'MOD:user_setup/setup.gif' => array($temp_eP . 'Resources/Public/Icons/module-setup.png', 'width="22" height="22"'),
+		'MOD:user_ws/sys_workspace.gif' => array($temp_eP . 'Resources/Public/Icons/module-workspaces.png', 'width="22" height="22"'),
+
+		'MOD:tools_isearch/isearch.gif' => array($temp_eP . 'Resources/Public/Icons/module-indexed_search.png', 'width="32" height="32"'),
+
+		'MOD:system_dbint/db.gif' => array($temp_eP . 'Resources/Public/Icons/module-lowlevel.png', 'width="25" height="32"'),
+		'MOD:system_beuser/beuser.gif' => array($temp_eP . 'Resources/Public/Icons/module-beuser.png', 'width="32" height="32"'),
+		'MOD:system_install/install.gif' => array($temp_eP . 'Resources/Public/Icons/module-setup.png', 'width="32" height="32"'),
+		'MOD:system_config/config.gif' => array($temp_eP . 'Resources/Public/Icons/module-config.png', 'width="32" height="32"'),
+		'MOD:system_log/log.gif' => array($temp_eP . 'Resources/Public/Icons/module-belog.png', 'width="32" height="32"'),
+	));
 }
