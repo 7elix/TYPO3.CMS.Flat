@@ -1,3 +1,4 @@
+{namespace p=PHORAX\Flat\ViewHelpers}
 <f:for each="{moduleMenu}" as="moduleMenuSection">
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{moduleMenuSection.title}<span class="caret"></span></a>
@@ -6,8 +7,7 @@
 				<f:if condition="{moduleItem}">
 					<li title="{moduleItem.description}" data-path="{moduleItem.name}">
 						<a href="#" onClick="TYPO3.Backend.openModule('{moduleItem.name}');" title="{moduleItem.description}">
-							<span class="t3-app-icon"><f:image src="{moduleItem.icon.filename}" /></span>
-							{moduleItem.title}
+							<p:moduleIcon moduleItem="{moduleItem}" />
 						</a>
 					</li>
 				</f:if>
