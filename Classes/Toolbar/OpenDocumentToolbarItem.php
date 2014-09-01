@@ -93,6 +93,7 @@ class OpenDocumentToolbarItem extends \TYPO3\CMS\Opendocs\Controller\OpendocsCon
 			// Record seems to be deleted
 			return '';
 		}
+
 		$label = htmlspecialchars(strip_tags(htmlspecialchars_decode($document[0])));
 		$icon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIconForRecord($table, $record);
 		$link = $GLOBALS['BACK_PATH'] . 'alt_doc.php?' . $document[2];
@@ -100,24 +101,21 @@ class OpenDocumentToolbarItem extends \TYPO3\CMS\Opendocs\Controller\OpendocsCon
 		if ($document[3]['table'] !== 'pages') {
 			$pageId = (int)$document[3]['pid'];
 		}
-		$firstRow = '';
-		if ($isFirstDoc) {
-			$firstRow = ' first-row';
-		}
+
 		if (!$isRecentDoc) {
 			$title = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:rm.closeDoc', TRUE);
 			// Open document
 			$closeIcon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('actions-document-close');
-			$entry = '<li class="opendoc' . $firstRow . '">' .
-				'<a href="#" onclick="jump(unescape(\'' . htmlspecialchars($link) . '\'), \'web_list\', \'web\', ' . $pageId . '); TYPO3BackendOpenDocs.toggleMenu(); return false;" target="content">' .
+			$entry = '<li class="opendoc">' .
+				'<a href="#" onclick="jump(unescape(\'' . htmlspecialchars($link) . '\'), \'web_list\', \'web\', ' . $pageId . '); return false;" target="content">' .
 				'<div class="close" onclick="return TYPO3BackendOpenDocs.closeDocument(\'' . $md5sum . '\');">' . $closeIcon . '</div>' .
 				$icon . ' ' . $label .
 				'</a>' .
 				'</li>';
 		} else {
 			// Recently used document
-			$entry = '<li class="recentdoc' . $firstRow . '">' .
-				'<a href="#" onclick="jump(unescape(\'' . htmlspecialchars($link) . '\'), \'web_list\', \'web\', ' . $pageId . '); TYPO3BackendOpenDocs.toggleMenu(); return false;" target="content">' .
+			$entry = '<li class="recentdoc">' .
+				'<a href="#" onclick="jump(unescape(\'' . htmlspecialchars($link) . '\'), \'web_list\', \'web\', ' . $pageId . '); return false;" target="content">' .
 				$icon .
 				$label .
 				'</a>' .
