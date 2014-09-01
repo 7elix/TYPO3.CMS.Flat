@@ -14,14 +14,14 @@ function goToModule(modName, cMR_flag, parameters) {
 /**
  * Jump
  *
- * @param url
- * @param modName
- * @param mainModName
- * @param pageId
+ * @param url for Content frame
+ * @param modName manName / path to load
+ * @param mainModName @deprecated
+ * @param pageId Open page id
  */
 function jump(url, modName, mainModName, pageId) {
 	if (modName) {
-		TYPO3.Backend.openModule('modName');
+		TYPO3.Backend.openModule(modName);
 	}
 	if (pageId) {
 		TYPO3.Backend.setId(pageId);
@@ -29,27 +29,14 @@ function jump(url, modName, mainModName, pageId) {
 	if (url) {
 		TYPO3.Backend.openContentUrl(url);
 	}
-
-	/*
-		if (isNaN(pageId)) {
-			pageId = -2;
-		}
-
-
-
-			// clear information about which entry in nav. tree that might have been highlighted.
-		top.fsMod.navFrameHighlightedID = [];
-		top.fsMod.recentIds['web'] = pageId;
-
-		if (top.TYPO3.Backend.NavigationContainer.PageTree) {
-			top.TYPO3.Backend.NavigationContainer.PageTree.refreshTree();
-		}
-
-		top.nextLoadModuleUrl = url;
-		top.TYPO3.ModuleMenu.App.openModule(modName);
-	*/
+	return false;
 }
 
+/**
+ * Former ToolbarManager hide/show
+ *
+ * @type {{}}
+ */
 var TYPO3BackendToolbarManager = {};
 
 /**
