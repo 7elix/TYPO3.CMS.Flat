@@ -399,7 +399,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 #		}
 
 		$content = '';
-		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-xs hidden-sm">' . htmlspecialchars($label) . '</span> <span class="caret"></span></a>';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-xs hidden-sm">' . htmlspecialchars($label) . '</span></a>';
 		$content .= '<ul class="dropdown-menu" role="menu">';
 
 		foreach ($moduleMenu as $moduleMenuSection) {
@@ -432,7 +432,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 */
 	public function renderHelpMenu(array $moduleMenu) {
 		$content = '';
-		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-question-circle"></i> <span class="caret"></span></a></a>';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-question-circle"></i></a></a>';
 		$content .= '<ul class="dropdown-menu">';
 
 		foreach ($moduleMenu as $moduleMenuSection) {
