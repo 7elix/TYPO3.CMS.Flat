@@ -45,6 +45,9 @@ if (TYPO3_MODE == 'BE' || TYPO3_MODE == 'FE' && isset($GLOBALS['BE_USER'])) {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook']['PHORAX\\Flat\\Hooks\\DocumentTemplate'] =
 		'PHORAX\\Flat\\Hooks\\DocumentTemplate->preHeaderRenderHook';
 
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['TYPO3/Backend/Utility/IconUtility']['buildSpriteHtmlIconTag'][] =
+		'PHORAX\\Flat\\Hooks\\IconUtility';
+
 	# Metro skin - thank you "dakirby309"
 	$temp_eP = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY);
 	$presetSkinImgs = is_array($TBE_STYLES['skinImg']) ? $TBE_STYLES['skinImg'] : array();
