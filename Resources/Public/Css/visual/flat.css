@@ -6724,7 +6724,7 @@ button.close {
  */
 body#typo3-backend-php {
   background-color: gray;
-  min-width: 950px;
+  min-width: 960px;
 }
 iframe#typo3-content {
   background-color: #ffffff;
