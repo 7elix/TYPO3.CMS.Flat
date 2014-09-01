@@ -7025,6 +7025,12 @@ Module menu
 #typo3-topbar ul.navbar-nav > li > a {
   height: 48px;
 }
+#typo3-topbar ul.navbar-nav li .fa {
+  width: 32px;
+}
+#typo3-topbar ul.navbar-nav li .t3-fa {
+  margin-left: 6px;
+}
 #typo3-topbar ul.navbar-nav li ul {
   background-color: #777777;
   border: 0;

@@ -257,27 +257,33 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 * @return string
 	 */
 	protected function renderLogo() {
+
+		$image = array();
+
 		$this->logo = 'gfx/typo3-topbar@2x.png';
 
 		$imgInfo = getimagesize(PATH_site . TYPO3_mainDir . $this->logo);
-		$imgUrl = $this->logo;
+		$image['url'] = PATH_typo3 . $this->logo;
 
 		// Overwrite with custom logo
 		if ($GLOBALS['TBE_STYLES']['logo']) {
 			$imgInfo = @getimagesize(GeneralUtility::resolveBackPath((PATH_typo3 . $GLOBALS['TBE_STYLES']['logo']), 3));
-			$imgUrl = $GLOBALS['TBE_STYLES']['logo'];
+			$image['url'] = $GLOBALS['TBE_STYLES']['logo'];
 		}
 
 		// High-res?
-		$width = $imgInfo[0];
-		$height = $imgInfo[1];
+		$image['width'] = $imgInfo[0];
+		$image['height'] = $imgInfo[1];
 
-		if (strpos($imgUrl, '@2x.')) {
-			$width = $width/2;
-			$height = $height/2;
+		if (strpos($image['url'], '@2x.')) {
+			$image['width'] = $image['width']/2;
+			$image['height'] = $image['height']/2;
 		}
 
-		return '<img src="' . $imgUrl . '" width="' . $width . '" height="' . $height . '" title="TYPO3 Content Management System" alt="" />';
+		$templatePathAndFilename = $this->backendTemplatePath . 'RenderLogo.html';
+		$this->template->setTemplatePathAndFilename($templatePathAndFilename);
+		$this->template->assign('image', $image);
+		return $this->template->render();
 	}
 
 	/**
@@ -296,7 +302,6 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 * @TODO: Load as AJAX modal
 	 */
 	protected function renderLiveSearchModal() {
-		$content = '';
 
 		if (!array_key_exists('liveSearch', $this->toolbarItems)) {
 			return '';
