@@ -7019,6 +7019,9 @@ Module menu
   height: 32px;
   border-radius: 6px;
 }
+#typo3-topbar {
+  font-size: 12px;
+}
 #typo3-topbar ul.navbar-nav > li > a {
   height: 48px;
 }
