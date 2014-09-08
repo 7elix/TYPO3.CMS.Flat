@@ -24,7 +24,5 @@
 		"typo3/cms-t3skin": "*"
 	},
 	"require-dev": {
-		"twbs/bootstrap": "3.2.*",
-		"fortawesome/font-awesome": "4.2.*"
 	}
 }
