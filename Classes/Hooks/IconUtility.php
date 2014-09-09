@@ -109,14 +109,15 @@ class IconUtility {
 	 * @param array $tagAttributes
 	 * @param null $innerHtml
 	 * @param null $tagName
+	 * @return array
 	 */
-	public function buildSpriteHtmlIconTag(array &$tagAttributes, &$innerHtml = NULL, &$tagName = NULL) {
+	public function buildSpriteHtmlIconTag(array $tagAttributes, $innerHtml, $tagName) {
 		$class = self::$flatSpriteIconName[$tagAttributes['class']];
 		if ($class) {
 			$tagAttributes['class'] = 't3-icon-fa fa fa-lg fa-fw ' . $class;
-			// Keep tag name - since JavaScript selectors might depend on <span>
-#			$tagName = 'i';
 		}
+
+		return array($tagAttributes, $innerHtml, $tagName);
 	}
 
 }
