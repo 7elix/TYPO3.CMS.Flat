@@ -40,6 +40,11 @@ Addresses thoughts and visions that are incompatible with t3skin core currently.
 + Change typography (http://forge.typo3.org/issues/48781 and http://forge.typo3.org/issues/36017)
 + Collapsible module menu (http://forge.typo3.org/issues/27432)
 
+### Conflicts
+
+Currently conflicts with the extensions 't3skin' and 'bootstrap_package'.
+Please uninstall in the meantime - we will find a solution :)
+
 ### Legal
 
 Disclaimer: This skin does not look perfect - heavily under construction still.
