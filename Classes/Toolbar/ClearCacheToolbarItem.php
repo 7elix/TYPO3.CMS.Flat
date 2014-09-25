@@ -16,12 +16,16 @@ class ClearCacheToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ClearCacheToolbar
 		$title = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:rm.clearCache_clearCache', TRUE);
 		$this->addJavascriptToBackend();
 		$cacheMenu = array();
-		$cacheMenu[] = '<a href="#" class="toolbar-item"><i class="fa fa-lg fa-bolt"></i></a>';
-		$cacheMenu[] = '<ul class="toolbar-item-menu" style="display: none;">';
+		$cacheMenu[] = '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-inline fa-bolt"></i> <span class="visible-xs-inline">Cache</span></a>';
+		$cacheMenu[] = '<ul class="dropdown-menu" style="display: none;">';
 		foreach ($this->cacheActions as $actionKey => $cacheAction) {
-			$cacheMenu[] = '<li><a href="' . htmlspecialchars($cacheAction['href']) . '" title="' .
-				htmlspecialchars($cacheAction['description'] ?: $cacheAction['title']) . '">' .
-				htmlspecialchars($cacheAction['title']) . '</a></li>';
+			$cacheMenu[] = '
+                <li>
+                    <a href="' . htmlspecialchars($cacheAction['href']) . '"
+                       data-action="clearCache"
+                       title="' . htmlspecialchars($cacheAction['description'] ?: $cacheAction['title']) . '"
+                    ><i class="fa fa-lg fa-inline fa-bolt"></i> ' .	htmlspecialchars($cacheAction['title']) . '</a>
+                </li>';
 		}
 		$cacheMenu[] = '</ul>';
 		return implode(LF, $cacheMenu);
@@ -42,7 +46,7 @@ class ClearCacheToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ClearCacheToolbar
 	 * @return string List item HTML attributes
 	 */
 	public function getAdditionalAttributes() {
-		return 'id="clear-cache-actions-menu"';
+		return '';
 	}
 
 }

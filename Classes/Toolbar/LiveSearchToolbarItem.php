@@ -24,18 +24,19 @@ class LiveSearchToolbarItem extends \TYPO3\CMS\Backend\Toolbar\LiveSearchToolbar
 	public function render() {
 		$this->addJavascriptToBackend();
 		return '
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group live-search-wrapper">
-					<div class="input-group">
-						<input type="text" id="live-search-box" class="form-control" placeholder="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_common.xlf:search') . '" />
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</div>
-			</form>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-inline fa-search"></i> <span class="visible-xs-inline">Search</span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <form class="form-inline" role="search">
+                        <div class="form-group">
+                            <input type="text" id="live-search-box" class="form-control" placeholder="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_common.xlf:search') . '" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </li>
+            </ul>
 		';
 	}
 

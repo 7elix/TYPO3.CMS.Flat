@@ -4,8 +4,6 @@ TYPO3.Viewport = {
 
 	navigationVisible: true,
 
-	gutterWidth: 12,
-
 	navigationFrame: TYPO3.jQuery('#typo3-navigation'),
 	contentFrame: TYPO3.jQuery('#typo3-content'),
 
@@ -15,7 +13,7 @@ TYPO3.Viewport = {
 	draw: function() {
 		var windowHeight = TYPO3.jQuery(window).height();
 		var topbarHeight = TYPO3.jQuery('#typo3-topbar').height();
-		var contentHeight = windowHeight - topbarHeight - 2 * this.gutterWidth;
+		var contentHeight = windowHeight - topbarHeight;
 
 		TYPO3.jQuery('#typo3-navigation').css({
 			height: contentHeight + 'px'

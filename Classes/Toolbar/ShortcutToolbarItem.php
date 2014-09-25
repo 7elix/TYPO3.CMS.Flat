@@ -22,7 +22,7 @@ class ShortcutToolbarItem extends \TYPO3\CMS\Backend\Toolbar\ShortcutToolbarItem
 		$title = $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xlf:toolbarItems.bookmarks', TRUE);
 		$this->addJavascriptToBackend();
 
-		return '<a href="#" class="toolbar-item" tite="' . $title . '"><i class="fa fa-lg fa-star"></i></a>' .
+		return '<a href="#" class="toolbar-item" tite="' . $title . '"><i class="fa fa-lg fa-inline fa-star"></i></a>' .
 			'<ul class="toolbar-item-menu" style="display: none;">' .
 			$this->renderMenu() .
 			'</ul>';
