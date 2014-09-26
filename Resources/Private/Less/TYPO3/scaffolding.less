@@ -1,0 +1,192 @@
+@scaffolding-zindex:                @zindex-navbar-fixed;
+
+@scaffolding-top-zindex:            @zindex-navbar;
+@scaffolding-top-bg-color:          @navbar-inverse-bg;
+
+@scaffolding-aside-bg-color:        @scaffolding-top-bg-color;
+
+@scaffolding-aside-header-height:   @navbar-height;
+@scaffolding-aside-header-color:    @navbar-inverse-link-disabled-color;
+
+
+.scaffolding-page,
+.scaffolding-main {
+    .clearfix();
+}
+.scaffolding-page {
+    position: relative;
+}
+
+.scaffolding-main {
+    .box-shadow(0 8px 6px -6px black);
+    @media (min-width: @grid-float-breakpoint) {
+        position: absolute;
+        top: @navbar-height;
+        bottom: 0;
+        right: 0;
+        left: 50px;
+    }
+    @media (min-width: @screen-md-min) {
+        .transition(left ease-in-out 0.5s);
+        left: 250px;
+    }
+}
+
+.scaffolding-top {
+    height: @navbar-height;
+    z-index: @scaffolding-top-zindex;
+    position: relative;
+    background-color: @scaffolding-top-bg-color;
+}
+
+.scaffolding-top-site,
+.scaffolding-top-toggle {
+    height: @navbar-height;
+    line-height: @navbar-height;
+    display: block;
+    background-color: lighten(@scaffolding-top-bg-color,5%);
+    text-align: center;
+    @media (min-width: @grid-float-breakpoint) {
+        background-color: transparent;
+    }
+}
+.scaffolding-top-site {
+    margin-left: @navbar-height+1;
+    margin-right: @navbar-height+1;
+    padding-left: 15px;
+    padding-right: 15px;
+    @media (min-width: @grid-float-breakpoint) {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+.scaffolding-top-toggle-meta,
+.scaffolding-top-toggle-modules {
+    height: @navbar-height;
+    width: @navbar-height;
+    color: #ffffff;
+    &:focus,
+    &:hover {
+        color: #ffffff;
+    }
+    @media (min-width: @grid-float-breakpoint) {
+        display: none;
+    }
+}
+.scaffolding-top-toggle-modules {
+    float: left;
+}
+.scaffolding-top-toggle-meta {
+    float: right;
+}
+
+
+
+.scaffolding-aside-header {
+    .visible-xs-block();
+    padding: @nav-link-padding;
+    padding-top: @navbar-padding-vertical;
+    padding-bottom: @navbar-padding-vertical;
+    color: @scaffolding-aside-header-color;
+}
+
+.scaffolding-aside-sidebar,
+.scaffolding-aside-meta {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    background-color: @scaffolding-aside-bg-color;
+}
+.scaffolding-aside-sidebar {
+    left: -250px;
+    @media (min-width: @grid-float-breakpoint) {
+        float: none;
+        margin-left: 0;
+        z-index: @scaffolding-zindex;
+        display: block;
+        width: 50px;
+        position: absolute;
+        top: @navbar-height;
+        left: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+    @media (min-width: @screen-md-min) {
+        .transition(width ease-in-out 0.5s);
+        width: 250px;
+        &:before {
+            width: 250px;
+        }
+    }
+}
+.scaffolding-aside-meta {
+    right: -250px;
+    @media (min-width: @grid-float-breakpoint) {
+        z-index: @scaffolding-zindex;
+        display: block;
+        position: absolute;
+        bottom: auto;
+        right: 0;
+        width: 70%;
+        background-color: transparent;
+    }
+}
+
+.scaffolding-top-toggle-modules {
+    .fa:before {
+        content: "\f03a";
+    }
+}
+.scaffolding-top-toggle-meta {
+    .fa:before {
+        content: "\f013";
+    }
+}
+
+@media(max-width: @grid-float-breakpoint-max){
+    .scaffolding-page {
+        left: 0;
+        right: 0;
+    }
+    .scaffolding-aside,
+    .scaffolding-page {
+        .transition(none ease-in-out 0.5s);
+        -webkit-transition-property: left,right;
+        transition-property: left, right;;
+    }
+    .scaffolding-aside {
+        width: 250px;
+    }
+    .scaffolding-open-modules {
+        .scaffolding-top-toggle-modules {
+            .fa:before {
+                content: "\f00d";
+            }
+        }
+        .scaffolding-page {
+            left: 250px;
+            right: -250px;
+            .box-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+        }
+        .scaffolding-aside-sidebar {
+            left: 0;
+        }
+    }
+    .scaffolding-open-meta {
+        .scaffolding-top-toggle-meta {
+            .fa:before {
+                content: "\f00d";
+            }
+        }
+        .scaffolding-page {
+            left: -250px;
+            right: 250px;
+            .box-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+        }
+        .scaffolding-aside-meta {
+            right: 0;
+        }
+    }
+}

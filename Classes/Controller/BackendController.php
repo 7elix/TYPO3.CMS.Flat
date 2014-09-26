@@ -95,7 +95,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 #			'viewportConfiguration' => 'js/extjs/viewportConfiguration.js',
 			'util' => 'sysext/backend/Resources/Public/JavaScript/util.js',
 
-			'bootstrap-dropdown' => '../typo3conf/ext/flat/Resources/Public/JavaScript/Bootstrap/dropdown.js',
+            'bootstrap-dropdown' => '../typo3conf/ext/flat/Resources/Public/JavaScript/Bootstrap/dropdown.js',
 			'bootstrap-modal' => '../typo3conf/ext/flat/Resources/Public/JavaScript/Bootstrap/modal.js',
 
 			'typo3-Routing' => '../typo3conf/ext/flat/Resources/Public/JavaScript/TYPO3/Routing.js',
@@ -141,44 +141,71 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 		// Create backend scaffolding
 		$backendScaffolding = '
-			<nav class="navbar navbar-inverse" role="navigation" id="typo3-topbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#">' . $this->renderLogo() . '</a>
-					</div>
-
-					<ul class="nav navbar-nav navbar-right collapse navbar-collapse" data-typo3-role="typo3-module-menu">' .
-						$this->renderToolbar($this->modules) .
-						$this->renderUserMenu($this->modules) .
-						$this->renderHelpMenu($this->modules) .
-					'</ul>
-
-					<div class="navbar-left collapse navbar-collapse">
-						<div class="" id="typo3-module-menu">
-							<ul class="nav navbar-nav" data-typo3-role="typo3-module-menu">' .
-								$this->renderModuleMenu($this->modules) .
-							'</ul>
-						</div>
-					</div>
-
-				</div>
-			</nav>
-
 			<!-- Content -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xs-3">
-						<!-- Page navigation -->
-						<iframe src="" id="typo3-navigation" name="typo3-navigation" border="0" frameborder="0"></iframe>
-					</div>
 
-					<div class="col-xs-9">
-						<!-- Content -->
-						<iframe src="" id="typo3-content" name="typo3-content" border="0" frameborder="0"></iframe>
-					</div>
-				</div>
-			</div>' .
+                <div class="scaffolding-aside scaffolding-aside-sidebar">
+                    <div class="scaffolding-aside-header">
+                        Modules
+                    </div>
+                    <div class="scaffolding-navigation" id="typo3-module-menu">' .
+                        $this->renderModuleMenu($this->modules) .
+                    '</div>
+                </div>
 
+                <div class="scaffolding-aside scaffolding-aside-meta">
+                    <div class="scaffolding-aside-header">
+                        Meta
+                    </div>
+                    <nav class="navbar navbar-inverse navbar-right navbar-meta" role="navigation">
+                        <ul class="nav navbar-nav navbar-inverse" data-typo3-role="typo3-module-menu">' .
+                            $this->renderHelpMenu($this->modules) .
+                            $this->renderUserMenu($this->modules) .
+                            $this->renderToolbar($this->modules) .
+                        '</ul>
+                    </nav>
+                </div>
+
+            <div class="scaffolding-page" id="scaffolding-page">
+
+                <div class="scaffolding-top" id="typo3-topbar">
+
+                    <a class="scaffolding-top-toggle scaffolding-top-toggle-modules" onClick="
+                        document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-meta\');
+                        document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-modules\');
+                        return false;
+                        " href="#">
+                        <i class="fa fa-lg"></i>
+                        <span class="sr-only">Toggle Modules</span>
+                    </a>
+                    <a class="scaffolding-top-toggle scaffolding-top-toggle-meta" onClick="
+                        document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-modules\');
+                        document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-meta\');
+                        return false;
+                        " href="#">
+                        <i class="fa fa-lg"></i>
+                        <span class="sr-only">Toggle Meta</span>
+                    </a>
+                    <a class="scaffolding-top-site" href="#">' . $this->renderLogo() . '</a>
+
+                </div>
+
+                <div class="scaffolding-main">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <!-- Page navigation -->
+                                <iframe src="" id="typo3-navigation" name="typo3-navigation" border="0" frameborder="0"></iframe>
+                            </div>
+                            <div class="col-xs-9">
+                                <!-- Content -->
+                                <iframe src="" id="typo3-content" name="typo3-content" border="0" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        ' .
 			$this->renderLiveSearchModal()
 		;
 
@@ -385,7 +412,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 */
 	protected function renderUserMenu(array $moduleMenu) {
 #		$icon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('status-user-' . ($GLOBALS['BE_USER']->isAdmin() ? 'admin' : 'backend'));
-		$icon = '<i class="fa fa-lg fa-user"></i>';
+		$icon = '<i class="fa fa-lg fa-inline fa-user"></i>';
 
 		$realName = $GLOBALS['BE_USER']->user['realName'];
 		$username = $GLOBALS['BE_USER']->user['username'];
@@ -399,7 +426,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 #		}
 
 		$content = '';
-		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-xs hidden-sm">' . htmlspecialchars($label) . '</span></a>';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-sm">' . htmlspecialchars($label) . '</span></a>';
 		$content .= '<ul class="dropdown-menu" role="menu">';
 
 		foreach ($moduleMenu as $moduleMenuSection) {
@@ -410,17 +437,15 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
 				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
-				$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
+				$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 				$content .= $moduleItem['title'];
 				$content .= '</a>';
 				$content .= '</li>';
 			}
 		}
 
-		$content .= '<li role="presentation" class="divider"></li>';
-
 		$buttonLabel = $GLOBALS['BE_USER']->user['ses_backuserid'] ? 'LLL:EXT:lang/locallang_core.xlf:buttons.exit' : 'LLL:EXT:lang/locallang_core.xlf:buttons.logout';
-		$content .= '<li><a href="logout.php" target="_top">' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</a></li>';
+		$content .= '<li><a href="logout.php" target="_top"><span class="btn"><i class="fa fa-lg fa-inline fa-power-off"></i> ' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</span></a></li>';
 
 		$content .= '</ul>';
 		return '<li class="dropdown">' . $content . '</li>';
@@ -432,7 +457,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 */
 	public function renderHelpMenu(array $moduleMenu) {
 		$content = '';
-		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-question-circle"></i></a></a>';
+		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-inline fa-question-circle"></i> <span class="visible-xs-inline">Help</span></a></a>';
 		$content .= '<ul class="dropdown-menu">';
 
 		foreach ($moduleMenu as $moduleMenuSection) {
@@ -444,7 +469,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 				foreach ($moduleMenuSection['subitems'] as $moduleItem) {
 					$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
 					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
-					$content .= '<span class="t3-app-icon"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
+					$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
 					$content .= $moduleItem['title'];
 					$content .= '</a>';
 					$content .= '</li>';
@@ -553,6 +578,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$finalModuleConfiguration['modmenu_present'] = array(
 			'name' => 'present',
 			'title' => 'Present',
+            'icon' => 'desktop',
 			'subitems' => array(
 				'web_layout_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_layout_tab'],
 				'web_ViewpageView_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_ViewpageView_tab'],
@@ -576,6 +602,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$finalModuleConfiguration['modmenu_manage'] = array(
 			'name' => 'manage',
 			'title' => 'Manage',
+            'icon' => 'code-fork',
 			'subitems' => array(
 				'web_list_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_list_tab'],
 				'web_func_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_func_tab'],
@@ -595,6 +622,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$finalModuleConfiguration['modmenu_edit'] = array(
 			'name' => 'edit',
 			'title' => 'Edit',
+            'icon' => 'edit',
 			'subitems' => array(
 				'web_WorkspacesWorkspaces_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_WorkspacesWorkspaces_tab'],
 				'system_BeuserTxBeuser_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_BeuserTxBeuser_tab'],
@@ -612,6 +640,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$finalModuleConfiguration['modmenu_develop'] = array(
 			'name' => 'develop',
 			'title' => 'Develop',
+            'icon' => 'rocket',
 			'subitems' => array(
 			)
 		);
@@ -622,6 +651,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$finalModuleConfiguration['modmenu_system'] = array(
 			'name' => 'system',
 			'title' => 'System',
+            'icon' => 'gears',
 			'subitems' => array(
 				'tools_ExtensionmanagerExtensionmanager_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_ExtensionmanagerExtensionmanager_tab'],
 				'tools_LangLanguage_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_LangLanguage_tab'],

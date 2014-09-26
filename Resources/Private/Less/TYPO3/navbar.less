@@ -1,0 +1,110 @@
+.navbar-inverse {
+
+}
+
+.navbar-meta {
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    .divider {
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+    .navbar-nav {
+        margin-top: 0;
+        > li {
+            margin-bottom: 1px;
+            > a {
+                background-color: lighten(@scaffolding-top-bg-color,5%);
+            }
+        }
+        @media (min-width: @grid-float-breakpoint) {
+            margin: 0;
+            > li {
+                margin-bottom: 0;
+                margin-left: 1px;
+                > a {
+                    background-color: lighten(@scaffolding-top-bg-color,5%);
+                }
+            }
+        }
+        @media (max-width: @grid-float-breakpoint-max) {
+            margin: 0;
+            > li {
+                padding-right: 1px;
+                border-right: 3px solid lighten(@scaffolding-top-bg-color,4%);
+            }
+            .open {
+                .transition(all ease-in-out 0.5s);
+                border-right-color: @brand-primary;
+                .dropdown-menu {
+                    position: relative;
+                    margin-top: 1px;
+                    background-color: lighten(@scaffolding-top-bg-color,15%);
+                    > li {
+
+                        > a {
+                            background-color: transparent;
+                            padding: @nav-link-padding;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-modules {
+    margin: 0;
+    a {
+        color: #ffffff;
+        white-space: nowrap;
+        display: block;
+    }
+    .nav-modules-menu {
+        display: none;
+        @media (min-width: @grid-float-breakpoint) {
+        }
+        @media (min-width: @screen-md-min) {
+            display: block;
+        }
+    }
+    > li {
+        margin-bottom: 1px;
+        > a {
+            background-color: lighten(@scaffolding-top-bg-color,5%);
+            &:hover {
+                background-color: lighten(@scaffolding-top-bg-color,10%);
+            }
+        }
+        .nav-modules-menu {
+            display: none;
+        }
+        &.open {
+            > a {
+                background-color: @body-bg;
+                color: @text-color;
+            }
+            .nav-modules-menu {
+                background-color: darken(@body-bg,15%);
+                display: block;
+            }
+        }
+        &:hover {
+
+        }
+    }
+}
+
+
+
+.nav-modules-title {
+    display: none;
+    .visible-xs-inline();
+    .visible-md-inline();
+    .visible-lg-inline();
+}
+.nav-modules-menu {
+    .list-unstyled();
+}

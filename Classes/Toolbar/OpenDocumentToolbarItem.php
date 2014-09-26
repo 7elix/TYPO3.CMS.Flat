@@ -30,7 +30,7 @@ class OpenDocumentToolbarItem extends \TYPO3\CMS\Opendocs\Controller\OpendocsCon
 
 		// Toolbar item icon
 		$opendocsMenu[] = '<a href="#" class="toolbar-item" title="' . $title . '">';
-		$opendocsMenu[] = '<i class="fa fa-lg fa-th-large"></i>';
+		$opendocsMenu[] = '<i class="fa fa-lg fa-inline fa-th-large"></i>';
 		$opendocsMenu[] = '<span class="badge" id="tx-opendocs-counter">' . $numDocs . '</span>';
 		$opendocsMenu[] = '</a>';
 
