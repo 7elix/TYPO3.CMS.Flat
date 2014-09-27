@@ -19,6 +19,13 @@
 
 .scaffolding-main {
     .box-shadow(0 8px 6px -6px black);
+	> .container-fluid {
+		> .row {
+			> div {
+				padding: 0;
+			}
+		}
+	}
     @media (min-width: @grid-float-breakpoint) {
         position: absolute;
         top: @navbar-height;

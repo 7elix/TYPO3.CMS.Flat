@@ -19,6 +19,11 @@
                 background-color: lighten(@scaffolding-top-bg-color,5%);
             }
         }
+		> li:hover {
+			> a {
+				background-color: lighten(@scaffolding-top-bg-color, 10%);
+			}
+		}
         @media (min-width: @grid-float-breakpoint) {
             margin: 0;
             > li {
@@ -61,8 +66,28 @@
         color: #ffffff;
         white-space: nowrap;
         display: block;
+		text-decoration: none;
+
+		> .fa {
+			color: #fff;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
     }
     .nav-modules-menu {
+		background-color: lighten(@scaffolding-top-bg-color, 15%);
+
+		> li {
+			margin-bottom: 1px;
+
+			> a {
+				height: 40px;
+				padding: 5px 10px;
+			}
+		}
+
         display: none;
         @media (min-width: @grid-float-breakpoint) {
         }
@@ -72,34 +97,41 @@
     }
     > li {
         margin-bottom: 1px;
+
         > a {
-            background-color: lighten(@scaffolding-top-bg-color,5%);
+            background-color: lighten(@scaffolding-top-bg-color, 5%);
+
             &:hover {
-                background-color: lighten(@scaffolding-top-bg-color,10%);
+                background-color: lighten(@scaffolding-top-bg-color, 10%);
             }
         }
         .nav-modules-menu {
             display: none;
         }
+
         &.open {
             > a {
-                background-color: @body-bg;
-                color: @text-color;
+				background-color: lighten(@scaffolding-top-bg-color, 5%);
+
+				&:hover {
+					background-color: lighten(@scaffolding-top-bg-color, 10%);
+				}
             }
             .nav-modules-menu {
-                background-color: darken(@body-bg,15%);
-                display: block;
+				display: block;
             }
         }
         &:hover {
 
         }
     }
+
 }
 
 
 
-.nav-modules-title {
+.nav-modules-title,
+.nav-modules-app-title {
     display: none;
     .visible-xs-inline();
     .visible-md-inline();
