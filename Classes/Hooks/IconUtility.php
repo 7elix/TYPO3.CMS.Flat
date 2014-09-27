@@ -114,7 +114,7 @@ class IconUtility {
 	public function buildSpriteHtmlIconTag(array $tagAttributes, $innerHtml, $tagName) {
 		$class = self::$flatSpriteIconName[$tagAttributes['class']];
 		if ($class) {
-			$tagAttributes['class'] = 't3-icon-fa fa fa-lg fa-fw ' . $class;
+			$tagAttributes['class'] = 'fa ' . $class;
 		}
 
 		return array($tagAttributes, $innerHtml, $tagName);
