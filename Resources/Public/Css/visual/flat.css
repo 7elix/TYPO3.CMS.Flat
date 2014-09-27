@@ -7029,6 +7029,9 @@ button.close {
   height: 40px;
   padding: 5px 10px;
 }
+.nav-modules .nav-modules-menu > li.active > a {
+  border-right: 2px solid red;
+}
 @media (min-width: 992px) {
   .nav-modules .nav-modules-menu {
     display: block;
@@ -7556,7 +7559,7 @@ a.t3-button {
  * Docheader
  */
 #typo3-docheader {
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: #d0d0d0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
 }
 .typo3-docheader-functions {
@@ -11185,10 +11188,15 @@ table#typo3-aboutmodules tr.c-subitem-row td .icon {
   display: block;
   text-align: center;
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 1px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 6px;
+}
+table#typo3-aboutmodules tr.c-subitem-row td .icon img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
 }
 table#typo3-aboutmodules tr.c-subitem-row td.module-description {
   padding-right: 10px;
