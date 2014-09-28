@@ -89,7 +89,16 @@
 
 			&.active {
 				> a {
-					border-right: 2px solid red;
+					position: relative;
+				}
+				> a:after {
+					content: " ";
+					line-height: 0;
+					position: absolute;
+					right: 0;
+					top: 15px;
+					border: 8px solid transparent;
+					border-right: 8px solid white;
 				}
 			}
 		}
