@@ -80,7 +80,8 @@
 		background-color: lighten(@scaffolding-top-bg-color, 15%);
 
 		> li {
-			margin-bottom: 1px;
+			// Refactor for margin - move BG to a instead of parent 	UL
+			border-bottom: 1px solid @scaffolding-aside-bg-color;
 
 			> a {
 				height: 40px;

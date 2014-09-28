@@ -7023,7 +7023,7 @@ button.close {
   display: none;
 }
 .nav-modules .nav-modules-menu > li {
-  margin-bottom: 1px;
+  border-bottom: 1px solid #292929;
 }
 .nav-modules .nav-modules-menu > li > a {
   height: 40px;
