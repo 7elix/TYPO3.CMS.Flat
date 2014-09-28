@@ -3,7 +3,7 @@ Login
 - - - - - - - - - - - - - - - - - - - - - */
 
 body#typo3-index-php {
-	background-color: rgb(50, 50, 50);
+	background-color: @navbar-inverse-bg;
 	color: @gray-light;
 	font-size: @font-size-small;
 	margin: 10px;
@@ -15,10 +15,7 @@ body#typo3-index-php {
 	.t3-login-logo {
 		/* DIV container wrap necessary to center for all widths */
 		display: block;
-		width: 400px;
 		margin: 0 auto 2em auto;
-		padding-right: 277px;
-		/* Image width is 123px */
 	}
 
 	#t3-login-error {
@@ -27,10 +24,7 @@ body#typo3-index-php {
 
 	/* Login box */
 	.shadow {
-		background-color: #fff;
-		padding: 1em;
-
-		width: 400px;
+		width: 420px;
 		margin: 0 auto 1em auto;
 
 		/** Remove from html source code: irrelevant */
