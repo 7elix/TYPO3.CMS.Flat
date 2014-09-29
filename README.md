@@ -49,6 +49,6 @@ Please uninstall in the meantime - we will find a solution :)
 
 Disclaimer: This skin does not look perfect - heavily under construction still.
 
-Maintained by Flat Team - for questions contact <a href="https://twitter.com/7elix" target="_blank">Felix Kopp</a>, Active Contributor for TYPO3 CMS.
+Maintained by Flat Team - Questions? Contact <a href="https://twitter.com/7elix" target="_blank">Felix Kopp</a>, Active Contributor for TYPO3 CMS.
 
 Released under GPLv2 - later versions allowed as you please.
