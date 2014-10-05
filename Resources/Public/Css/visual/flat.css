@@ -7094,6 +7094,9 @@ button.close {
   padding-left: 0;
   list-style: none;
 }
+#shortcut-menu {
+  width: auto;
+}
 .t3-app-icon {
   border-radius: 6px;
   display: inline-block;
@@ -7146,6 +7149,9 @@ Help > About
   max-width: 100%;
   margin-bottom: 20px;
   background-color: #fff;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr > th,
@@ -7176,6 +7182,36 @@ Help > About
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table .table {
   background-color: #ffffff;
 }
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead tr th:first-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody tr th:first-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead tr th:last-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody tr th:last-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead tr td:first-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody tr td:first-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead tr td:last-child,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody tr td:last-child {
+  padding-left: 12px;
+}
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td {
+  background-color: #666;
+  color: #fff;
+  font-weight: normal;
+  min-height: 16px;
+}
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th a,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td a,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th a,
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td a {
+  color: #fff;
+  text-decoration: underline;
+}
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:hover > td a {
+  text-decoration: underline;
+}
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:nth-child(odd) > td,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
@@ -7194,6 +7230,9 @@ table.typo3-dblist {
   max-width: 100%;
   margin-bottom: 20px;
   background-color: #fff;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
 }
 table.typo3-dblist > thead > tr > th,
 table.typo3-dblist > tbody > tr > th,
@@ -7223,6 +7262,36 @@ table.typo3-dblist > tbody + tbody {
 }
 table.typo3-dblist .table {
   background-color: #ffffff;
+}
+table.typo3-dblist > thead tr th:first-child,
+table.typo3-dblist > tbody tr th:first-child,
+table.typo3-dblist > thead tr th:last-child,
+table.typo3-dblist > tbody tr th:last-child,
+table.typo3-dblist > thead tr td:first-child,
+table.typo3-dblist > tbody tr td:first-child,
+table.typo3-dblist > thead tr td:last-child,
+table.typo3-dblist > tbody tr td:last-child {
+  padding-left: 12px;
+}
+table.typo3-dblist > thead > tr > th,
+table.typo3-dblist > thead > tr > td {
+  background-color: #666;
+  color: #fff;
+  font-weight: normal;
+  min-height: 16px;
+}
+table.typo3-dblist > thead > tr > th a,
+table.typo3-dblist > thead > tr > td a,
+table.typo3-dblist > thead > tr > th a,
+table.typo3-dblist > thead > tr > td a {
+  color: #fff;
+  text-decoration: underline;
+}
+table.typo3-dblist > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+table.typo3-dblist > tbody > tr:hover > td a {
+  text-decoration: underline;
 }
 table.typo3-dblist > tbody > tr:nth-child(odd) > td,
 table.typo3-dblist > tbody > tr:nth-child(odd) > th {
@@ -9145,6 +9214,9 @@ table.t3-table,
   max-width: 100%;
   margin-bottom: 20px;
   background-color: #fff;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
 }
 table.t3-table > thead > tr > th,
 .dataTable > thead > tr > th,
@@ -9189,6 +9261,52 @@ table.t3-table > tbody + tbody,
 table.t3-table .table,
 .dataTable .table {
   background-color: #ffffff;
+}
+table.t3-table > thead tr th:first-child,
+.dataTable > thead tr th:first-child,
+table.t3-table > tbody tr th:first-child,
+.dataTable > tbody tr th:first-child,
+table.t3-table > thead tr th:last-child,
+.dataTable > thead tr th:last-child,
+table.t3-table > tbody tr th:last-child,
+.dataTable > tbody tr th:last-child,
+table.t3-table > thead tr td:first-child,
+.dataTable > thead tr td:first-child,
+table.t3-table > tbody tr td:first-child,
+.dataTable > tbody tr td:first-child,
+table.t3-table > thead tr td:last-child,
+.dataTable > thead tr td:last-child,
+table.t3-table > tbody tr td:last-child,
+.dataTable > tbody tr td:last-child {
+  padding-left: 12px;
+}
+table.t3-table > thead > tr > th,
+.dataTable > thead > tr > th,
+table.t3-table > thead > tr > td,
+.dataTable > thead > tr > td {
+  background-color: #666;
+  color: #fff;
+  font-weight: normal;
+  min-height: 16px;
+}
+table.t3-table > thead > tr > th a,
+.dataTable > thead > tr > th a,
+table.t3-table > thead > tr > td a,
+.dataTable > thead > tr > td a,
+table.t3-table > thead > tr > th a,
+.dataTable > thead > tr > th a,
+table.t3-table > thead > tr > td a,
+.dataTable > thead > tr > td a {
+  color: #fff;
+  text-decoration: underline;
+}
+table.t3-table > tbody > tr:hover > td,
+.dataTable > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+table.t3-table > tbody > tr:hover > td a,
+.dataTable > tbody > tr:hover > td a {
+  text-decoration: underline;
 }
 table.t3-table > tbody > tr:hover > td,
 .dataTable > tbody > tr:hover > td,
@@ -9327,6 +9445,232 @@ table.t3-table > tbody > tr:hover > th,
 }
 .message-error a {
   color: #aa0225;
+}
+/**
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+/* - - - - - - - - - - - - - - - - - - - - -
+Tab menu
+- - - - - - - - - - - - - - - - - - - - - */
+.nav-tabs {
+  background-color: #646464;
+}
+div.typo3-dyntabmenu-divs {
+  padding: 20px;
+  margin-bottom: 1em;
+  border-right: 1px solid #646464;
+  border-bottom: 1px solid #646464;
+  border-left: 1px solid #646464;
+}
+div.typo3-dyntabmenu-divs p.c-descr {
+  background: #e7dba8;
+  font-style: italic;
+}
+/* Foldout tabs */
+div.typo3-dyntabmenu-divs-foldout div.c-tablayer {
+  margin-left: 20px;
+}
+div.typo3-dyntabmenu-divs-foldout div.tab,
+div.typo3-dyntabmenu-divs-foldout div.tabact,
+div.typo3-dyntabmenu-divs-foldout div.disabled {
+  border: solid black 1px;
+  border-radius: 3px;
+}
+div.typo3-dyntabmenu-divs-foldout div.tab {
+  background: #c4d4cd;
+  background-image: url('../../../../icons/gfx/ol/plusbullet.gif');
+  background-repeat: no-repeat;
+}
+div.typo3-dyntabmenu-divs-foldout div.tab:hover {
+  background: #f6eab7;
+  background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
+  background-repeat: no-repeat;
+}
+div.typo3-dyntabmenu-divs-foldout div.tabact {
+  background: #e7dba8;
+  background-image: url('../../../../icons/gfx/ol/minusbullet.gif');
+  background-repeat: no-repeat;
+}
+div.typo3-dyntabmenu-divs-foldout div.tabact:hover {
+  background: #f6eab7;
+  background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
+  background-repeat: no-repeat;
+}
+div.typo3-dyntabmenu-divs-foldout div.disabled {
+  background: #ccc;
+  color: #999;
+}
+div.typo3-dyntabmenu-divs-foldout div.disabled:hover {
+  background: #f6eab7;
+  color: #999;
+}
+.c-tablayer {
+  margin: 0;
+  padding: 0;
+}
+/**
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+/** used in the admin tools => DB check **/
+.t3-overview-list dt {
+  padding: 0px 0px 2px 20px;
+}
+.t3-overview-list dt img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.t3-overview-list dd {
+  margin: 2px 0 15px 20px;
+  padding-left: 22px;
+}
+/**
+ * Common style for tables
+ *
+ * <table class="t3-table>
+ *   <thead>
+ *     <tr>
+ *       <th>...</th>
+ *       <th>...</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>
+ *         <span class="t3-icon t3-icon-treeline t3-icon-treeline-join t3-icon-join">&nbsp;</span>
+ *       </td>
+ *       <td>...</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ */
+.table {
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+.table > thead tr th:first-child,
+.table > tbody tr th:first-child,
+.table > thead tr th:last-child,
+.table > tbody tr th:last-child,
+.table > thead tr td:first-child,
+.table > tbody tr td:first-child,
+.table > thead tr td:last-child,
+.table > tbody tr td:last-child {
+  padding-left: 12px;
+}
+.table > thead > tr > th,
+.table > thead > tr > td {
+  background-color: #666;
+  color: #fff;
+  font-weight: normal;
+  min-height: 16px;
+}
+.table > thead > tr > th a,
+.table > thead > tr > td a,
+.table > thead > tr > th a,
+.table > thead > tr > td a {
+  color: #fff;
+  text-decoration: underline;
+}
+.table > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+.table > tbody > tr:hover > td a {
+  text-decoration: underline;
+}
+table.t3-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+table.t3-table > thead > tr > th,
+table.t3-table > tbody > tr > th,
+table.t3-table > tfoot > tr > th,
+table.t3-table > thead > tr > td,
+table.t3-table > tbody > tr > td,
+table.t3-table > tfoot > tr > td {
+  padding: 6px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+table.t3-table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+table.t3-table > caption + thead > tr:first-child > th,
+table.t3-table > colgroup + thead > tr:first-child > th,
+table.t3-table > thead:first-child > tr:first-child > th,
+table.t3-table > caption + thead > tr:first-child > td,
+table.t3-table > colgroup + thead > tr:first-child > td,
+table.t3-table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+table.t3-table > tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+table.t3-table .table {
+  background-color: #ffffff;
+}
+table.t3-table > thead tr th:first-child,
+table.t3-table > tbody tr th:first-child,
+table.t3-table > thead tr th:last-child,
+table.t3-table > tbody tr th:last-child,
+table.t3-table > thead tr td:first-child,
+table.t3-table > tbody tr td:first-child,
+table.t3-table > thead tr td:last-child,
+table.t3-table > tbody tr td:last-child {
+  padding-left: 12px;
+}
+table.t3-table > thead > tr > th,
+table.t3-table > thead > tr > td {
+  background-color: #666;
+  color: #fff;
+  font-weight: normal;
+  min-height: 16px;
+}
+table.t3-table > thead > tr > th a,
+table.t3-table > thead > tr > td a,
+table.t3-table > thead > tr > th a,
+table.t3-table > thead > tr > td a {
+  color: #fff;
+  text-decoration: underline;
+}
+table.t3-table > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+table.t3-table > tbody > tr:hover > td a {
+  text-decoration: underline;
+}
+table.t3-table > tbody > tr:nth-child(odd) > td,
+table.t3-table > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+table.t3-table > tbody > tr:hover > td,
+table.t3-table > tbody > tr:hover > th {
+  background-color: #f5f5f5;
 }
 /**
  * This file is part of the TYPO3 CMS project.
@@ -10018,98 +10362,6 @@ span.spinner {
   display: inline-block;
   height: 16px;
   width: 16px;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Tab menu
-- - - - - - - - - - - - - - - - - - - - - */
-table#typo3-tabmenu {
-  margin-top: 5px;
-}
-table#typo3-tabmenu tr {
-  height: 1.5em;
-}
-table#typo3-tabmenu td.tab {
-  padding: 0;
-}
-table#typo3-tabmenu td.disabled {
-  padding: 5px 10px 5px 10px;
-}
-table#typo3-tabmenu td a {
-  display: block;
-  margin-top: 1px;
-  padding: 5px 10px 5px 10px;
-  margin-right: 1px;
-}
-table#typo3-tabmenu td.tabact a {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-/* - - - - - - - - - - - - - - - - - - - - -
-Dynamic Tab menu
-- - - - - - - - - - - - - - - - - - - - - */
-div.typo3-dyntabmenu-divs {
-  padding: 0;
-}
-div.typo3-dyntabmenu-tabs,
-div.typo3-dyntabmenu-divs p.c-descr {
-  margin: 0;
-  padding: 0;
-}
-table.typo3-dyntabmenu tr {
-  height: 1.5em;
-}
-table.typo3-dyntabmenu td {
-  padding: 0;
-}
-table.typo3-dyntabmenu td.disabled {
-  padding: 5px 10px 5px 10px;
-}
-table.typo3-dyntabmenu td a {
-  display: block;
-  padding: 5px 10px 5px 10px;
-  margin-right: 1px;
-  position: relative;
-  top: 1px;
-}
-table.typo3-dyntabmenu td.tabact a,
-table#typo3-tabmenu td.tabact a {
-  margin-top: 0px;
-}
-table.typo3-dyntabmenu td.tab:hover a,
-table#typo3-tabmenu td.tab:hover a {
-  margin-top: 0px;
-}
-div.typo3-dyntabmenu-divs-foldout div.c-tablayer {
-  margin-left: 20px;
-}
-.c-tablayer {
-  margin: 0;
-  padding: 0;
-}
-div.typo3-dyntabmenu-divs-foldout div.tab,
-div.typo3-dyntabmenu-divs-foldout div.tabact,
-div.typo3-dyntabmenu-divs-foldout div.disabled {
-  margin-top: 5px;
-}
-div.typo3-dyntabmenu-divs-foldout div.disabled {
-  padding: 2px 2px 2px 18px;
-}
-div.typo3-dyntabmenu-divs-foldout div.tab a,
-div.typo3-dyntabmenu-divs-foldout div.tabact a {
-  display: block;
-  padding: 2px 2px 2px 18px;
 }
 /**
  * This file is part of the TYPO3 CMS project.
@@ -10964,9 +11216,8 @@ div.hr {
   height: 1px;
 }
 /** .uppercase is kept for backwards-compatibility, use .divider */
-.divider,
-.uppercase {
-  padding-bottom: 6px;
+.divider {
+  padding-bottom: 12px;
 }
 a span {
   cursor: pointer;
@@ -11197,15 +11448,10 @@ table#typo3-aboutmodules tr.c-subitem-row td .icon {
   display: block;
   text-align: center;
   vertical-align: middle;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  border-radius: 6px;
-}
-table#typo3-aboutmodules tr.c-subitem-row td .icon img {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 1px;
 }
 table#typo3-aboutmodules tr.c-subitem-row td.module-description {
   padding-right: 10px;
@@ -11596,305 +11842,6 @@ dl.typo3-tstemplate-ceditor-constant dt {
 div.tst-analyzer-options label {
   margin-right: 10px;
   vertical-align: middle;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Toolbar inside the Topbar
-- - - - - - - - - - - - - - - - - - - - - */
-.typo3-top-toolbar {
-  margin-top: 6px;
-  padding-right: 24px;
-  position: absolute;
-  right: 0px;
-}
-#typo3-toolbar {
-  display: inline;
-  margin: 0px;
-  padding: 0px;
-}
-#typo3-toolbar li {
-  padding-top: 3px;
-  position: relative;
-  padding-bottom: 2px;
-}
-#typo3-toolbar > li {
-  display: inline;
-  float: left;
-}
-#typo3-toolbar * li {
-  display: list-item;
-}
-#typo3-toolbar .separator {
-  padding-right: 12px;
-  margin-right: 13px;
-}
-#typo3-toolbar div {
-  overflow: visible !important;
-}
-#typo3-toolbar span.spinner {
-  background-image: url('../../../../images/spinner/3f3f3f.gif');
-}
-.toolbar-item {
-  display: block;
-  padding-bottom: 4px;
-  padding-top: 2px;
-}
-.toolbar-item-menu {
-  position: absolute;
-  top: 28px;
-  z-index: 100;
-  right: 0;
-  margin: 0;
-  padding: 2px 0 0;
-  width: 180px;
-}
-.separator .toolbar-item-menu {
-  right: 12px;
-}
-#typo3-toolbar .toolbar-item-menu li {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-ul.toolbar-item-menu li a {
-  float: none;
-  min-height: 19px;
-  padding-left: 2px;
-  padding-top: 1px;
-  vertical-align: middle;
-}
-ul.toolbar-item-menu li a {
-  display: block;
-  padding-bottom: 2px;
-  padding-left: 3px;
-  vertical-align: middle;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Clear-Cache menu inside the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#clear-cache-actions-menu {
-  width: 30px;
-}
-#clear-cache-actions-menu li img {
-  float: left;
-  padding-right: 6px;
-}
-#clear-cache-actions-menu li a span.t3-icon {
-  vertical-align: middle;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Logout-Button
-- - - - - - - - - - - - - - - - - - - - - */
-#login-info p {
-  padding-bottom: 30px;
-  padding-top: 5px;
-}
-#logout-button input {
-  height: 20px;
-  padding: 0 0 2px 0;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Shortcuts menu in the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#shortcut-menu {
-  width: 30px;
-}
-#shortcut-menu .toolbar-item-menu {
-  margin: 0px;
-  padding: 2px 0px 0px;
-  position: absolute;
-  width: 220px;
-}
-#shortcut-menu .shortcut-list {
-  width: 100%;
-}
-#shortcut-menu .shortcut-list tr.shortcut td {
-  padding: 2px 1px;
-}
-#shortcut-menu .shortcut-list tr.shortcut.first-row td {
-  padding-top: 4px;
-}
-#shortcut-menu .shortcut-list tr.shortcut-group td.shortcut-group-icon,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-icon,
-#shortcut-menu .shortcut-list td.shortcut-edit,
-#shortcut-menu .shortcut-list td.shortcut-delete {
-  vertical-align: top;
-  width: 18px;
-}
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-label a {
-  display: block;
-}
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-edit img,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-delete img {
-  display: none;
-}
-#shortcut-menu .shortcut-list tr.shortcut:hover td.shortcut-edit img,
-#shortcut-menu .shortcut-list tr.shortcut:hover td.shortcut-delete img {
-  display: inline;
-}
-#shortcut-menu .shortcut-list tr.shortcut-group td.shortcut-group-icon,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-icon {
-  padding-left: 7px;
-  vertical-align: top;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Username inside the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#username {
-  margin-right: 12px;
-}
-#username img {
-  padding-right: 4px;
-}
-#username a {
-  line-height: 18px;
-}
-#username a span.t3-icon {
-  vertical-align: top;
-  margin-top: 1px;
-}
-#typo3-toolbar #logout-button {
-  padding-top: 1px;
-  padding-bottom: 2px;
-}
-#typo3-toolbar #logout-button input {
-  padding-top: 1px;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Workspace Selector
-- - - - - - - - - - - - - - - - - - - - - */
-#workspace-selector-menu {
-  width: 30px;
-}
-#workspace-selector-menu ul {
-  margin: 0px;
-  padding: 2px 0px 0px;
-  position: absolute;
-  width: 180px;
-}
-#workspace-selector-menu li {
-  float: none;
-  min-height: 19px;
-  vertical-align: middle;
-}
-#workspace-selector-menu li img {
-  float: left;
-  position: relative;
-  margin-right: 2px;
-}
-#workspace-selector-menu li a {
-  display: block;
-  padding-bottom: 2px;
-  padding-left: 3px;
-  vertical-align: middle;
-}
-#workspace-selector-menu li.divider {
-  padding-top: 4px;
-}
-#workspace-selector-menu li span.t3-icon {
-  float: left;
-  margin-top: 0;
-  margin-right: 2px;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Topbar (whole upper area), containts Logo and toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#typo3-topbar {
-  z-index: 200;
-}
-#typo3-topbar div {
-  overflow: visible !important;
-}
-#typo3-top-container {
-  height: 100%;
-  padding: 0 24px;
-}
-#typo3-logo {
-  margin: 8px 0 0 0;
-  padding: 1px 0 0 0;
-  width: 159px;
 }
 /**
  * This file is part of the TYPO3 CMS project.
@@ -12533,119 +12480,6 @@ span.spinner {
  * The TYPO3 project - inspiring people to share!
  */
 /* - - - - - - - - - - - - - - - - - - - - -
-Tab menu
-- - - - - - - - - - - - - - - - - - - - - */
-table.typo3-dyntabmenu td a,
-table.typo3-dyntabmenu td.disabled,
-table#typo3-tabmenu td.tab,
-table#typo3-tabmenu td.tabact,
-table#typo3-tabmenu td.disabled {
-  background: #dadada;
-  border: 1px solid #adadad;
-  border-bottom: none;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  color: #606060;
-}
-table.typo3-dyntabmenu td.tabact a,
-table.typo3-dyntabmenu td.tab:hover a,
-table#typo3-tabmenu td.tabact,
-table#typo3-tabmenu td.tab:hover,
-table#typo3-tabmenu td.tabact:hover {
-  background: #ffffff;
-  color: #000;
-}
-table.typo3-dyntabmenu td.tab:hover a,
-table#typo3-tabmenu td.tab:hover {
-  background-color: #eeeeee;
-  border-color: #adadad;
-  color: #606060;
-}
-table.typo3-dyntabmenu td.disabled {
-  background: #e8e8e8;
-  border: 1px solid #d6d6d6;
-  color: #b7b7b7;
-  cursor: default;
-}
-table.typo3-dyntabmenu td a {
-  border-bottom: 1px solid #ffffff;
-}
-table.typo3-dyntabmenu td.tab a {
-  border-bottom: 1px solid #c0c0c0;
-}
-table.typo3-dyntabmenu td a,
-table#typo3-tabmenu td a {
-  color: #666;
-  text-decoration: none;
-}
-table.typo3-dyntabmenu td a:active,
-table#typo3-tabmenu td a {
-  outline: none;
-}
-div.typo3-dyntabmenu-divs {
-  background-color: #ececec;
-  background-image: url('../../../../images/backgrounds/tab.png');
-  background-image: linear-gradient(center top, #ffffff 0px, #ececec 100px);
-  background-repeat: repeat-x;
-  border: 1px solid #adadad;
-}
-div.typo3-dyntabmenu-divs p.c-descr {
-  background: #e7dba8;
-  font-style: italic;
-}
-/* Foldout tabs */
-div.typo3-dyntabmenu-divs-foldout div.tab,
-div.typo3-dyntabmenu-divs-foldout div.tabact,
-div.typo3-dyntabmenu-divs-foldout div.disabled {
-  border: solid black 1px;
-  border-radius: 3px;
-}
-div.typo3-dyntabmenu-divs-foldout div.tab {
-  background: #c4d4cd;
-  background-image: url('../../../../icons/gfx/ol/plusbullet.gif');
-  background-repeat: no-repeat;
-}
-div.typo3-dyntabmenu-divs-foldout div.tab:hover {
-  background: #f6eab7;
-  background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
-  background-repeat: no-repeat;
-}
-div.typo3-dyntabmenu-divs-foldout div.tabact {
-  background: #e7dba8;
-  background-image: url('../../../../icons/gfx/ol/minusbullet.gif');
-  background-repeat: no-repeat;
-}
-div.typo3-dyntabmenu-divs-foldout div.tabact:hover {
-  background: #f6eab7;
-  background-image: url('../../../../icons/gfx/ol/arrowbullet.gif');
-  background-repeat: no-repeat;
-}
-div.typo3-dyntabmenu-divs-foldout div.disabled {
-  background: #ccc;
-  color: #999;
-}
-div.typo3-dyntabmenu-divs-foldout div.disabled:hover {
-  background: #f6eab7;
-  color: #999;
-}
-div.typo3-dyntabmenu-divs-foldout div.tab a,
-div.typo3-dyntabmenu-divs-foldout div.tabact a {
-  text-decoration: none;
-  color: #000;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
 TCEforms
 - - - - - - - - - - - - - - - - - - - - - */
 table#typo3-altdoc-header input,
@@ -12790,9 +12624,6 @@ select option.c-divider {
 .typo3-TCEforms div.typo3-TCEforms-diffBox-header {
   background-color: red;
   font-weight: bold;
-}
-.typo3-TCEforms div.typo3-dyntabmenu-divs {
-  border-bottom: 0;
 }
 /* Default. Always used on main-palettes in the bottom of the forms */
 .typo3-TCEforms .class-main2 td,
@@ -13100,12 +12931,6 @@ table#typo3-tree a {
 }
 body#typo3-alt-db-navframe-php div.c-notice {
   border: 1px solid black;
-}
-.navFrameHL {
-  background-color: #d7dbe2;
-}
-.navFrameHL a {
-  font-weight: bold;
 }
 table#typo3-tree tr:hover {
   background-color: #d7dbe2;
@@ -13514,11 +13339,6 @@ div.diff-r {
 div.diff-g {
   background-color: green;
   color: black;
-}
-/** .uppercase is kept for backwards-compatibility, use .divider */
-.divider,
-.uppercase {
-  border-bottom: 1px solid #cdcdcd;
 }
 /** used in the admin tools => DB check **/
 .t3-overview-list dt {
@@ -14358,312 +14178,4 @@ Web > Template
 }
 dt.typo3-tstemplate-ceditor-label {
   font-weight: bold;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Toolbar inside the Topbar
-- - - - - - - - - - - - - - - - - - - - - */
-#typo3-toolbar {
-  list-style: none;
-}
-.toolbar-item {
-  text-align: center;
-}
-#typo3-toolbar .separator {
-  border-right: 1px solid #000;
-  box-shadow: 1px 0 #585858;
-}
-.toolbar-item-active {
-  background-image: url('../../../../icons/gfx/toolbar_item_active_bg.png');
-  height: 25px;
-}
-.toolbar-item-menu {
-  background-color: #f9f9f9;
-  border: 1px solid #abb2bc;
-  border-top: none;
-  list-style: none;
-}
-#typo3-toolbar * li:hover,
-tr.shortcut:hover,
-tr.recentdoc:hover,
-tr.opendoc:hover {
-  background: #eee;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Clear-Cache menu inside the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#clear-cache-actions-menu li {
-  text-align: left;
-}
-#clear-cache-actions-menu li a {
-  text-decoration: none;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Backend  Live Search
-- - - - - - - - - - - - - - - - - - - - - */
-#typo3-toolbar #live-search-menu {
-  padding-top: 4px;
-}
-.live-search-results .t3-icon-toolbar-menu-search {
-  position: absolute;
-  z-index: 3000;
-  top: 3px;
-  margin: 3px;
-}
-.t3-icon-input-clear {
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  right: 20px;
-}
-#live-search-box {
-  padding-left: 20px;
-  width: 180px;
-  border: none;
-}
-.live-search-list {
-  background-color: white;
-  border: none;
-}
-.live-search-list .x-combo-list {
-  background-color: white;
-}
-.live-search-list .x-combo-list-inner {
-  padding-bottom: 5px;
-}
-.live-search-list .x-combo-list-hd {
-  background: none;
-  border: none;
-  margin-left: 110px;
-  color: #ddd;
-}
-.search-list-help-content {
-  margin: 5px;
-  height: 100%;
-  padding: 0.6em 0.6em 0.6em 2.6em;
-  background-repeat: no-repeat;
-  background-position: 0.5em 0.7em;
-  border: 1px solid;
-  color: #000000;
-  background-color: #ddeef9;
-  border-color: #8aafc4;
-}
-.live-search-list .search-item-type {
-  border-right: 1px solid #ddd;
-  padding: 2px 5px 2px 0;
-}
-.live-search-list .search-item-content {
-  padding: 0 8px;
-}
-.live-search-list .search-item-content .search-item-title {
-  padding: 2px;
-  border: none !important;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Logout-Button
-- - - - - - - - - - - - - - - - - - - - - */
-#logout-button input {
-  background: #494949;
-  border: 1px solid #636363;
-  color: #fff;
-  cursor: pointer;
-  text-align: center;
-  padding: 0 5px;
-}
-#logout-button input:hover {
-  background-color: #c8c8c8;
-  background-image: url('../../../../images/backgrounds/button-hover.png');
-  background-image: linear-gradient(center top, #f6f6f6 10%, #c8c8c8 90%);
-  border: 1px solid #737f91;
-  color: #000;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Shortcuts menu in the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#shortcut-menu .shortcut-list tr.shortcut td {
-  line-height: 16px;
-}
-#shortcut-menu .shortcut-list tr.shortcut.first-row td {
-  background-image: url('../../../../icons/gfx/shortcutgroups-bg.png');
-  background-repeat: repeat-x;
-}
-#shortcut-menu .shortcut-list tr.shortcut-group td.shortcut-group-icon,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-icon,
-#shortcut-menu .shortcut-list td.shortcut-edit,
-#shortcut-menu .shortcut-list td.shortcut-delete {
-  text-align: center;
-}
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-label a,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-edit img,
-#shortcut-menu .shortcut-list tr.shortcut td.shortcut-delete img {
-  cursor: pointer;
-}
-#shortcut-menu .shortcut-list .shortcut-group td {
-  background-color: #dbdbdb;
-  border-bottom: 1px solid #a5a5a5;
-  border-top: 1px solid #a5a5a5;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Username inside the toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#username {
-  color: #ffffff;
-  font-weight: bold;
-}
-#username a {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 11px;
-  text-decoration: none;
-}
-#username.su-user a {
-  color: #eb6e5a;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Workspace Selector
-- - - - - - - - - - - - - - - - - - - - - */
-#workspace-selector-menu ul {
-  position: static;
-  list-style: none;
-}
-#workspace-selector-menu .items {
-  list-style: none;
-  background-color: #f9f9f9;
-  overflow-y: auto;
-  max-height: 300px;
-}
-#workspace-selector-menu li {
-  text-align: left;
-}
-#workspace-selector-menu li a {
-  text-decoration: none;
-}
-#workspace-selector-menu li.divider {
-  border: 0;
-  background-image: url('../../../../icons/gfx/shortcutgroups-bg.png');
-  background-repeat: repeat-x;
-  min-height: 10px;
-  padding-right: 0;
-}
-#workspace-selector-menu li.divider:hover {
-  background-color: transparent;
-}
-body.typo3-in-workspace #typo3-top-container {
-  background: none;
-}
-body.typo3-in-workspace #typo3-topbar .x-panel-bwrap {
-  background: url('../../../../images/backgrounds/topbar-in-workspace-background-left.png') no-repeat;
-}
-body.typo3-in-workspace #typo3-topbar .x-panel-body {
-  background: url('../../../../images/backgrounds/topbar-in-workspace-background-right.png') no-repeat right 0;
-}
-body.typo3-in-workspace #typo3-topbar {
-  background: url('../../../../images/backgrounds/topbar-in-workspace-background.gif');
-}
-body.typo3-in-workspace #typo3-topbar #username {
-  text-shadow: 0 0 5px #000000;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/* - - - - - - - - - - - - - - - - - - - - -
-Topbar (whole upper area), containts Logo and toolbar
-- - - - - - - - - - - - - - - - - - - - - */
-#typo3-top-container {
-  background-color: #3f3f3f;
-  background-image: url('../../../../images/backgrounds/topbar.png');
-  background-image: linear-gradient(center top, #494949 0%, #373737 91%, #343434 92%, #2a2a2a 100%);
-  background-repeat: repeat-x;
 }
