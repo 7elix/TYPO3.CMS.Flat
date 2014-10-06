@@ -5,11 +5,11 @@
                 this.parentNode.classList.toggle('open');
                 return false;
             ">
-                <i class="fa fa-lg fa-inline fa-{moduleMenuSection.icon}"></i>
+                <i class="fa fa-lg fa-inline fa-{moduleMenuSection.icon.class}"></i>
                 <span class="nav-modules-title">{moduleMenuSection.title}</span>
             </a>
             <ul class="nav-modules-menu">
-                <f:for each="{moduleMenuSection.subitems}" as="moduleItem">
+                <f:for each="{moduleMenuSection.children}" as="moduleItem">
                     <f:if condition="{moduleItem}">
                         <li title="{moduleItem.description}" data-path="{moduleItem.name}">
                             <a href="#" onClick="TYPO3.Backend.openModule('{moduleItem.name}');" title="{moduleItem.description}">

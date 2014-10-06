@@ -30,7 +30,6 @@ namespace PHORAX\Flat\Controller;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * TYPO3 backend
@@ -41,6 +40,11 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	 * @var array
 	 */
 	protected $modules = array();
+
+	/**
+	 * @var \SplObjectStorage
+	 */
+	protected $moduleStorage;
 
 	/**
 	 * @var string
@@ -118,14 +122,28 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$this->toolbarItems = array();
 
 		$this->initializeCoreToolbarItems();
+		$this->initializeModuleMenuStorage();
+
 		$this->menuWidth = 200;
 
 		if (isset($GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW']) && (int)$GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW'] != (int)$this->menuWidth) {
 			$this->menuWidth = (int)$GLOBALS['TBE_STYLES']['dims']['leftMenuFrameW'];
 		}
 		$this->executeHook('constructPostProcess');
+	}
 
-		$this->modules = $this->restructureModules($this->moduleMenu->getRawModuleData());
+	/**
+	 * Load Module Menu storage
+	 *
+	 * @return void
+	 */
+	protected function initializeModuleMenuStorage() {
+		/** @var $moduleRepository \TYPO3\CMS\Backend\Domain\Repository\Module\BackendModuleRepository */
+		$moduleRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Domain\\Repository\\Module\\BackendModuleRepository');
+
+		/** @var \SplObjectStorage */
+		$moduleStorage = $moduleRepository->loadAllowedModules();
+		$this->moduleStorage = \PHORAX\Flat\Utility\ModuleMenuUtility::restructureModules($moduleStorage);
 	}
 
 	/**
@@ -141,71 +159,65 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 		// Create backend scaffolding
 		$backendScaffolding = '
-			<!-- Content -->
+			<div class="scaffolding-aside scaffolding-aside-sidebar">
+				<div class="scaffolding-aside-header">
+					Modules
+				</div>
+				<div class="scaffolding-navigation" id="typo3-module-menu">' .
+					$this->renderModuleMenu($this->modules) .
+				'</div>
+			</div>
 
-                <div class="scaffolding-aside scaffolding-aside-sidebar">
-                    <div class="scaffolding-aside-header">
-                        Modules
-                    </div>
-                    <div class="scaffolding-navigation" id="typo3-module-menu">' .
-                        $this->renderModuleMenu($this->modules) .
-                    '</div>
-                </div>
+			<div class="scaffolding-aside scaffolding-aside-meta">
+				<div class="scaffolding-aside-header">
+					Meta
+				</div>
+				<nav class="navbar navbar-inverse navbar-right navbar-meta" role="navigation">
+					<ul class="nav navbar-nav navbar-inverse" data-typo3-role="typo3-module-menu">' .
+						$this->renderHelpMenu() .
+						$this->renderUserMenu() .
+						$this->renderToolbar() .
+						$this->renderLiveSearch() .
+					'</ul>
+				</nav>
+			</div>
 
-                <div class="scaffolding-aside scaffolding-aside-meta">
-                    <div class="scaffolding-aside-header">
-                        Meta
-                    </div>
-                    <nav class="navbar navbar-inverse navbar-right navbar-meta" role="navigation">
-                        <ul class="nav navbar-nav navbar-inverse" data-typo3-role="typo3-module-menu">' .
-                            $this->renderHelpMenu($this->modules) .
-                            $this->renderUserMenu($this->modules) .
-                            $this->renderToolbar($this->modules) .
-                        '</ul>
-                    </nav>
-                </div>
+			<div class="scaffolding-page" id="scaffolding-page">
+				<div class="scaffolding-top" id="typo3-topbar">
+					<a class="scaffolding-top-toggle scaffolding-top-toggle-modules" onClick="
+						document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-meta\');
+						document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-modules\');
+						return false;
+					" href="#">
+						<i class="fa fa-lg"></i>
+						<span class="sr-only">Toggle Modules</span>
+					</a>
+					<a class="scaffolding-top-toggle scaffolding-top-toggle-meta" onClick="
+						document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-modules\');
+						document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-meta\');
+						return false;
+					" href="#">
+						<i class="fa fa-lg"></i>
+						<span class="sr-only">Toggle Meta</span>
+					</a>
+					<a class="scaffolding-top-site" href="#">' . $this->renderLogo() . '</a>
+				</div>
 
-            <div class="scaffolding-page" id="scaffolding-page">
-
-                <div class="scaffolding-top" id="typo3-topbar">
-
-                    <a class="scaffolding-top-toggle scaffolding-top-toggle-modules" onClick="
-                        document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-meta\');
-                        document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-modules\');
-                        return false;
-                        " href="#">
-                        <i class="fa fa-lg"></i>
-                        <span class="sr-only">Toggle Modules</span>
-                    </a>
-                    <a class="scaffolding-top-toggle scaffolding-top-toggle-meta" onClick="
-                        document.getElementsByTagName(\'body\')[0].classList.remove(\'scaffolding-open-modules\');
-                        document.getElementsByTagName(\'body\')[0].classList.toggle(\'scaffolding-open-meta\');
-                        return false;
-                        " href="#">
-                        <i class="fa fa-lg"></i>
-                        <span class="sr-only">Toggle Meta</span>
-                    </a>
-                    <a class="scaffolding-top-site" href="#">' . $this->renderLogo() . '</a>
-
-                </div>
-
-                <div class="scaffolding-main">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <!-- Page navigation -->
-                                <iframe src="" id="typo3-navigation" name="typo3-navigation" border="0" frameborder="0"></iframe>
-                            </div>
-                            <div class="col-xs-9">
-                                <!-- Content -->
-                                <iframe src="" id="typo3-content" name="typo3-content" border="0" frameborder="0"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        ' .
+				<div class="scaffolding-main">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-3">
+								<!-- Page navigation -->
+								<iframe src="" id="typo3-navigation" name="typo3-navigation" border="0" frameborder="0"></iframe>
+							</div>
+							<div class="col-xs-9">
+								<!-- Content -->
+								<iframe src="" id="typo3-content" name="typo3-content" border="0" frameborder="0"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>' .
 			$this->renderLiveSearchModal()
 		;
 
@@ -264,19 +276,15 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
+	 * Render ModuleMenu with fluid
+	 *
 	 * @param array
 	 * @return string
 	 */
-	protected function renderModuleMenu(array $moduleMenu) {
-
-		// remove unneeded items from module menu
-		unset($moduleMenu['modmenu_user']);
-		unset($moduleMenu['modmenu_help']);
-
+	protected function renderModuleMenu() {
 		$templatePathAndFilename = $this->backendTemplatePath . 'RenderModuleMenu.html';
 		$this->template->setTemplatePathAndFilename($templatePathAndFilename);
-		$this->template->assign('moduleMenu', $moduleMenu);
-
+		$this->template->assign('moduleMenu', $this->moduleStorage);
 		return $this->template->render();
 	}
 
@@ -308,12 +316,19 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
-	 * Render modal dialog open/close button
+	 * Render Live search section
 	 *
 	 * @return string
 	 */
-	protected function renderLiveSearchButton() {
-		return '<li><a href="#" class="btn btn-default" data-toggle="modal" data-target="#typo3-live-search-modal"><i class="glyphicon glyphicon-search"></i></button></li>';
+	protected function renderLiveSearch() {
+		if (!array_key_exists('liveSearch', $this->toolbarItems)) {
+			return '';
+		}
+
+		$toolbarItem = $this->toolbarItems['liveSearch'];
+		$additionalAttributes = trim($toolbarItem->getAdditionalAttributes());
+
+		return '<li ' . $additionalAttributes . '>' . $toolbarItem->render() . '</li>';
 	}
 
 	/**
@@ -329,9 +344,7 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 			return '';
 		}
 
-		$content = '';
-
-		$content .= '
+		$content = '
 			<!-- Live Search -->
 			<div class="modal fade" id="typo3-live-search-modal">
 				<div class="modal-dialog">
@@ -353,29 +366,23 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 				</div>
 			</div>';
 
-
 		return $content;
 	}
 
 	/**
-	 * Renders the items in the top toolbar
+	 * Renders toolbar-items
 	 *
 	 * @return string top toolbar elements as HTML
 	 */
 	protected function renderToolbar() {
-		// Move search to last position
-		if (array_key_exists('liveSearch', $this->toolbarItems)) {
-#			$search = $this->toolbarItems['liveSearch'];
-#			unset($this->toolbarItems['liveSearch']);
-#			$this->toolbarItems['liveSearch'] = $search;
-		}
-
 		$toolbar = '';
-		$i = 0;
 
-		$numberOfToolbarItems = count($this->toolbarItems);
 		foreach ($this->toolbarItems as $key => $toolbarItem) {
-			$i++;
+			// Skip liveSearch. Rendered by ->renderLiveSearch()
+			if ($key === 'liveSearch') {
+				continue;
+			}
+
 			$menu = $toolbarItem->render();
 
 			// @TOD: Find a better solution for CSS requirements
@@ -399,18 +406,12 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
-	 * Gets the label of the BE user currently logged in
+	 * Render User menu dropdown-menu
 	 *
-	 * @return string Html
-	 */
-	protected function getLoggedInUserLabel() {
-	}
-
-	/**
 	 * @param array
 	 * @return string
 	 */
-	protected function renderUserMenu(array $moduleMenu) {
+	protected function renderUserMenu() {
 #		$icon = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('status-user-' . ($GLOBALS['BE_USER']->isAdmin() ? 'admin' : 'backend'));
 		$icon = '<i class="fa fa-lg fa-inline fa-user"></i>';
 
@@ -429,20 +430,24 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="' . htmlspecialchars($title) . '">' . $icon . ' <span class="hidden-sm">' . htmlspecialchars($label) . '</span></a>';
 		$content .= '<ul class="dropdown-menu" role="menu">';
 
-		foreach ($moduleMenu as $moduleMenuSection) {
-			if ($moduleMenuSection['name'] !== 'user') {
+		$this->moduleStorage->rewind();
+		foreach ($this->moduleStorage as $moduleMenuSection) {
+			if ($moduleMenuSection->getName() !== 'user') {
 				continue;
 			}
 
-			foreach ($moduleMenuSection['subitems'] as $moduleItem) {
-				$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
-				$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
-				$content .= $moduleItem['title'];
+			foreach ($moduleMenuSection->getChildren() as $backendModule) {
+				$icon = $backendModule->getIcon();
+				$content .= '<li title="' . $backendModule->getDescription() . '" data-path="' . $backendModule->getName() . '">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $backendModule->getName() . '\');" title="' . $backendModule->getDescription() . '">';
+				$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $icon['filename'] . '"></span> ';
+				$content .= $backendModule->getTitle();
 				$content .= '</a>';
 				$content .= '</li>';
 			}
 		}
+
+		$content .= '<li class="divider"></li>';
 
 		$buttonLabel = $GLOBALS['BE_USER']->user['ses_backuserid'] ? 'LLL:EXT:lang/locallang_core.xlf:buttons.exit' : 'LLL:EXT:lang/locallang_core.xlf:buttons.logout';
 		$content .= '<li><a href="logout.php" target="_top"><span class="btn"><i class="fa fa-lg fa-inline fa-power-off"></i> ' . $GLOBALS['LANG']->sL($buttonLabel, TRUE) . '</span></a></li>';
@@ -452,35 +457,37 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 	}
 
 	/**
+	 * Render Help menu dropdown-menu
+	 *
 	 * @param array
 	 * @return string
 	 */
-	public function renderHelpMenu(array $moduleMenu) {
+	public function renderHelpMenu() {
 		$content = '';
 		$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-inline fa-question-circle"></i> <span class="visible-xs-inline">Help</span></a></a>';
 		$content .= '<ul class="dropdown-menu">';
 
-		foreach ($moduleMenu as $moduleMenuSection) {
-			if ($moduleMenuSection['name'] !== 'help') {
+		$this->moduleStorage->rewind();
+		foreach ($this->moduleStorage as $moduleMenuSection) {
+			if ($moduleMenuSection->getName() !== 'help') {
 				continue;
 			}
 
-			if (is_array($moduleMenuSection['subitems'])) {
-				foreach ($moduleMenuSection['subitems'] as $moduleItem) {
-					$content .= '<li title="' . $moduleItem['description'] . '" data-path="' . $moduleItem['name'] . '">';
-					$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $moduleItem['name'] . '\');" title="' . $moduleItem['description'] . '">';
-					$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $moduleItem['icon']['filename'] . '"></span> ';
-					$content .= $moduleItem['title'];
-					$content .= '</a>';
-					$content .= '</li>';
-				}
+			foreach ($moduleMenuSection->getChildren() as $backendModule) {
+				$icon = $backendModule->getIcon();
+				$content .= '<li title="' . $backendModule->getDescription() . '" data-path="' . $backendModule->getName() . '">';
+				$content .= '<a href="#" onClick="TYPO3.Backend.openModule(\'' . $backendModule->getName() . '\');" title="' . $backendModule->getDescription() . '">';
+				$content .= '<span class="t3-app-icon t3-app-icon-inline"><img src="' . $icon['filename'] . '"></span> ';
+				$content .= $backendModule->getTitle();
+				$content .= '</a>';
+				$content .= '</li>';
 			}
 		}
+
 		$content .= '</ul>';
 
 		return '<li class="dropdown">' . $content . '</li>';
 	}
-
 
 	/**
 	 * Generates the JavaScript code for the backend.
@@ -561,178 +568,6 @@ class BackendController extends \TYPO3\CMS\Backend\Controller\BackendController 
 
 			$this->setStartupModule();
 			$this->handlePageEditing();
-	}
-
-	/**
-	 * Manipulate and restructure module menu configuration
-	 *
-	 * @param array $moduleConfiguration
-	 * @return array
-	 */
-	protected function restructureModules(array $moduleConfiguration) {
-		$finalModuleConfiguration = array();
-
-		/**
-		 * Present
-		 */
-		$finalModuleConfiguration['modmenu_present'] = array(
-			'name' => 'present',
-			'title' => 'Present',
-            'icon' => 'desktop',
-			'subitems' => array(
-				'web_layout_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_layout_tab'],
-				'web_ViewpageView_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_ViewpageView_tab'],
-				'file_list_tab' => $moduleConfiguration['modmenu_file']['subitems']['file_list_tab'],
-				'web_ts_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_ts_tab'],
-				'tools_isearch_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_isearch_tab'],
-				'web_txformhandlermoduleM1_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_txformhandlermoduleM1_tab']
-			)
-		);
-
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_layout_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_ViewpageView_tab']);
-		unset($moduleConfiguration['modmenu_file']['subitems']['file_list_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_ts_tab']);
-		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_isearch_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_txformhandlermoduleM1_tab']);
-
-		/**
-		 * Manage
-		 */
-		$finalModuleConfiguration['modmenu_manage'] = array(
-			'name' => 'manage',
-			'title' => 'Manage',
-            'icon' => 'code-fork',
-			'subitems' => array(
-				'web_list_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_list_tab'],
-				'web_func_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_func_tab'],
-				'web_info_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_info_tab'],
-				'web_txrecyclerM1_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_txrecyclerM1_tab'],
-			)
-		);
-
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_list_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_func_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_info_tab']);
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_txrecyclerM1_tab']);
-
-		/**
-		 * Edit
-		 */
-		$finalModuleConfiguration['modmenu_edit'] = array(
-			'name' => 'edit',
-			'title' => 'Edit',
-            'icon' => 'edit',
-			'subitems' => array(
-				'web_WorkspacesWorkspaces_tab' => $moduleConfiguration['modmenu_web']['subitems']['web_WorkspacesWorkspaces_tab'],
-				'system_BeuserTxBeuser_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_BeuserTxBeuser_tab'],
-				'system_BelogLog_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_BelogLog_tab'],
-			)
-		);
-
-		unset($moduleConfiguration['modmenu_web']['subitems']['web_WorkspacesWorkspaces_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_BeuserTxBeuser_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_BelogLog_tab']);
-
-		/**
-		 * Develop
-		 */
-		$finalModuleConfiguration['modmenu_develop'] = array(
-			'name' => 'develop',
-			'title' => 'Develop',
-            'icon' => 'rocket',
-			'subitems' => array(
-			)
-		);
-
-		/**
-		 * System
-		 */
-		$finalModuleConfiguration['modmenu_system'] = array(
-			'name' => 'system',
-			'title' => 'System',
-            'icon' => 'gears',
-			'subitems' => array(
-				'tools_ExtensionmanagerExtensionmanager_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_ExtensionmanagerExtensionmanager_tab'],
-				'tools_LangLanguage_tab' => $moduleConfiguration['modmenu_tools']['subitems']['tools_LangLanguage_tab'],
-				'system_InstallInstall_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_InstallInstall_tab'],
-				'system_config_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_config_tab'],
-				'system_dbint_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_dbint_tab'],
-				'system_ReportsTxreportsm1_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_ReportsTxreportsm1_tab'],
-				'system_txschedulerM1_tab' => $moduleConfiguration['modmenu_system']['subitems']['system_txschedulerM1_tab'],
-			)
-		);
-
-		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_ExtensionmanagerExtensionmanager_tab']);
-		unset($moduleConfiguration['modmenu_tools']['subitems']['tools_LangLanguage_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_InstallInstall_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_config_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_dbint_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_ReportsTxreportsm1_tab']);
-		unset($moduleConfiguration['modmenu_system']['subitems']['system_txschedulerM1_tab']);
-
-		/**
-		 * User
-		 */
-		$finalModuleConfiguration['modmenu_user'] = $moduleConfiguration['modmenu_user'];
-		unset($moduleConfiguration['modmenu_user']);
-
-		/**
-		 * Help
-		 */
-		$finalModuleConfiguration['modmenu_help'] = $moduleConfiguration['modmenu_help'];
-		unset($moduleConfiguration['modmenu_help']);
-
-
-		/**
-		 * Individual modules
-		 */
-
-		// Add "Web"
-		if (!empty($moduleConfiguration['modmenu_web']['subitems'])) {
-			$finalModuleConfiguration['modmenu_manage']['subitems'] = array_merge(
-				$finalModuleConfiguration['modmenu_manage']['subitems'],
-				$moduleConfiguration['modmenu_web']['subitems']
-			);
-		}
-		unset($moduleConfiguration['modmenu_web']);
-
-		// Add "File"
-		if (!empty($moduleConfiguration['modmenu_file']['subitems'])) {
-			$finalModuleConfiguration['modmenu_present']['subitems'] = array_merge(
-				$finalModuleConfiguration['modmenu_present']['subitems'],
-				$moduleConfiguration['modmenu_file']['subitems']
-			);
-		}
-		unset($moduleConfiguration['modmenu_file']);
-
-		// Add "Tools"
-		if (!empty($moduleConfiguration['modmenu_tools']['subitems'])) {
-			$finalModuleConfiguration['modmenu_develop']['subitems'] = array_merge(
-				$finalModuleConfiguration['modmenu_develop']['subitems'],
-				$moduleConfiguration['modmenu_tools']['subitems']
-			);
-		}
-		unset($moduleConfiguration['modmenu_tools']);
-
-		// Add "System"
-		if (!empty($moduleConfiguration['modmenu_system']['subitems'])) {
-			$finalModuleConfiguration['modmenu_system']['subitems'] = array_merge(
-				$finalModuleConfiguration['modmenu_system']['subitems'],
-				$moduleConfiguration['modmenu_system']['subitems']
-			);
-		}
-		unset($moduleConfiguration['modmenu_system']);
-
-		/**
-		 * Custom groups
-		 */
-		foreach ($moduleConfiguration as $module) {
-			array_push($finalModuleConfiguration, $module);
-			unset($module);
-		}
-
-		return $finalModuleConfiguration;
 	}
 
 }
