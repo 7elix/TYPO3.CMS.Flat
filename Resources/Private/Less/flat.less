@@ -81,6 +81,7 @@
 /*!
  *  TYPO3 Backend
  */
+
 @import "TYPO3/scaffolding.less";
 @import "TYPO3/dropdown.less";
 @import "TYPO3/navbar.less";
@@ -106,68 +107,60 @@
  */
 
 @import "Flat/variables-typo3.less";
+@import "@{core-package-path-t3skin}/_deprecated.less";
 
+@import "@{core-package-path-t3skin}/_debug_panel.less";
+@import "@{core-package-path-t3skin}/_element_clipboard.less";
+@import "@{core-package-path-t3skin}/_element_csh.less";
+@import "@{core-package-path-t3skin}/_element_csm.less";
+@import "@{core-package-path-t3skin}/_element_history.less";
 @import "@{core-package-path-t3skin}/_element_message.less";
+@import "@{core-package-path-t3skin}/_element_pagetree.less";
+@import "@{core-package-path-t3skin}/_element_rte.less";
+@import "@{core-package-path-t3skin}/_element_spinner.less";
 @import "@{core-package-path-t3skin}/_element_tab.less";
+// @import "@{core-package-path-t3skin}/_element_table.less";
+@import "@{core-package-path-t3skin}/_element_tceforms.less";
+@import "@{core-package-path-t3skin}/_element_tree.less";
+@import "@{core-package-path-t3skin}/_fonts.less";
+@import "@{core-package-path-t3skin}/_login_screen.less";
+@import "@{core-package-path-t3skin}/_main_body.less";
+@import "@{core-package-path-t3skin}/_main_content.less";
+@import "@{core-package-path-t3skin}/_main_form.less";
+@import "@{core-package-path-t3skin}/_main_scaffolding.less";
+@import "@{core-package-path-t3skin}/_misc_loading.less";
 
-@import "@{core-package-path-t3skin}/structure/_element_button_back.less";
-@import "@{core-package-path-t3skin}/structure/_element_clipboard.less";
-@import "@{core-package-path-t3skin}/structure/_element_csh.less";
-@import "@{core-package-path-t3skin}/structure/_element_csm.less";
-@import "@{core-package-path-t3skin}/structure/_element_history.less";
 @import "@{core-package-path-t3skin}/structure/_element_infopopup.less";
 @import "@{core-package-path-t3skin}/structure/_element_move_element.less";
-@import "@{core-package-path-t3skin}/structure/_element_pagetree.less";
 @import "@{core-package-path-t3skin}/structure/_element_recent_edited.less";
-@import "@{core-package-path-t3skin}/structure/_element_rte.less";
-@import "@{core-package-path-t3skin}/structure/_element_spinner.less";
-@import "@{core-package-path-t3skin}/structure/_element_tceforms.less";
-@import "@{core-package-path-t3skin}/structure/_element_tree.less";
 @import "@{core-package-path-t3skin}/structure/_element_version.less";
 @import "@{core-package-path-t3skin}/structure/_element_wizard.less";
-@import "@{core-package-path-t3skin}/structure/_main_body.less";
-@import "@{core-package-path-t3skin}/structure/_main_content.less";
 @import "@{core-package-path-t3skin}/structure/_main_decorations.less";
-@import "@{core-package-path-t3skin}/structure/_main_form.less";
-@import "@{core-package-path-t3skin}/structure/_main_scaffolding.less";
 @import "@{core-package-path-t3skin}/structure/_module_file_list.less";
 @import "@{core-package-path-t3skin}/structure/_module_help_about.less";
 @import "@{core-package-path-t3skin}/structure/_module_help_about_module.less";
 @import "@{core-package-path-t3skin}/structure/_module_user_settings.less";
 @import "@{core-package-path-t3skin}/structure/_module_user_taskcenter.less";
 @import "@{core-package-path-t3skin}/structure/_module_user_ws.less";
+@import "@{core-package-path-t3skin}/structure/_module_web_list.less";
 @import "@{core-package-path-t3skin}/structure/_module_web_list_sysnote.less";
 @import "@{core-package-path-t3skin}/structure/_module_web_new_element.less";
 @import "@{core-package-path-t3skin}/structure/_module_web_page.less";
 @import "@{core-package-path-t3skin}/structure/_module_web_permissions.less";
 @import "@{core-package-path-t3skin}/structure/_module_web_template.less";
 
-@import "@{core-package-path-t3skin}/visual/_debug_panel.less";
-@import "@{core-package-path-t3skin}/visual/_element_button_back.less";
-@import "@{core-package-path-t3skin}/visual/_element_clipboard.less";
-@import "@{core-package-path-t3skin}/visual/_element_csh.less";
-@import "@{core-package-path-t3skin}/visual/_element_csm.less";
 @import "@{core-package-path-t3skin}/visual/_element_extjs_icons.less";
-@import "@{core-package-path-t3skin}/visual/_element_history.less";
-@import "@{core-package-path-t3skin}/visual/_element_pagetree.less";
 @import "@{core-package-path-t3skin}/visual/_element_recent_edited.less";
-@import "@{core-package-path-t3skin}/visual/_element_rte.less";
-@import "@{core-package-path-t3skin}/visual/_element_spinner.less";
-@import "@{core-package-path-t3skin}/visual/_element_tceforms.less";
-@import "@{core-package-path-t3skin}/visual/_element_tree.less";
 @import "@{core-package-path-t3skin}/visual/_element_typoscript.less";
 @import "@{core-package-path-t3skin}/visual/_element_version.less";
 @import "@{core-package-path-t3skin}/visual/_element_wizard.less";
-@import "@{core-package-path-t3skin}/visual/_fonts.less";
-@import "@{core-package-path-t3skin}/visual/_main_content.less";
 @import "@{core-package-path-t3skin}/visual/_main_decorations.less";
-@import "@{core-package-path-t3skin}/visual/_main_form.less";
-@import "@{core-package-path-t3skin}/visual/_misc_loading.less";
 @import "@{core-package-path-t3skin}/visual/_module_file_list.less";
 @import "@{core-package-path-t3skin}/visual/_module_file_upload.less";
 @import "@{core-package-path-t3skin}/visual/_module_help_about.less";
 @import "@{core-package-path-t3skin}/visual/_module_help_about_module.less";
 @import "@{core-package-path-t3skin}/visual/_module_web_info.less";
+@import "@{core-package-path-t3skin}/visual/_module_web_list.less";
 @import "@{core-package-path-t3skin}/visual/_module_web_list_sysnote.less";
 @import "@{core-package-path-t3skin}/visual/_module_web_new_element.less";
 @import "@{core-package-path-t3skin}/visual/_module_web_page.less";
