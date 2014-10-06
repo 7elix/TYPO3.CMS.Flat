@@ -2,18 +2,74 @@
 // Tables
 // --------------------------------------------------
 
-.table {
-	// Not for all <tables>
-	background-color: #fff;
+table {
+	background: transparent;
 }
 
-table.t3-table,
-.dataTable {
+/**
+ * Common style for tables
+ *
+ * <table class="t3-table>
+ *   <thead>
+ *     <tr>
+ *       <th>...</th>
+ *       <th>...</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>
+ *         <span class="t3-icon t3-icon-treeline t3-icon-treeline-join t3-icon-join">&nbsp;</span>
+ *       </td>
+ *       <td>...</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ */
+
+.table {
+
+	> thead,
+	> tbody {
+		tr {
+			th:first-child,
+			th:last-child,
+			td:first-child,
+			td:last-child {
+				padding-left: 12px;
+			}
+		}
+	}
+
+	> thead {
+		> tr {
+			> th,
+			> td {
+				border-bottom: 1px solid #666;
+			}
+		}
+	}
+
+	> tbody {
+		> tr {
+			> td {
+				background-color: @table-bg;
+			}
+		}
+		> tr:hover {
+			> td {
+				transition: background-color 100ms linear;
+
+				a {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+// TYPO3 standard <table class="t3-table">
+table.t3-table {
 	.table;
 	.table-hover;
 }
-
-
-// table.typo3-dblist tr.t3-row-header {
-//	.table thead tr th;
-// }

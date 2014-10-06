@@ -1173,7 +1173,7 @@ pre code {
   }
 }
 table {
-  background-color: transparent;
+  background-color: #f9f9f9;
 }
 th {
   text-align: left;
@@ -1192,11 +1192,11 @@ th {
   padding: 6px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ffffff;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #ffffff;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -1207,7 +1207,7 @@ th {
   border-top: 0;
 }
 .table > tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #ffffff;
 }
 .table .table {
   background-color: #ffffff;
@@ -1221,7 +1221,7 @@ th {
   padding: 3px;
 }
 .table-bordered {
-  border: 1px solid #dddddd;
+  border: 1px solid #ffffff;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -1229,7 +1229,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #dddddd;
+  border: 1px solid #ffffff;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -1237,11 +1237,11 @@ th {
 }
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
 }
 table col[class*="col-"] {
   position: static;
@@ -1266,14 +1266,14 @@ table th[class*="col-"] {
 .table > thead > tr.active > th,
 .table > tbody > tr.active > th,
 .table > tfoot > tr.active > th {
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
 }
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
 .table-hover > tbody > tr:hover > .active,
 .table-hover > tbody > tr.active:hover > th {
-  background-color: #e8e8e8;
+  background-color: #d3d3d3;
 }
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
@@ -1366,7 +1366,7 @@ table th[class*="col-"] {
     overflow-y: hidden;
     overflow-x: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid #dddddd;
+    border: 1px solid #ffffff;
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive > .table {
@@ -4172,7 +4172,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ffffff;
 }
 .panel > .table > tbody:first-child > tr:first-child th,
 .panel > .table > tbody:first-child > tr:first-child td {
@@ -7148,10 +7148,6 @@ Help > About
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
-  background-color: #fff;
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr > th,
@@ -7162,11 +7158,11 @@ Help > About
   padding: 6px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ffffff;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #ffffff;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > caption + thead > tr:first-child > th,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > colgroup + thead > tr:first-child > th,
@@ -7177,7 +7173,7 @@ Help > About
   border-top: 0;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #ffffff;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table .table {
   background-color: #ffffff;
@@ -7194,17 +7190,10 @@ Help > About
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td {
-  background-color: #666;
-  color: #fff;
-  font-weight: normal;
-  min-height: 16px;
+  border-bottom: 1px solid #666;
 }
-#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th a,
-#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td a,
-#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > th a,
-#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > thead > tr > td a {
-  color: #fff;
-  text-decoration: underline;
+#typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr > td {
+  background-color: #f9f9f9;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:hover > td {
   transition: background-color 100ms linear;
@@ -7214,7 +7203,7 @@ Help > About
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:nth-child(odd) > td,
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner table > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
 }
 #typo3-mod-help-about-index-php-outer .typo3-mod-help-about-index-php-inner #donation-description {
   /*background-image: url("../../../../images/general/donate_teaser.png");*/
@@ -7229,10 +7218,6 @@ table.typo3-dblist {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
-  background-color: #fff;
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
 }
 table.typo3-dblist > thead > tr > th,
 table.typo3-dblist > tbody > tr > th,
@@ -7243,11 +7228,11 @@ table.typo3-dblist > tfoot > tr > td {
   padding: 6px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ffffff;
 }
 table.typo3-dblist > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #ffffff;
 }
 table.typo3-dblist > caption + thead > tr:first-child > th,
 table.typo3-dblist > colgroup + thead > tr:first-child > th,
@@ -7258,7 +7243,7 @@ table.typo3-dblist > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
 table.typo3-dblist > tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #ffffff;
 }
 table.typo3-dblist .table {
   background-color: #ffffff;
@@ -7275,17 +7260,10 @@ table.typo3-dblist > tbody tr td:last-child {
 }
 table.typo3-dblist > thead > tr > th,
 table.typo3-dblist > thead > tr > td {
-  background-color: #666;
-  color: #fff;
-  font-weight: normal;
-  min-height: 16px;
+  border-bottom: 1px solid #666;
 }
-table.typo3-dblist > thead > tr > th a,
-table.typo3-dblist > thead > tr > td a,
-table.typo3-dblist > thead > tr > th a,
-table.typo3-dblist > thead > tr > td a {
-  color: #fff;
-  text-decoration: underline;
+table.typo3-dblist > tbody > tr > td {
+  background-color: #f9f9f9;
 }
 table.typo3-dblist > tbody > tr:hover > td {
   transition: background-color 100ms linear;
@@ -7295,11 +7273,11 @@ table.typo3-dblist > tbody > tr:hover > td a {
 }
 table.typo3-dblist > tbody > tr:nth-child(odd) > td,
 table.typo3-dblist > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
 }
 table.typo3-dblist > tbody > tr:hover > td,
 table.typo3-dblist > tbody > tr:hover > th {
-  background-color: #f5f5f5;
+  background-color: #e0e0e0;
 }
 body {
   overflow: hidden;
@@ -9205,114 +9183,112 @@ span.t3-icon-overlay {
   height: 30px;
   width: 18px;
 }
-.table {
-  background-color: #fff;
+table {
+  background: transparent;
 }
-table.t3-table,
-.dataTable {
+/**
+ * Common style for tables
+ *
+ * <table class="t3-table>
+ *   <thead>
+ *     <tr>
+ *       <th>...</th>
+ *       <th>...</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>
+ *         <span class="t3-icon t3-icon-treeline t3-icon-treeline-join t3-icon-join">&nbsp;</span>
+ *       </td>
+ *       <td>...</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ */
+.table > thead tr th:first-child,
+.table > tbody tr th:first-child,
+.table > thead tr th:last-child,
+.table > tbody tr th:last-child,
+.table > thead tr td:first-child,
+.table > tbody tr td:first-child,
+.table > thead tr td:last-child,
+.table > tbody tr td:last-child {
+  padding-left: 12px;
+}
+.table > thead > tr > th,
+.table > thead > tr > td {
+  border-bottom: 1px solid #666;
+}
+.table > tbody > tr > td {
+  background-color: #f9f9f9;
+}
+.table > tbody > tr:hover > td {
+  transition: background-color 100ms linear;
+}
+.table > tbody > tr:hover > td a {
+  text-decoration: underline;
+}
+table.t3-table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
-  background-color: #fff;
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
 }
 table.t3-table > thead > tr > th,
-.dataTable > thead > tr > th,
 table.t3-table > tbody > tr > th,
-.dataTable > tbody > tr > th,
 table.t3-table > tfoot > tr > th,
-.dataTable > tfoot > tr > th,
 table.t3-table > thead > tr > td,
-.dataTable > thead > tr > td,
 table.t3-table > tbody > tr > td,
-.dataTable > tbody > tr > td,
-table.t3-table > tfoot > tr > td,
-.dataTable > tfoot > tr > td {
+table.t3-table > tfoot > tr > td {
   padding: 6px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ffffff;
 }
-table.t3-table > thead > tr > th,
-.dataTable > thead > tr > th {
+table.t3-table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #ffffff;
 }
 table.t3-table > caption + thead > tr:first-child > th,
-.dataTable > caption + thead > tr:first-child > th,
 table.t3-table > colgroup + thead > tr:first-child > th,
-.dataTable > colgroup + thead > tr:first-child > th,
 table.t3-table > thead:first-child > tr:first-child > th,
-.dataTable > thead:first-child > tr:first-child > th,
 table.t3-table > caption + thead > tr:first-child > td,
-.dataTable > caption + thead > tr:first-child > td,
 table.t3-table > colgroup + thead > tr:first-child > td,
-.dataTable > colgroup + thead > tr:first-child > td,
-table.t3-table > thead:first-child > tr:first-child > td,
-.dataTable > thead:first-child > tr:first-child > td {
+table.t3-table > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
-table.t3-table > tbody + tbody,
-.dataTable > tbody + tbody {
-  border-top: 2px solid #dddddd;
+table.t3-table > tbody + tbody {
+  border-top: 2px solid #ffffff;
 }
-table.t3-table .table,
-.dataTable .table {
+table.t3-table .table {
   background-color: #ffffff;
 }
 table.t3-table > thead tr th:first-child,
-.dataTable > thead tr th:first-child,
 table.t3-table > tbody tr th:first-child,
-.dataTable > tbody tr th:first-child,
 table.t3-table > thead tr th:last-child,
-.dataTable > thead tr th:last-child,
 table.t3-table > tbody tr th:last-child,
-.dataTable > tbody tr th:last-child,
 table.t3-table > thead tr td:first-child,
-.dataTable > thead tr td:first-child,
 table.t3-table > tbody tr td:first-child,
-.dataTable > tbody tr td:first-child,
 table.t3-table > thead tr td:last-child,
-.dataTable > thead tr td:last-child,
-table.t3-table > tbody tr td:last-child,
-.dataTable > tbody tr td:last-child {
+table.t3-table > tbody tr td:last-child {
   padding-left: 12px;
 }
 table.t3-table > thead > tr > th,
-.dataTable > thead > tr > th,
-table.t3-table > thead > tr > td,
-.dataTable > thead > tr > td {
-  background-color: #666;
-  color: #fff;
-  font-weight: normal;
-  min-height: 16px;
+table.t3-table > thead > tr > td {
+  border-bottom: 1px solid #666;
 }
-table.t3-table > thead > tr > th a,
-.dataTable > thead > tr > th a,
-table.t3-table > thead > tr > td a,
-.dataTable > thead > tr > td a,
-table.t3-table > thead > tr > th a,
-.dataTable > thead > tr > th a,
-table.t3-table > thead > tr > td a,
-.dataTable > thead > tr > td a {
-  color: #fff;
-  text-decoration: underline;
+table.t3-table > tbody > tr > td {
+  background-color: #f9f9f9;
 }
-table.t3-table > tbody > tr:hover > td,
-.dataTable > tbody > tr:hover > td {
+table.t3-table > tbody > tr:hover > td {
   transition: background-color 100ms linear;
 }
-table.t3-table > tbody > tr:hover > td a,
-.dataTable > tbody > tr:hover > td a {
+table.t3-table > tbody > tr:hover > td a {
   text-decoration: underline;
 }
 table.t3-table > tbody > tr:hover > td,
-.dataTable > tbody > tr:hover > td,
-table.t3-table > tbody > tr:hover > th,
-.dataTable > tbody > tr:hover > th {
-  background-color: #f5f5f5;
+table.t3-table > tbody > tr:hover > th {
+  background-color: #e0e0e0;
 }
 /*!
  * TYPO3
@@ -9516,161 +9492,6 @@ div.typo3-dyntabmenu-divs-foldout div.disabled:hover {
 .c-tablayer {
   margin: 0;
   padding: 0;
-}
-/**
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-/** used in the admin tools => DB check **/
-.t3-overview-list dt {
-  padding: 0px 0px 2px 20px;
-}
-.t3-overview-list dt img {
-  vertical-align: middle;
-  margin-right: 5px;
-}
-.t3-overview-list dd {
-  margin: 2px 0 15px 20px;
-  padding-left: 22px;
-}
-/**
- * Common style for tables
- *
- * <table class="t3-table>
- *   <thead>
- *     <tr>
- *       <th>...</th>
- *       <th>...</th>
- *     </tr>
- *   </thead>
- *   <tbody>
- *     <tr>
- *       <td>
- *         <span class="t3-icon t3-icon-treeline t3-icon-treeline-join t3-icon-join">&nbsp;</span>
- *       </td>
- *       <td>...</td>
- *     </tr>
- *   </tbody>
- * </table>
- */
-.table {
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
-}
-.table > thead tr th:first-child,
-.table > tbody tr th:first-child,
-.table > thead tr th:last-child,
-.table > tbody tr th:last-child,
-.table > thead tr td:first-child,
-.table > tbody tr td:first-child,
-.table > thead tr td:last-child,
-.table > tbody tr td:last-child {
-  padding-left: 12px;
-}
-.table > thead > tr > th,
-.table > thead > tr > td {
-  background-color: #666;
-  color: #fff;
-  font-weight: normal;
-  min-height: 16px;
-}
-.table > thead > tr > th a,
-.table > thead > tr > td a,
-.table > thead > tr > th a,
-.table > thead > tr > td a {
-  color: #fff;
-  text-decoration: underline;
-}
-.table > tbody > tr:hover > td {
-  transition: background-color 100ms linear;
-}
-.table > tbody > tr:hover > td a {
-  text-decoration: underline;
-}
-table.t3-table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
-  background-color: #fff;
-  border-right: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
-}
-table.t3-table > thead > tr > th,
-table.t3-table > tbody > tr > th,
-table.t3-table > tfoot > tr > th,
-table.t3-table > thead > tr > td,
-table.t3-table > tbody > tr > td,
-table.t3-table > tfoot > tr > td {
-  padding: 6px;
-  line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #dddddd;
-}
-table.t3-table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
-}
-table.t3-table > caption + thead > tr:first-child > th,
-table.t3-table > colgroup + thead > tr:first-child > th,
-table.t3-table > thead:first-child > tr:first-child > th,
-table.t3-table > caption + thead > tr:first-child > td,
-table.t3-table > colgroup + thead > tr:first-child > td,
-table.t3-table > thead:first-child > tr:first-child > td {
-  border-top: 0;
-}
-table.t3-table > tbody + tbody {
-  border-top: 2px solid #dddddd;
-}
-table.t3-table .table {
-  background-color: #ffffff;
-}
-table.t3-table > thead tr th:first-child,
-table.t3-table > tbody tr th:first-child,
-table.t3-table > thead tr th:last-child,
-table.t3-table > tbody tr th:last-child,
-table.t3-table > thead tr td:first-child,
-table.t3-table > tbody tr td:first-child,
-table.t3-table > thead tr td:last-child,
-table.t3-table > tbody tr td:last-child {
-  padding-left: 12px;
-}
-table.t3-table > thead > tr > th,
-table.t3-table > thead > tr > td {
-  background-color: #666;
-  color: #fff;
-  font-weight: normal;
-  min-height: 16px;
-}
-table.t3-table > thead > tr > th a,
-table.t3-table > thead > tr > td a,
-table.t3-table > thead > tr > th a,
-table.t3-table > thead > tr > td a {
-  color: #fff;
-  text-decoration: underline;
-}
-table.t3-table > tbody > tr:hover > td {
-  transition: background-color 100ms linear;
-}
-table.t3-table > tbody > tr:hover > td a {
-  text-decoration: underline;
-}
-table.t3-table > tbody > tr:nth-child(odd) > td,
-table.t3-table > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
-}
-table.t3-table > tbody > tr:hover > td,
-table.t3-table > tbody > tr:hover > th {
-  background-color: #f5f5f5;
 }
 /**
  * This file is part of the TYPO3 CMS project.
