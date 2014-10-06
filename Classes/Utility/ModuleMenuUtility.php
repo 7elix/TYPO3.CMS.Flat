@@ -41,7 +41,127 @@ class ModuleMenuUtility {
 	 * @return array
 	 */
 	static function restructureModules($moduleStorage) {
-		return $moduleStorage;
+
+		/**
+		 * Present
+		 *
+		 * @var \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule
+		 */
+		$present = new \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule();
+		$present->setName('present');
+		$present->setTitle('Website');
+		$present->setIcon(array('class' => 'desktop'));
+
+		/**
+		 * Manage
+		 *
+		 * @var \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule
+		 */
+		$manage = new \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule();
+		$manage->setName('manage');
+		$manage->setTitle('Manage');
+		$manage->setIcon(array('class' => 'code-fork'));
+
+		/**
+		 * Develop
+		 *
+		 * @var \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule
+		 */
+		$develop = new \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule();
+		$develop->setName('develop');
+		$develop->setTitle('Develop');
+		$develop->setIcon(array('class' => 'rocket'));
+
+		/**
+		 * System
+		 *
+		 * @var \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule
+		 */
+		$system = new \TYPO3\CMS\Backend\Domain\Model\Module\BackendModule();
+		$system->setName('system');
+		$system->setTitle('System');
+		$system->setIcon(array('class' => 'cube'));
+
+		/**
+		 * Reorganize
+		 */
+
+		$moduleMapping = array(
+			'web_layout' => $present,
+			'web_ViewpageView' => $present,
+			'web_ts' => $present,
+			'web_txformhandlermoduleM1' => $present,
+			'web_list' => $manage,
+			'web_func' => $manage,
+			'web_info' => $manage,
+			'web_txrecyclerM1' => $manage,
+			'web_WorkspacesWorkspaces' => $manage,
+			'file_list' => $present,
+			'tools_isearch' => $present,
+			'tools_ExtensionmanagerExtensionmanager' => $system,
+			'tools_LangLanguage' => $system,
+			'system_BeuserTxBeuser' => $system,
+			'system_BelogLog' => $system,
+			'system_InstallInstall' => $system,
+			'system_config' => $system,
+			'system_dbint' => $system,
+			'system_ReportsTxreportsm1' => $system,
+			'system_txschedulerM1' => $system
+		);
+
+		// Move Modules to new groups
+		$moduleStorage->rewind();
+		foreach ($moduleStorage as $moduleGroup) {
+			foreach ($moduleGroup->getChildren() as $module) {
+				if (array_key_exists($module->getName(), $moduleMapping)) {
+					$moduleMapping[$module->getName()]->addChild($module);
+					$moduleGroup->getChildren()->detach($module);
+				}
+			}
+		}
+
+		// Mapping for groups
+		$groupMapping = array(
+			'web' => $manage,
+			'file' => $present,
+			'tools' => $develop,
+			'system' => $system
+		);
+
+		// Attach remaining Modules by group mapping
+		$moduleStorage->rewind();
+		foreach ($moduleStorage as $moduleGroup) {
+			if (array_key_exists($moduleGroup->getName(), $groupMapping)) {
+				foreach ($moduleGroup->getChildren() as $module) {
+					$groupMapping[$moduleGroup->getName()]->addChild($module);
+					$moduleGroup->getChildren()->detach($module);
+				}
+			}
+		}
+
+		// Remove empty groups
+		$moduleStorage->rewind();
+		foreach ($moduleStorage as $moduleGroup) {
+			if ($moduleGroup->getChildren()->count() == 0) {
+				$moduleStorage->detach($moduleGroup);
+			}
+		}
+
+		// Attach expected Module groups
+		$finalModuleConfiguration = new \SplObjectStorage();
+		$finalModuleConfiguration->attach($present);
+		$finalModuleConfiguration->attach($manage);
+		$finalModuleConfiguration->attach($develop);
+		$finalModuleConfiguration->attach($system);
+
+		// Attach individual Module groups
+		$moduleStorage->rewind();
+		foreach ($moduleStorage as $moduleGroup) {
+			$finalModuleConfiguration->attach($moduleGroup);
+			$moduleStorage->detach($moduleGroup);
+		}
+
+		return $finalModuleConfiguration;
 	}
 
 }
