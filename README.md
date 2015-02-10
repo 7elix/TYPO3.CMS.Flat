@@ -1,3 +1,11 @@
+![obsolete](/Documentation/obsolete.png "obsolete")
+
+All relevant parts and pieces were merged into TYPO3 CMS version 7+.
+
+
+
+
+
 ![TYPO3](http://typo3.org/typo3conf/ext/t3org_template/i/typo3-logo.png)
 
 Flat: Theme for TYPO3 CMS
